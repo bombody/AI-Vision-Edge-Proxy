@@ -9,4 +9,14 @@ server:
 
 client:
 	@echo "--> Generating Python client files"
-	python3 -m grpc_tools.protoc -I prot
+	python3 -m grpc_tools.protoc -I proto/ --python_out=python/proto --grpc_python_out=python/proto proto/video_streaming.proto
+	@echo ""
+
+examples:
+	@echo "--> Generating Python Proto example files"
+	python3 -m grpc_tools.protoc -I proto/ --python_out=examples/ --grpc_python_out=examples/ proto/video_streaming.proto
+	@echo ""
+
+install: 
+	@echo "--> Installing Go and Python grpcio tools"
+	go install google.golang.
