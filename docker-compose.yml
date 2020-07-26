@@ -12,4 +12,15 @@ services:
       - chrysnet
   chrysedgeserver:
     image: chryscloud/chrysedgeserver:0.0.8.5
-    build:
+    build: server/
+    restart: always
+    depends_on:
+      - redis
+    entrypoint: /app/main
+    # command: " -c /data/chrysalis/conf.yaml" # optional argument if not in data root folder of /data/chrysalis volume
+    ports:
+      - "8909:8909"
+      - "50001:50001"
+    volumes:
+      - /data/chrysalis:/data/chrysalis
+      - /var/run/docker.sock:/var/run/docker.so
