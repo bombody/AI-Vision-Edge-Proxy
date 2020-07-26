@@ -19,4 +19,6 @@ examples:
 
 install: 
 	@echo "--> Installing Go and Python grpcio tools"
-	go install google.golang.
+	go install google.golang.org/protobuf/cmd/protoc-gen-go
+	pip3 install -U grpcio grpcio-tools
+	@echo ""
