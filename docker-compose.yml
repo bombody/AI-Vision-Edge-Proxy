@@ -23,4 +23,23 @@ services:
       - "50001:50001"
     volumes:
       - /data/chrysalis:/data/chrysalis
-      - /var/run/docker.sock:/var/run/docker.so
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks: 
+      - chrysnet
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    # volumes:
+    #   - /data/chrysalis/redis:/data
+    #   - ./redis.conf:/usr/local/etc/redis/redis.conf
+    # command:
+    #   - redis-server
+    #   - /usr/local/etc/redis/redis.conf
+  
+    networks: 
+      - chrysnet
+
+networks:
+  chrysnet:
+    name: chrysnet
