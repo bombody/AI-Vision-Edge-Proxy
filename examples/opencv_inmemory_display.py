@@ -54,3 +54,36 @@ if __name__ == "__main__":
     # first get the system time (not necessary but sure to be more precise on different systems)
     sysTime = stub.SystemTime(video_streaming_pb2.SystemTimeRequest())
     timestampTo = sysTime.current_time
+    timestampFrom = 0 # beginning of the in-memory queue
+
+    num_images = 0
+    start_time = int(time.time() * 1000)
+    images_found = False
+
+    for frame in stub.VideoBufferedImage(gen_buffered_image_request(device_name=device_id,timestamp_from=timestampFrom, timestamp_to=timestampTo)):
+        # read raw frame data and convert to numpy array
+        img_bytes = frame.data 
+        re_img = np.frombuffer(img_bytes, dtype=np.uint8)
+        
+        # checking if any results found
+        images_found = True
+
+        # reshape image back into original dimensions
+        if len(frame.shape.dim) > 0:
+            reshape = tuple([int(dim.size) for dim in frame.shape.dim])
+            re_img = np.reshape(re_img, reshape)
+
+            # # display and count number of images retrieved from buffer
+            num_images += 1
+            cv2.imshow('box', re_img)
+            
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+    
+    if images_found: # don't destroy window if nothing ever displayed
+        end_time = int(time.time() * 1000)
+
+        print("Total execution time:", str(end_time - start_time), ": ", (end_time - start_time), "ms", "[Start:End] -> [", str(timestampFrom), ":", str(timestampTo), "]", "#images: ", num_images)
+    else:
+        print("no results found between ", timestampFrom, ",", timestampTo)
+    pass
