@@ -27,4 +27,5 @@ if __name__ == "__main__":
     probe = stub.VideoProbe(gen_buffer_probe_request(device_name=device_id))
     print(probe)
 
-    sysTime = stub.Sys
+    sysTime = stub.SystemTime(gen_system_time_request())
+    print(sysTime)
