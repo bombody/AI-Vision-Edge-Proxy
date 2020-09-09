@@ -27,4 +27,13 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _ANNOTATEREQUEST = _descriptor.Descriptor(
   name='AnnotateRequest',
-  full_name='chrys.cloud.videostreaming.v1beta1.Annot
+  full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_name', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.device_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('u
