@@ -62,4 +62,11 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='end_timestamp', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.end_timestamp', index=4
+      name='end_timestamp', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.end_timestamp', index=4,
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='object_type', full_name='chrys.cloud.vi
