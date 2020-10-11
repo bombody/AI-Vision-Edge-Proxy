@@ -115,4 +115,10 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, exten
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='mask', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.mask', index=12,
+      number=13, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+  
