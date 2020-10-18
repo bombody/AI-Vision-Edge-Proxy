@@ -126,4 +126,10 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='object_signature', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.object_signature', index=13,
-      number=14, 
+      number=14, type=1, cpp_type=5, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ml_model', full_name='chrys.cloud.videostreaming.v1be
