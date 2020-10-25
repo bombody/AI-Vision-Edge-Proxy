@@ -162,4 +162,9 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='is_keyframe', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.is_keyframe', index=18,
       number=19, type=8, cpp_type=7, label=1,
-      has_defaul
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='video_type', full_name='chrys.cloud.videostreaming.v1be
