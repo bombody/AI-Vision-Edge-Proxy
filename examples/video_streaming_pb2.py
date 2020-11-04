@@ -173,4 +173,9 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-   
+    _descriptor.FieldDescriptor(
+      name='offset_timestamp', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.offset_timestamp', index=20,
+      number=21, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False,
