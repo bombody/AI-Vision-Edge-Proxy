@@ -195,4 +195,11 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='offset_packet_id', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.offset_pa
+      name='offset_packet_id', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateRequest.offset_packet_id', index=23,
+      number=24, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='custom_meta_1', full_name='chr
