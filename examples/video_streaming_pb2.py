@@ -238,3 +238,24 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=62,
+  serialized_end=912,
+)
+
+
+_ANNOTATERESPONSE = _descriptor.Descriptor(
+  name='AnnotateResponse',
+  full_name='chrys.cloud.videostreaming.v1beta1.AnnotateResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_ty
