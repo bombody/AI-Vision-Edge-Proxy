@@ -258,4 +258,11 @@ _ANNOTATERESPONSE = _descriptor.Descriptor(
   full_name='chrys.cloud.videostreaming.v1beta1.AnnotateResponse',
   filename=None,
   file=DESCRIPTOR,
-  containing_ty
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_name', full_name='chrys.cloud.videostreaming.v1beta1.AnnotateResponse.device_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_typ
