@@ -306,4 +306,16 @@ _ANNOTATERESPONSE = _descriptor.Descriptor(
 )
 
 
-_LOCATION = _descriptor.Descrip
+_LOCATION = _descriptor.Descriptor(
+  name='Location',
+  full_name='chrys.cloud.videostreaming.v1beta1.Location',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='lat', full_name='chrys.cloud.videostreaming.v1beta1.Location.lat', index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message
