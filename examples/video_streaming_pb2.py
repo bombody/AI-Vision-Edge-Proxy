@@ -352,4 +352,11 @@ _COORDINATE = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
-  fie
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='x', full_name='chrys.cloud.videostreaming.v1beta1.Coordinate.x', index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=D
