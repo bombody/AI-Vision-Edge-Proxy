@@ -391,4 +391,14 @@ _COORDINATE = _descriptor.Descriptor(
 )
 
 
-_
+_BOUDINGBOX = _descriptor.Descriptor(
+  name='BoudingBox',
+  full_name='chrys.cloud.videostreaming.v1beta1.BoudingBox',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='top', full_name='chrys.cloud.videostreaming.v1beta1.BoudingBox.top', index=0,
+      num
