@@ -473,4 +473,21 @@ _SHAPEPROTO_DIM = _descriptor.Descriptor(
   enum_types=[
   ],
   serialized_options=None,
-  is_extendable=F
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1256,
+  serialized_end=1289,
+)
+
+_SHAPEPROTO = _descriptor.Descriptor(
+  name='ShapeProto',
+  full_name='chrys.cloud.videostreaming.v1beta1.ShapeProto',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.Field
