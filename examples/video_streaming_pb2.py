@@ -490,4 +490,10 @@ _SHAPEPROTO = _descriptor.Descriptor(
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
-    _descriptor.Field
+    _descriptor.FieldDescriptor(
+      name='dim', full_name='chrys.cloud.videostreaming.v1beta1.ShapeProto.dim', index=0,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  c
