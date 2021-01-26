@@ -516,4 +516,13 @@ _SHAPEPROTO = _descriptor.Descriptor(
 
 _VIDEOFRAME = _descriptor.Descriptor(
   name='VideoFrame',
-  full_name='chrys.cloud.videost
+  full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='width', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame.width', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default
