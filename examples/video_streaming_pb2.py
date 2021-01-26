@@ -496,4 +496,24 @@ _SHAPEPROTO = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  c
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_SHAPEPROTO_DIM, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1177,
+  serialized_end=1289,
+)
+
+
+_VIDEOFRAME = _descriptor.Descriptor(
+  name='VideoFrame',
+  full_name='chrys.cloud.videost
