@@ -554,4 +554,10 @@ _VIDEOFRAME = _descriptor.Descriptor(
       name='is_keyframe', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame.is_keyframe', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
-      message_type=None
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pts', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame.pts', index=5,
+      number=6, type=3, cpp_type=2, label=1,
+      has_default
