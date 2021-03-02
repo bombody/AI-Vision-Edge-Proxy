@@ -596,4 +596,10 @@ _VIDEOFRAME = _descriptor.Descriptor(
       name='shape', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame.shape', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
-      message_type=N
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='device_id', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame.device_id', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=
