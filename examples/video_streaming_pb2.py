@@ -620,4 +620,10 @@ _VIDEOFRAME = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDes
+    _descriptor.FieldDescriptor(
+      name='extradata', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrame.extradata', index=14,
+      number=15, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descri
