@@ -667,4 +667,9 @@ _VIDEOFRAMEREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key_frame_only', full_na
+      name='key_frame_only', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrameRequest.key_frame_only', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,
