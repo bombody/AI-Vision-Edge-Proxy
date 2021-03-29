@@ -697,4 +697,13 @@ _VIDEOFRAMEREQUEST = _descriptor.Descriptor(
 )
 
 
-_VIDEOFRAME
+_VIDEOFRAMEBUFFEREDREQUEST = _descriptor.Descriptor(
+  name='VideoFrameBufferedRequest',
+  full_name='chrys.cloud.videostreaming.v1beta1.VideoFrameBufferedRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_id', full_name='chrys.cloud.videostreaming.v1beta1.VideoFrameBuf
