@@ -782,4 +782,10 @@ _LISTSTREAM = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='dead', full_name='chrys.cloud.videostreaming.v1beta1.ListStream.dead', index=4,
       number=5, type=8, cpp_type=7, label=1,
-      has_default_
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='exit_code', full_name='chrys.cloud.videostreaming.v1beta1.ListStream.exit_code', index=5,
+    
