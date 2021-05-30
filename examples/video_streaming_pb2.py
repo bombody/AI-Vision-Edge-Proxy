@@ -818,4 +818,9 @@ _LISTSTREAM = _descriptor.Descriptor(
       name='restarting', full_name='chrys.cloud.videostreaming.v1beta1.ListStream.restarting', index=9,
       number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
-      me
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='oomkilled', full_name='chrys.cloud.videostreaming.v1beta1.ListStream.oomkilled', index=10,
+      number=11, type=8, cpp_type=7, lab
