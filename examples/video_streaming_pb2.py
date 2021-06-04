@@ -839,4 +839,22 @@ _LISTSTREAM = _descriptor.Descriptor(
   extensions=[
   ],
   nested_types=[],
-  enum_
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1807,
+  serialized_end=2029,
+)
+
+
+_LISTSTREAMREQUEST = _descriptor.Descriptor(
+  name='ListStreamRequest',
+  full_name='chrys.cloud.videostreaming.v1beta1.ListStreamRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_typ
