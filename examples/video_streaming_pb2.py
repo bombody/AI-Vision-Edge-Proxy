@@ -857,4 +857,26 @@ _LISTSTREAMREQUEST = _descriptor.Descriptor(
   full_name='chrys.cloud.videostreaming.v1beta1.ListStreamRequest',
   filename=None,
   file=DESCRIPTOR,
-  containing_typ
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2031,
+  serialized_end=2050,
+)
+
+
+_PROXYREQUEST = _descriptor.Descriptor(
+  name='ProxyRequest',
+  full_
