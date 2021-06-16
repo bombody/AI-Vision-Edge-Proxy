@@ -904,4 +904,22 @@ _PROXYREQUEST = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-  ]
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2052,
+  serialized_end=2106,
+)
+
+
+_PROXYRESPONSE = _descriptor.Descriptor(
+  name='ProxyResponse',
+  full_name='chrys.cloud.videostreaming.v1beta1.ProxyResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._interna
