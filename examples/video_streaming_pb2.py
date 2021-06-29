@@ -1022,4 +1022,21 @@ _STORAGERESPONSE = _descriptor.Descriptor(
   nested_types=[],
   enum_types=[
   ],
-  seriali
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2217,
+  serialized_end=2268,
+)
+
+
+_VIDEOCODEC = _descriptor.Descriptor(
+  name='VideoCodec',
+  full_name='chrys.cloud.videostreaming.v1beta1.VideoCodec',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._intern
