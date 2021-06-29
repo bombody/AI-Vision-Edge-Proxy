@@ -976,4 +976,25 @@ _STORAGEREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descript
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2165,
+  serialized_end=2215,
+)
+
+
+_STORAGERESPONSE = _descriptor.Descriptor(
+  name='StorageResponse',
+  full_name='chrys.cloud.videostreaming.v1beta1.StorageResponse',
+  fil
