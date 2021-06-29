@@ -997,4 +997,12 @@ _STORAGEREQUEST = _descriptor.Descriptor(
 _STORAGERESPONSE = _descriptor.Descriptor(
   name='StorageResponse',
   full_name='chrys.cloud.videostreaming.v1beta1.StorageResponse',
-  fil
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_id', full_name='chrys.cloud.videostreaming.v1beta1.StorageResponse.device_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".d
