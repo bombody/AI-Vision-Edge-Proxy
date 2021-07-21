@@ -1109,4 +1109,12 @@ _VIDEOCODEC = _descriptor.Descriptor(
 
 _VIDEOPROBEREQUEST = _descriptor.Descriptor(
   name='VideoProbeRequest',
-  full_name='chr
+  full_name='chrys.cloud.videostreaming.v1beta1.VideoProbeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_id', full_name='chrys.cloud.videostreaming.v1beta1.VideoProbeRequest.device_id', index=0,
+      number=1, type=9, cpp_type=9, label=
