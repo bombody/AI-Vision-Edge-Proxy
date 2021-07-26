@@ -1130,4 +1130,21 @@ _VIDEOPROBEREQUEST = _descriptor.Descriptor(
   ],
   serialized_options=None,
   is_extendable=False,
-  syntax=
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2409,
+  serialized_end=2447,
+)
+
+
+_VIDEOPROBERESPONSE = _descriptor.Descriptor(
+  name='VideoProbeResponse',
+  full_name='chrys.cloud.videostreaming.v1beta1.VideoProbeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.F
