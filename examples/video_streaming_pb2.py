@@ -1178,4 +1178,14 @@ _VIDEOPROBERESPONSE = _descriptor.Descriptor(
 )
 
 
-_VIDEOBUFFER = _descrip
+_VIDEOBUFFER = _descriptor.Descriptor(
+  name='VideoBuffer',
+  full_name='chrys.cloud.videostreaming.v1beta1.VideoBuffer',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='start_time', full_name='chrys.cloud.videostreaming.v1beta1.VideoBuffer.start_time', index=0,
+      
