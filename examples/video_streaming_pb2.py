@@ -1238,4 +1238,13 @@ _VIDEOBUFFER = _descriptor.Descriptor(
 )
 
 
-_SYSTEMT
+_SYSTEMTIMERESPONSE = _descriptor.Descriptor(
+  name='SystemTimeResponse',
+  full_name='chrys.cloud.videostreaming.v1beta1.SystemTimeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='current_time', full_name='chrys.cloud.videostreaming.v1beta1.SystemTimeResponse.current_time', 
