@@ -1256,4 +1256,23 @@ _SYSTEMTIMERESPONSE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  neste
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2726,
+  serialized_end=2768,
+)
+
+
+_SYSTEMTIMEREQUEST = _descriptor.Descriptor(
+  name='SystemTimeRequest',
+  full_name='chrys.cloud.videostreaming.v1beta1.SystemTimeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  co
