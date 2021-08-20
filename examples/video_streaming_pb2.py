@@ -1275,4 +1275,23 @@ _SYSTEMTIMEREQUEST = _descriptor.Descriptor(
   full_name='chrys.cloud.videostreaming.v1beta1.SystemTimeRequest',
   filename=None,
   file=DESCRIPTOR,
-  co
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2770,
+  serialized_end=2789,
+)
+
+_ANNOTATEREQUEST.fields_by_name['object_bouding_box'].message_type 
