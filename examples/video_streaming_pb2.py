@@ -1294,4 +1294,10 @@ _SYSTEMTIMEREQUEST = _descriptor.Descriptor(
   serialized_end=2789,
 )
 
-_ANNOTATEREQUEST.fields_by_name['object_bouding_box'].message_type 
+_ANNOTATEREQUEST.fields_by_name['object_bouding_box'].message_type = _BOUDINGBOX
+_ANNOTATEREQUEST.fields_by_name['location'].message_type = _LOCATION
+_ANNOTATEREQUEST.fields_by_name['object_coordinate'].message_type = _COORDINATE
+_ANNOTATEREQUEST.fields_by_name['mask'].message_type = _COORDINATE
+_SHAPEPROTO_DIM.containing_type = _SHAPEPROTO
+_SHAPEPROTO.fields_by_name['dim'].message_type = _SHAPEPROTO_DIM
+_VIDE
