@@ -1300,4 +1300,9 @@ _ANNOTATEREQUEST.fields_by_name['object_coordinate'].message_type = _COORDINATE
 _ANNOTATEREQUEST.fields_by_name['mask'].message_type = _COORDINATE
 _SHAPEPROTO_DIM.containing_type = _SHAPEPROTO
 _SHAPEPROTO.fields_by_name['dim'].message_type = _SHAPEPROTO_DIM
-_VIDE
+_VIDEOFRAME.fields_by_name['shape'].message_type = _SHAPEPROTO
+_VIDEOPROBERESPONSE.fields_by_name['video_codec'].message_type = _VIDEOCODEC
+_VIDEOPROBERESPONSE.fields_by_name['buffer'].message_type = _VIDEOBUFFER
+DESCRIPTOR.message_types_by_name['AnnotateRequest'] = _ANNOTATEREQUEST
+DESCRIPTOR.message_types_by_name['AnnotateResponse'] = _ANNOTATERESPONSE
+DESCRIPTOR.message_types_by_name['Loca
