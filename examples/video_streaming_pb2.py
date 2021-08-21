@@ -1305,4 +1305,10 @@ _VIDEOPROBERESPONSE.fields_by_name['video_codec'].message_type = _VIDEOCODEC
 _VIDEOPROBERESPONSE.fields_by_name['buffer'].message_type = _VIDEOBUFFER
 DESCRIPTOR.message_types_by_name['AnnotateRequest'] = _ANNOTATEREQUEST
 DESCRIPTOR.message_types_by_name['AnnotateResponse'] = _ANNOTATERESPONSE
-DESCRIPTOR.message_types_by_name['Loca
+DESCRIPTOR.message_types_by_name['Location'] = _LOCATION
+DESCRIPTOR.message_types_by_name['Coordinate'] = _COORDINATE
+DESCRIPTOR.message_types_by_name['BoudingBox'] = _BOUDINGBOX
+DESCRIPTOR.message_types_by_name['ShapeProto'] = _SHAPEPROTO
+DESCRIPTOR.message_types_by_name['VideoFrame'] = _VIDEOFRAME
+DESCRIPTOR.message_types_by_name['VideoFrameRequest'] = _VIDEOFRAMEREQUEST
+DESCRIPTOR.message_types
