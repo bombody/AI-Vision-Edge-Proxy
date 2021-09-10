@@ -1316,4 +1316,10 @@ DESCRIPTOR.message_types_by_name['ListStream'] = _LISTSTREAM
 DESCRIPTOR.message_types_by_name['ListStreamRequest'] = _LISTSTREAMREQUEST
 DESCRIPTOR.message_types_by_name['ProxyRequest'] = _PROXYREQUEST
 DESCRIPTOR.message_types_by_name['ProxyResponse'] = _PROXYRESPONSE
-DESCRIPTOR.message_types_by_name['Sto
+DESCRIPTOR.message_types_by_name['StorageRequest'] = _STORAGEREQUEST
+DESCRIPTOR.message_types_by_name['StorageResponse'] = _STORAGERESPONSE
+DESCRIPTOR.message_types_by_name['VideoCodec'] = _VIDEOCODEC
+DESCRIPTOR.message_types_by_name['VideoProbeRequest'] = _VIDEOPROBEREQUEST
+DESCRIPTOR.message_types_by_name['VideoProbeResponse'] = _VIDEOPROBERESPONSE
+DESCRIPTOR.message_types_by_name['VideoBuffer'] = _VIDEOBUFFER
+DESCRIPTO
