@@ -1311,4 +1311,9 @@ DESCRIPTOR.message_types_by_name['BoudingBox'] = _BOUDINGBOX
 DESCRIPTOR.message_types_by_name['ShapeProto'] = _SHAPEPROTO
 DESCRIPTOR.message_types_by_name['VideoFrame'] = _VIDEOFRAME
 DESCRIPTOR.message_types_by_name['VideoFrameRequest'] = _VIDEOFRAMEREQUEST
-DESCRIPTOR.message_types
+DESCRIPTOR.message_types_by_name['VideoFrameBufferedRequest'] = _VIDEOFRAMEBUFFEREDREQUEST
+DESCRIPTOR.message_types_by_name['ListStream'] = _LISTSTREAM
+DESCRIPTOR.message_types_by_name['ListStreamRequest'] = _LISTSTREAMREQUEST
+DESCRIPTOR.message_types_by_name['ProxyRequest'] = _PROXYREQUEST
+DESCRIPTOR.message_types_by_name['ProxyResponse'] = _PROXYRESPONSE
+DESCRIPTOR.message_types_by_name['Sto
