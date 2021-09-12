@@ -1322,4 +1322,11 @@ DESCRIPTOR.message_types_by_name['VideoCodec'] = _VIDEOCODEC
 DESCRIPTOR.message_types_by_name['VideoProbeRequest'] = _VIDEOPROBEREQUEST
 DESCRIPTOR.message_types_by_name['VideoProbeResponse'] = _VIDEOPROBERESPONSE
 DESCRIPTOR.message_types_by_name['VideoBuffer'] = _VIDEOBUFFER
-DESCRIPTO
+DESCRIPTOR.message_types_by_name['SystemTimeResponse'] = _SYSTEMTIMERESPONSE
+DESCRIPTOR.message_types_by_name['SystemTimeRequest'] = _SYSTEMTIMEREQUEST
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+AnnotateRequest = _reflection.GeneratedProtocolMessageType('AnnotateRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ANNOTATEREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  #
