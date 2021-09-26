@@ -1329,4 +1329,11 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 AnnotateRequest = _reflection.GeneratedProtocolMessageType('AnnotateRequest', (_message.Message,), {
   'DESCRIPTOR' : _ANNOTATEREQUEST,
   '__module__' : 'video_streaming_pb2'
-  #
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.AnnotateRequest)
+  })
+_sym_db.RegisterMessage(AnnotateRequest)
+
+AnnotateResponse = _reflection.GeneratedProtocolMessageType('AnnotateResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ANNOTATERESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.vid
