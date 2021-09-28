@@ -1336,4 +1336,13 @@ _sym_db.RegisterMessage(AnnotateRequest)
 AnnotateResponse = _reflection.GeneratedProtocolMessageType('AnnotateResponse', (_message.Message,), {
   'DESCRIPTOR' : _ANNOTATERESPONSE,
   '__module__' : 'video_streaming_pb2'
-  # @@protoc_insertion_point(class_scope:chrys.cloud.vid
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.AnnotateResponse)
+  })
+_sym_db.RegisterMessage(AnnotateResponse)
+
+Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+  'DESCRIPTOR' : _LOCATION,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.Location)
+  })
+_sym_db.RegisterMessage(Loca
