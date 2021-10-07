@@ -1345,4 +1345,13 @@ Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Messag
   '__module__' : 'video_streaming_pb2'
   # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.Location)
   })
-_sym_db.RegisterMessage(Loca
+_sym_db.RegisterMessage(Location)
+
+Coordinate = _reflection.GeneratedProtocolMessageType('Coordinate', (_message.Message,), {
+  'DESCRIPTOR' : _COORDINATE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.Coordinate)
+  })
+_sym_db.RegisterMessage(Coordinate)
+
+BoudingBox = _reflection.GeneratedProtocolMessageType('BoudingBox'
