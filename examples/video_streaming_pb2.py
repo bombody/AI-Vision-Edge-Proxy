@@ -1354,4 +1354,13 @@ Coordinate = _reflection.GeneratedProtocolMessageType('Coordinate', (_message.Me
   })
 _sym_db.RegisterMessage(Coordinate)
 
-BoudingBox = _reflection.GeneratedProtocolMessageType('BoudingBox'
+BoudingBox = _reflection.GeneratedProtocolMessageType('BoudingBox', (_message.Message,), {
+  'DESCRIPTOR' : _BOUDINGBOX,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.BoudingBox)
+  })
+_sym_db.RegisterMessage(BoudingBox)
+
+ShapeProto = _reflection.GeneratedProtocolMessageType('ShapeProto', (_message.Message,), {
+
+  'Dim' : _reflection.GeneratedProtocolMessageType('Dim', (_message.Mes
