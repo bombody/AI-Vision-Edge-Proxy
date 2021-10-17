@@ -1376,4 +1376,11 @@ ShapeProto = _reflection.GeneratedProtocolMessageType('ShapeProto', (_message.Me
 _sym_db.RegisterMessage(ShapeProto)
 _sym_db.RegisterMessage(ShapeProto.Dim)
 
-VideoFrame = _
+VideoFrame = _reflection.GeneratedProtocolMessageType('VideoFrame', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOFRAME,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoFrame)
+  })
+_sym_db.RegisterMessage(VideoFrame)
+
+VideoFrameRequest = _reflection.GeneratedProtocolMessageType('VideoFrameRequest', (_message.Messag
