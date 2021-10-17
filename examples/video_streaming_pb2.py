@@ -1363,4 +1363,17 @@ _sym_db.RegisterMessage(BoudingBox)
 
 ShapeProto = _reflection.GeneratedProtocolMessageType('ShapeProto', (_message.Message,), {
 
-  'Dim' : _reflection.GeneratedProtocolMessageType('Dim', (_message.Mes
+  'Dim' : _reflection.GeneratedProtocolMessageType('Dim', (_message.Message,), {
+    'DESCRIPTOR' : _SHAPEPROTO_DIM,
+    '__module__' : 'video_streaming_pb2'
+    # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ShapeProto.Dim)
+    })
+  ,
+  'DESCRIPTOR' : _SHAPEPROTO,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ShapeProto)
+  })
+_sym_db.RegisterMessage(ShapeProto)
+_sym_db.RegisterMessage(ShapeProto.Dim)
+
+VideoFrame = _
