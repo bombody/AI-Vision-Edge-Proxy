@@ -1383,4 +1383,12 @@ VideoFrame = _reflection.GeneratedProtocolMessageType('VideoFrame', (_message.Me
   })
 _sym_db.RegisterMessage(VideoFrame)
 
-VideoFrameRequest = _reflection.GeneratedProtocolMessageType('VideoFrameRequest', (_message.Messag
+VideoFrameRequest = _reflection.GeneratedProtocolMessageType('VideoFrameRequest', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOFRAMEREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoFrameRequest)
+  })
+_sym_db.RegisterMessage(VideoFrameRequest)
+
+VideoFrameBufferedRequest = _reflection.GeneratedProtocolMessageType('VideoFrameBufferedRequest', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOF
