@@ -1418,4 +1418,11 @@ ProxyRequest = _reflection.GeneratedProtocolMessageType('ProxyRequest', (_messag
   })
 _sym_db.RegisterMessage(ProxyRequest)
 
-ProxyResponse = _reflection.Generate
+ProxyResponse = _reflection.GeneratedProtocolMessageType('ProxyResponse', (_message.Message,), {
+  'DESCRIPTOR' : _PROXYRESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ProxyResponse)
+  })
+_sym_db.RegisterMessage(ProxyResponse)
+
+StorageRequest = _reflection.GeneratedProtocolMessageType('StorageRequest', (_message.
