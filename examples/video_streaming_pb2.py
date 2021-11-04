@@ -1400,4 +1400,11 @@ _sym_db.RegisterMessage(VideoFrameBufferedRequest)
 ListStream = _reflection.GeneratedProtocolMessageType('ListStream', (_message.Message,), {
   'DESCRIPTOR' : _LISTSTREAM,
   '__module__' : 'video_streaming_pb2'
-  
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ListStream)
+  })
+_sym_db.RegisterMessage(ListStream)
+
+ListStreamRequest = _reflection.GeneratedProtocolMessageType('ListStreamRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTSTREAMREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ListStreamRequest
