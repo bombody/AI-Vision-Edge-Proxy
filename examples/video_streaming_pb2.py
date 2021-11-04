@@ -1407,4 +1407,15 @@ _sym_db.RegisterMessage(ListStream)
 ListStreamRequest = _reflection.GeneratedProtocolMessageType('ListStreamRequest', (_message.Message,), {
   'DESCRIPTOR' : _LISTSTREAMREQUEST,
   '__module__' : 'video_streaming_pb2'
-  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ListStreamRequest
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ListStreamRequest)
+  })
+_sym_db.RegisterMessage(ListStreamRequest)
+
+ProxyRequest = _reflection.GeneratedProtocolMessageType('ProxyRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PROXYREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ProxyRequest)
+  })
+_sym_db.RegisterMessage(ProxyRequest)
+
+ProxyResponse = _reflection.Generate
