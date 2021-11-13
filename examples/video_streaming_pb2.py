@@ -1468,4 +1468,12 @@ VideoBuffer = _reflection.GeneratedProtocolMessageType('VideoBuffer', (_message.
 _sym_db.RegisterMessage(VideoBuffer)
 
 SystemTimeResponse = _reflection.GeneratedProtocolMessageType('SystemTimeResponse', (_message.Message,), {
-  'DESCRIPTOR' : _SYSTEMTIMERESPONS
+  'DESCRIPTOR' : _SYSTEMTIMERESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.SystemTimeResponse)
+  })
+_sym_db.RegisterMessage(SystemTimeResponse)
+
+SystemTimeRequest = _reflection.GeneratedProtocolMessageType('SystemTimeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SYSTEMTIMEREQUEST,
+  '__module__' : 'video
