@@ -1453,4 +1453,11 @@ VideoProbeRequest = _reflection.GeneratedProtocolMessageType('VideoProbeRequest'
   })
 _sym_db.RegisterMessage(VideoProbeRequest)
 
-Vi
+VideoProbeResponse = _reflection.GeneratedProtocolMessageType('VideoProbeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOPROBERESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoProbeResponse)
+  })
+_sym_db.RegisterMessage(VideoProbeResponse)
+
+VideoBuffer = _reflection.GeneratedProtocolMessageType('Video
