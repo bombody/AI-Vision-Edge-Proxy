@@ -1442,4 +1442,15 @@ _sym_db.RegisterMessage(StorageResponse)
 VideoCodec = _reflection.GeneratedProtocolMessageType('VideoCodec', (_message.Message,), {
   'DESCRIPTOR' : _VIDEOCODEC,
   '__module__' : 'video_streaming_pb2'
-  # @@protoc_insertion_point(class_scope:chrys.cloud.vid
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoCodec)
+  })
+_sym_db.RegisterMessage(VideoCodec)
+
+VideoProbeRequest = _reflection.GeneratedProtocolMessageType('VideoProbeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOPROBEREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoProbeRequest)
+  })
+_sym_db.RegisterMessage(VideoProbeRequest)
+
+Vi
