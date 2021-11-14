@@ -1489,4 +1489,16 @@ _IMAGE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  create_
+  create_key=_descriptor._internal_create_key,
+  serialized_start=2792,
+  serialized_end=3789,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='VideoLatestImage',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.VideoLatestImage',
+    index=0,
+    containing_service=None,
+    input_type=_VIDEOFRAMEREQUEST,
+    output_type=_VIDEOFRAME,
+    serialized_options=None,
+    create_key=_descriptor
