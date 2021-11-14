@@ -1476,4 +1476,17 @@ _sym_db.RegisterMessage(SystemTimeResponse)
 
 SystemTimeRequest = _reflection.GeneratedProtocolMessageType('SystemTimeRequest', (_message.Message,), {
   'DESCRIPTOR' : _SYSTEMTIMEREQUEST,
-  '__module__' : 'video
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.SystemTimeRequest)
+  })
+_sym_db.RegisterMessage(SystemTimeRequest)
+
+
+
+_IMAGE = _descriptor.ServiceDescriptor(
+  name='Image',
+  full_name='chrys.cloud.videostreaming.v1beta1.Image',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_
