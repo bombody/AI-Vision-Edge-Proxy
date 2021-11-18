@@ -1525,4 +1525,14 @@ _IMAGE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='ListStreams',
-    full_name='chrys
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.ListStreams',
+    index=3,
+    containing_service=None,
+    input_type=_LISTSTREAMREQUEST,
+    output_type=_LISTSTREAM,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Annotate',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.Annotate',
