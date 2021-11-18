@@ -1513,4 +1513,16 @@ _IMAGE = _descriptor.ServiceDescriptor(
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
-  _des
+  _descriptor.MethodDescriptor(
+    name='VideoProbe',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.VideoProbe',
+    index=2,
+    containing_service=None,
+    input_type=_VIDEOPROBEREQUEST,
+    output_type=_VIDEOPROBERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ListStreams',
+    full_name='chrys
