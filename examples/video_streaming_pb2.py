@@ -1501,4 +1501,16 @@ _IMAGE = _descriptor.ServiceDescriptor(
     input_type=_VIDEOFRAMEREQUEST,
     output_type=_VIDEOFRAME,
     serialized_options=None,
-    create_key=_descriptor
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='VideoBufferedImage',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.VideoBufferedImage',
+    index=1,
+    containing_service=None,
+    input_type=_VIDEOFRAMEBUFFEREDREQUEST,
+    output_type=_VIDEOFRAME,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _des
