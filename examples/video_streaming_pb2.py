@@ -1536,3 +1536,17 @@ _IMAGE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Annotate',
     full_name='chrys.cloud.videostreaming.v1beta1.Image.Annotate',
+    index=4,
+    containing_service=None,
+    input_type=_ANNOTATEREQUEST,
+    output_type=_ANNOTATERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Proxy',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.Proxy',
+    index=5,
+    containing_service=None,
+    input_type=_PROXYREQUEST,
+    output_type=_P
