@@ -1576,4 +1576,6 @@ _IMAGE = _descriptor.ServiceDescriptor(
 ])
 _sym_db.RegisterServiceDescriptor(_IMAGE)
 
-DESCRIPTOR.
+DESCRIPTOR.services_by_name['Image'] = _IMAGE
+
+# @@protoc_insertion_point(module_scope)
