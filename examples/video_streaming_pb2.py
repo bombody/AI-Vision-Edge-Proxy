@@ -1563,3 +1563,17 @@ _IMAGE = _descriptor.ServiceDescriptor(
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
+  _descriptor.MethodDescriptor(
+    name='SystemTime',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.SystemTime',
+    index=7,
+    containing_service=None,
+    input_type=_SYSTEMTIMEREQUEST,
+    output_type=_SYSTEMTIMERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_IMAGE)
+
+DESCRIPTOR.
