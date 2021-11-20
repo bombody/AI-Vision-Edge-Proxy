@@ -1549,4 +1549,17 @@ _IMAGE = _descriptor.ServiceDescriptor(
     index=5,
     containing_service=None,
     input_type=_PROXYREQUEST,
-    output_type=_P
+    output_type=_PROXYRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Storage',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.Storage',
+    index=6,
+    containing_service=None,
+    input_type=_STORAGEREQUEST,
+    output_type=_STORAGERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
