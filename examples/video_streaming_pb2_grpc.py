@@ -282,3 +282,17 @@ class Image(object):
 
     @staticmethod
     def SystemTime(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/SystemTime',
+            video__streaming__pb2.SystemTimeRequest.SerializeToString,
+            video__streaming__pb2.SystemTimeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
