@@ -101,3 +101,7 @@ class StoreMP4VideoChunks(threading.Thread):
             #     p.stream = output_audio_stream
             #     output.mux(p)
             # print ("POST ", p, p.dts, p.pts, p.stream.type)
+
+
+        
+        output.close()
