@@ -52,4 +52,19 @@ class CleanupScheduler(threading.Thread):
                         file_timestamp = int(splitted[0])
                         if file_timestamp < remove_older_than:
                             rm_filename = self.__folder + "/" + self.__device + "/" + f
-                            if os.path.exists(rm_
+                            if os.path.exists(rm_filename):
+                                os.remove(rm_filename)
+                            
+            # print("numer of listed files: ", str(len(files)))
+
+        except Exception as e:
+            print("failed delete files", e)
+    
+    def run(self):
+        while True:
+            self.__scheduler.enter(5, 1, self.remove_mp4_files)
+            self.__scheduler.run()
+
+    
+
+    
