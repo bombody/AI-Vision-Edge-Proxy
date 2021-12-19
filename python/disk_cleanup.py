@@ -46,3 +46,10 @@ class CleanupScheduler(threading.Thread):
             files = os.listdir(self.__folder + "/" + self.__device)
 
             if len(files) > 0:
+                for f in files:
+                    splitted =  f.split("_")
+                    if len(splitted) == 2:
+                        file_timestamp = int(splitted[0])
+                        if file_timestamp < remove_older_than:
+                            rm_filename = self.__folder + "/" + self.__device + "/" + f
+                            if os.path.exists(rm_
