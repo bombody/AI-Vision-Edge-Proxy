@@ -26,4 +26,11 @@ from proto import video_streaming_pb2
 import multiprocessing
 
 # constants from global vars
-from global_vars import RedisInMe
+from global_vars import RedisInMemoryBufferChannel,RedisInMemoryDecodedImagesPrefix, RedisInMemoryIFrameListPrefix,RedisCodecVideoInfo,RedisInMemoryQueuePrefix
+
+def memoryCleanup(redis_conn, device_id):
+    '''
+    Cleanup redis memory
+    '''
+    redis_conn.delete(RedisInMemoryQueuePrefix+device_id) # the complete memory buffer of compressed stream
+    redis_conn.delete(RedisInMemoryIFrameLi
