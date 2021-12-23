@@ -33,4 +33,13 @@ def memoryCleanup(redis_conn, device_id):
     Cleanup redis memory
     '''
     redis_conn.delete(RedisInMemoryQueuePrefix+device_id) # the complete memory buffer of compressed stream
-    redis_conn.delete(RedisInMemoryIFrameLi
+    redis_conn.delete(RedisInMemoryIFrameListPrefix+device_id) # all keys for stored i-frames
+    redis_conn.delete(RedisInMemoryDecodedImagesPrefix+device_id) # all decoded in-memory buffer images
+
+def setCodecInfo(redis_conn, in_av_container,deviceId):
+    '''
+    Sets the current streams codec info at the same time clean out the in memory redis queues
+    '''
+    streams = in_av_container.streams
+    if len(streams) > 0:
+        for s
