@@ -51,4 +51,16 @@ def setCodecInfo(redis_conn, in_av_container,deviceId):
                 vc.long_name = codec_ctx.codec.long_name
                 vc.width = codec_ctx.width
                 vc.height = codec_ctx.height
-                vc.pix_fmt = cod
+                vc.pix_fmt = codec_ctx.pix_fmt
+                vc.extradata = codec_ctx.extradata
+                vc.extradata_size = codec_ctx.extradata_size
+
+                vcData = vc.SerializeToString()
+                redis_conn.set(RedisCodecVideoInfo+deviceId, vcData)
+
+
+def getCodecInfo(redis_conn, deviceId):
+    '''
+    Reading the current video stream codec info from redis
+    '''
+    info = redis_conn.get(Re
