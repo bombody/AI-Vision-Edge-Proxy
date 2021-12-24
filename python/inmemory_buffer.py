@@ -42,4 +42,13 @@ def setCodecInfo(redis_conn, in_av_container,deviceId):
     '''
     streams = in_av_container.streams
     if len(streams) > 0:
-        for s
+        for stream in streams:
+            if stream.type == "video":
+
+                codec_ctx = stream.codec_context
+                vc = video_streaming_pb2.VideoCodec()
+                vc.name = codec_ctx.name
+                vc.long_name = codec_ctx.codec.long_name
+                vc.width = codec_ctx.width
+                vc.height = codec_ctx.height
+                vc.pix_fmt = cod
