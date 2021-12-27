@@ -63,4 +63,14 @@ def getCodecInfo(redis_conn, deviceId):
     '''
     Reading the current video stream codec info from redis
     '''
-    info = redis_conn.get(Re
+    info = redis_conn.get(RedisCodecVideoInfo+deviceId)
+    if info is not None:
+        vc = video_streaming_pb2.VideoCodec()
+        vc.ParseFromString(info)
+        return vc
+    return None
+
+def packetToInMemoryBuffer(redis_conn,memory_buffer_size, device_id,in_av_container, packet):
+    if memory_buffer_size > 0:
+        
+        redisStreamName = RedisInMemoryQueuePrefix + devi
