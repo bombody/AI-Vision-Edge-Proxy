@@ -73,4 +73,13 @@ def getCodecInfo(redis_conn, deviceId):
 def packetToInMemoryBuffer(redis_conn,memory_buffer_size, device_id,in_av_container, packet):
     if memory_buffer_size > 0:
         
-        redisStreamName = RedisInMemoryQueuePrefix + devi
+        redisStreamName = RedisInMemoryQueuePrefix + device_id
+        redisIFrameList = RedisInMemoryIFrameListPrefix + device_id
+
+        for stream in in_av_container.streams:
+            if stream.type == "video":
+                codec_ctx = stream.codec_context
+                video_height = codec_ctx.height
+                video_width = codec_ctx.width
+                is_keyframe = packet.is_keyframe
+                packetBytes = pa
