@@ -82,4 +82,13 @@ def packetToInMemoryBuffer(redis_conn,memory_buffer_size, device_id,in_av_contai
                 video_height = codec_ctx.height
                 video_width = codec_ctx.width
                 is_keyframe = packet.is_keyframe
-                packetBytes = pa
+                packetBytes = packet.to_bytes()
+                codec_name = codec_ctx.name
+                pix_fmt = codec_ctx.pix_fmt
+
+                vf = video_streaming_pb2.VideoFrame()
+                vf.data = packetBytes
+                vf.width = video_width
+                vf.height = video_height
+                vf.timestamp = int(packet.pts * float(packet.time_base))
+ 
