@@ -91,4 +91,14 @@ def packetToInMemoryBuffer(redis_conn,memory_buffer_size, device_id,in_av_contai
                 vf.width = video_width
                 vf.height = video_height
                 vf.timestamp = int(packet.pts * float(packet.time_base))
- 
+                vf.pts = packet.pts
+                vf.dts = packet.dts
+                vf.keyframe = is_keyframe
+                vf.time_base = float(packet.time_base)
+                vf.is_keyframe = packet.is_keyframe
+                vf.is_corrupt = packet.is_corrupt
+                vf.codec_name = codec_name
+                vf.pix_fmt = pix_fmt
+
+                vfData = vf.SerializeToString()
+   
