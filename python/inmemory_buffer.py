@@ -110,4 +110,17 @@ def packetToInMemoryBuffer(redis_conn,memory_buffer_size, device_id,in_av_contai
 
 
 class InMemoryBuffer(threading.Thread):
- 
+    '''
+    InMemoryBuffer stores packet by packet incoming video stream to redis queue
+    '''
+    def __init__(self, device_id, memory_scale, redis_conn):
+        threading.Thread.__init__(self)
+
+        self.__redis_conn = redis_conn
+        self.__device_id = device_id
+        self.__filter_scale = memory_scale
+
+
+    def run(self):
+
+       
