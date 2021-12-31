@@ -123,4 +123,15 @@ class InMemoryBuffer(threading.Thread):
 
     def run(self):
 
-       
+        codec_info = getCodecInfo(self.__redis_conn, self.__device_id)
+
+        while codec_info is None:
+            codec_info = getCodecInfo(self.__redis_conn, self.__device_id)
+            time.sleep(0.1)
+
+
+        ps = self.__redis_conn.pubsub()
+        ps.subscribe(RedisInMemoryBufferChannel)
+        for psMsg in ps.listen():
+            if "data" in psMsg:
+      
