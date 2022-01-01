@@ -134,4 +134,12 @@ class InMemoryBuffer(threading.Thread):
         ps.subscribe(RedisInMemoryBufferChannel)
         for psMsg in ps.listen():
             if "data" in psMsg:
-      
+                base64Msg = psMsg["data"]
+                if isinstance(base64Msg, (bytes, bytearray)):
+                    data = json.loads(base64.b64decode(base64Msg))
+
+                    if "deviceId" in data:
+                        deviceId = data["deviceId"]
+                        fromTs = data["fromTimestamp"]
+                        toTs = data["toTimestamp"]
+     
