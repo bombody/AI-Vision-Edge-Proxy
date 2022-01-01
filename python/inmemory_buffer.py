@@ -148,4 +148,12 @@ class InMemoryBuffer(threading.Thread):
                         p.daemon = True
                         p.start()
                         # we don't wait for process to finish here. It should finish on it's own or fail
-                
+                        
+                       
+    def query_results(self, codec_info, requestID, deviceId, fromTs, toTs):
+
+        decoder = av.CodecContext.create(codec_info.name,'r')
+        decoder.width = codec_info.width
+        decoder.height = codec_info.height
+        decoder.pix_fmt = codec_info.pix_fmt
+        decoder.extradata = codec_info.extradata # important for 
