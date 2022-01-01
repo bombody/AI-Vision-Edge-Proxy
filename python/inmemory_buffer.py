@@ -142,4 +142,10 @@ class InMemoryBuffer(threading.Thread):
                         deviceId = data["deviceId"]
                         fromTs = data["fromTimestamp"]
                         toTs = data["toTimestamp"]
-     
+                        requestID = data["requestId"]
+
+                        p = multiprocessing.Process(target=self.query_results, args=(codec_info, requestID, deviceId, fromTs, toTs, ))
+                        p.daemon = True
+                        p.start()
+                        # we don't wait for process to finish here. It should finish on it's own or fail
+                
