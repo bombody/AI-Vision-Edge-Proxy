@@ -156,4 +156,12 @@ class InMemoryBuffer(threading.Thread):
         decoder.width = codec_info.width
         decoder.height = codec_info.height
         decoder.pix_fmt = codec_info.pix_fmt
-        decoder.extradata = codec_info.extradata # important for 
+        decoder.extradata = codec_info.extradata # important for decoding (PPS, SPS)
+        decoder.thread_type = 'AUTO'
+
+        # print("Available filters: ", av.filter.filters_available)
+        # settings default memory scaling grpah for in memory queue
+        graph = av.filter.Graph()
+        fchain = [graph.add_buffer(width=codec_info.width, height=codec_info.height, format=codec_info.pix_fmt, name=requestID)]
+
+        fchain.append(graph.add(
