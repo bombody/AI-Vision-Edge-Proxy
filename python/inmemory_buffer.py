@@ -164,4 +164,15 @@ class InMemoryBuffer(threading.Thread):
         graph = av.filter.Graph()
         fchain = [graph.add_buffer(width=codec_info.width, height=codec_info.height, format=codec_info.pix_fmt, name=requestID)]
 
-        fchain.append(graph.add(
+        fchain.append(graph.add("scale",self.__filter_scale))
+        fchain[-2].link_to(fchain[-1])
+        
+        fchain.append(graph.add('buffersink'))
+        fchain[-2].link_to(fchain[-1])
+
+        graph.configure()
+
+        decodedStreamName = RedisInMemoryDecodedImagesPrefix + deviceId + requestID
+
+        iframeStreamName = RedisInMemoryIFrameListPrefix + deviceId
+        # this is where we start our quer
