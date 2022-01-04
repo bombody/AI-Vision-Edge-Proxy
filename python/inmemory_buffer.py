@@ -184,4 +184,13 @@ class InMemoryBuffer(threading.Thread):
         # sanity check for timestampTo
         redis_time = self.__redis_conn.time()
         redis_time = int(redis_time[0] + (redis_time[1] / 1000000)) * 1000
-       
+        if toTs > redis_time:
+            toTs = redis_time
+
+        firstIFrameFound = False # used when fromTS is before anything in queue at all (so first I-frame picket)
+        while True:
+            buffer = self.__redis_conn.xread({streamName: queryTs}, count=30)
+            if len(buffer) > 0:
+                arr = buffer[0]
+                inner_buffer = arr[1]
+ 
