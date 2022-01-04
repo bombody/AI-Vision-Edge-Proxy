@@ -175,4 +175,13 @@ class InMemoryBuffer(threading.Thread):
         decodedStreamName = RedisInMemoryDecodedImagesPrefix + deviceId + requestID
 
         iframeStreamName = RedisInMemoryIFrameListPrefix + deviceId
-        # this is where we start our quer
+        # this is where we start our query
+        queryTs = self.findClosestIFrameTimestamp(iframeStreamName, fromTs)
+
+        print("Starting to decode in-memory GOP: ", deviceId, fromTs, toTs, queryTs)
+        streamName = RedisInMemoryQueuePrefix + deviceId
+        
+        # sanity check for timestampTo
+        redis_time = self.__redis_conn.time()
+        redis_time = int(redis_time[0] + (redis_time[1] / 1000000)) * 1000
+       
