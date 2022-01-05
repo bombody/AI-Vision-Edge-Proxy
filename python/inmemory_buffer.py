@@ -193,4 +193,12 @@ class InMemoryBuffer(threading.Thread):
             if len(buffer) > 0:
                 arr = buffer[0]
                 inner_buffer = arr[1]
- 
+                last = inner_buffer[-1]
+                queryTs = last[0] # remember where to query from next
+
+                # check if we've read everything, exit loop
+                last = int(queryTs.decode('utf-8').split("-")[0])
+                if last >= int(toTs):
+                    print("inmemory buffer decoding finished")
+                    break
+
