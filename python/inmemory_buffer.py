@@ -202,3 +202,12 @@ class InMemoryBuffer(threading.Thread):
                     print("inmemory buffer decoding finished")
                     break
 
+                for compressed in inner_buffer:
+                    compressedData = compressed[1]
+
+                    content = {}
+                    for key, value in compressedData.items():
+                        content[key.decode("utf-8")] = value
+
+                    if content["is_keyframe"].decode('utf-8') == "0" and firstIFrameFound is False:
+               
