@@ -220,4 +220,12 @@ class InMemoryBuffer(threading.Thread):
                     vf = video_streaming_pb2.VideoFrame()
                     vf.ParseFromString(content["data"])
 
-                   
+                    frame_buf = io.BytesIO(vf.data)
+                    size = frame_buf.getbuffer().nbytes
+                    packet = av.Packet(size)
+                    frame_buf.readinto(packet)
+                    # packet.pts = vf.pts
+                    # packet.dts = vf.dts
+
+                    frames = decoder.decode(packet) or () # should be only 1 frame per packet (for video)
+   
