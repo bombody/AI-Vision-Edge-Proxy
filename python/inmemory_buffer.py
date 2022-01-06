@@ -210,4 +210,14 @@ class InMemoryBuffer(threading.Thread):
                         content[key.decode("utf-8")] = value
 
                     if content["is_keyframe"].decode('utf-8') == "0" and firstIFrameFound is False:
-               
+                        print("First I-Frame found")
+                        firstIFrameFound = True
+                    
+                    if not firstIFrameFound:
+                        print("skipping first I-Frame search, going next")
+                        continue
+
+                    vf = video_streaming_pb2.VideoFrame()
+                    vf.ParseFromString(content["data"])
+
+                   
