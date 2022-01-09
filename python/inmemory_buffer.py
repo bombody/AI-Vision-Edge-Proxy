@@ -237,4 +237,15 @@ class InMemoryBuffer(threading.Thread):
 
         
            
-    # finding the closest timestamp and allowing queryies such as timeFrom=0 and tim
+    # finding the closest timestamp and allowing queryies such as timeFrom=0 and timeTo=sys.maxsize
+    def findClosestIFrameTimestamp(self, streamName, fromTs):
+        '''
+        Finds the closest timestamp at exact or before the fromTimestamp in a small queue of iframes
+        '''
+        searchTs = fromTs
+
+        min = sys.maxsize
+
+        all_i_frames = self.__redis_conn.xread({streamName:0}) # read all in queue
+        if len(all_i_frames) > 0:
+            all = all_i_frames[
