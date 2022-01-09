@@ -228,4 +228,13 @@ class InMemoryBuffer(threading.Thread):
                     # packet.dts = vf.dts
 
                     frames = decoder.decode(packet) or () # should be only 1 frame per packet (for video)
-   
+                    if len(frames) <= 0:
+                        continue
+
+                    self.addToRedisDecodedImage(graph, decodedStreamName, frames, packet)
+        # signal finish (None video frame)
+        self.addToRedisDecodedImage(graph, decodedStreamName, None, None)
+
+        
+           
+    # finding the closest timestamp and allowing queryies such as timeFrom=0 and tim
