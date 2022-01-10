@@ -248,4 +248,15 @@ class InMemoryBuffer(threading.Thread):
 
         all_i_frames = self.__redis_conn.xread({streamName:0}) # read all in queue
         if len(all_i_frames) > 0:
-            all = all_i_frames[
+            all = all_i_frames[0]
+            if len(all) > 1:
+                iframe_timestamps = all[1]
+                for (i, iframe_ts) in enumerate(iframe_timestamps):
+                    its = str(iframe_ts[0], 'utf-8')
+                    ts = int(its.split("-")[0])
+
+                    if i == 0:
+                        searchTs = its
+                        continue
+                    
+        
