@@ -259,4 +259,13 @@ class InMemoryBuffer(threading.Thread):
                         searchTs = its
                         continue
                     
-        
+                    if ts >= int(fromTs): # stop search (we want only I-frame before fromTs)
+                        break
+
+                    # we're always looking for an iframe before fromTs
+                    min_abs_candidate = abs(int(fromTs) - ts)
+                    if min_abs_candidate < min:
+                        searchTs = its
+                        min = min_abs_candidate
+
+        # (
