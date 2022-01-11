@@ -268,4 +268,14 @@ class InMemoryBuffer(threading.Thread):
                         searchTs = its
                         min = min_abs_candidate
 
-        # (
+        # (- 1 ms since xread is exclusive)
+        splitted = searchTs.split("-")
+        ts = splitted[0]
+        tsPart = splitted[1]
+        print("found key frame: ", ts, tsPart)
+        return str(int(ts)-1) + "-" + tsPart
+        
+
+    def addToRedisDecodedImage(self, graph, streamName, frames, packet):
+        '''
+        Converting the raw frame to Pro
