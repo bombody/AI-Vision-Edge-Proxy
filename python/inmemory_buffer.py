@@ -306,4 +306,12 @@ class InMemoryBuffer(threading.Thread):
                     vf = video_streaming_pb2.VideoFrame()
                     vf.data = img_bytes
                     vf.width = frame.width
-     
+                    vf.height = frame.height
+                    vf.timestamp = timestamp
+                    vf.frame_type = frame.pict_type.name
+                    if packet.pts:
+                        vf.pts = packet.pts
+                    if packet.dts:
+                        vf.dts = packet.dts
+                    if packet.time_base is not None:
+                        
