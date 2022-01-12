@@ -298,4 +298,12 @@ class InMemoryBuffer(threading.Thread):
                     shape = img.shape
 
                     img_bytes = np.ndarray.tobytes(img)
-                   
+                    
+                    timestamp = int(time.time() * 1000)
+                    if packet.pts is not None and packet.time_base is not None:
+                        timestamp = int(packet.pts * float(packet.time_base))
+
+                    vf = video_streaming_pb2.VideoFrame()
+                    vf.data = img_bytes
+                    vf.width = frame.width
+     
