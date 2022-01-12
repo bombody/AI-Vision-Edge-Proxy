@@ -286,4 +286,16 @@ class InMemoryBuffer(threading.Thread):
             self.pushDecodedToRedis(streamName, vfData)
             return
 
-        # push decoded frames to redis to be read by server and served back throug
+        # push decoded frames to redis to be read by server and served back through GRPC
+        for frame in frames:
+            graph.push(frame)
+            
+            keepPulling = True
+            while keepPulling:
+                try:
+                    frame = graph.pull()
+                    img = frame.to_ndarray(format='bgr24')
+                    shape = img.shape
+
+                    img_bytes = np.ndarray.tobytes(img)
+                   
