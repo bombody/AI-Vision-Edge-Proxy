@@ -278,4 +278,12 @@ class InMemoryBuffer(threading.Thread):
 
     def addToRedisDecodedImage(self, graph, streamName, frames, packet):
         '''
-        Converting the raw frame to Pro
+        Converting the raw frame to Protobuf shape and extracing info from the packet
+        '''
+        if frames is None: # signal finish of in-memory buffer read
+            vf = video_streaming_pb2.VideoFrame()
+            vfData = vf.SerializeToString()
+            self.pushDecodedToRedis(streamName, vfData)
+            return
+
+        # push decoded frames to redis to be read by server and served back throug
