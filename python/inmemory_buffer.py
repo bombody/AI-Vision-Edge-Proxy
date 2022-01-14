@@ -322,4 +322,14 @@ class InMemoryBuffer(threading.Thread):
                         newDim = video_streaming_pb2.ShapeProto.Dim()
                         newDim.size = dim
                         newDim.name = str(i)
-           
+                        vf.shape.dim.append(newDim)
+
+                    vfData = vf.SerializeToString()
+                    self.pushDecodedToRedis(streamName, vfData)
+                except Exception as e:
+                    keepPulling = False
+
+    def pushDecodedToRedis(self, streamName, vfData):
+        '''
+        Push the frame protobuf to redis into xstream.
+        The max size of decod
