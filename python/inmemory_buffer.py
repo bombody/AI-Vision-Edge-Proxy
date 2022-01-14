@@ -332,4 +332,11 @@ class InMemoryBuffer(threading.Thread):
     def pushDecodedToRedis(self, streamName, vfData):
         '''
         Push the frame protobuf to redis into xstream.
-        The max size of decod
+        The max size of decoded xstream is 10 images (to limit memory consumption)
+        This buffer is being continously emptied by server upon each read
+        '''
+
+        # in case reading is slow, then this waits until some memory is freed
+        # this is due to raw images being stored in memory (e.g. 800x600 RGB would be 4.3MB approx per image)
+        started_check = int(time.time() * 1000)
+    
