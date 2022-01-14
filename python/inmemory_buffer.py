@@ -314,4 +314,12 @@ class InMemoryBuffer(threading.Thread):
                     if packet.dts:
                         vf.dts = packet.dts
                     if packet.time_base is not None:
-                        
+                        vf.time_base = float(packet.time_base)
+                    vf.is_keyframe = packet.is_keyframe
+                    vf.is_corrupt = packet.is_corrupt
+
+                    for (i,dim) in enumerate(shape):
+                        newDim = video_streaming_pb2.ShapeProto.Dim()
+                        newDim.size = dim
+                        newDim.name = str(i)
+           
