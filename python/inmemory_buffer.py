@@ -339,4 +339,16 @@ class InMemoryBuffer(threading.Thread):
         # in case reading is slow, then this waits until some memory is freed
         # this is due to raw images being stored in memory (e.g. 800x600 RGB would be 4.3MB approx per image)
         started_check = int(time.time() * 1000)
-    
+        while True:
+            # safety - if reading takes really long (more than 10 seconds, then exit this immidately)
+            current_check = int(time.time() * 1000)
+            if current_check - started_check > (1000 * 10):
+                break
+
+            cnt = self.__redis_conn.xlen(streamName)
+            if cnt >= 10:
+                time.sleep(0.1)
+            else:
+                break
+
+        
