@@ -351,4 +351,4 @@ class InMemoryBuffer(threading.Thread):
             else:
                 break
 
-        
+        self.__redis_conn.xadd(streamName, {'data': vfData}, maxlen=10)
