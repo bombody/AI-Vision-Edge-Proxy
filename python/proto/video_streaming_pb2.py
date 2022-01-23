@@ -1418,3 +1418,165 @@ ProxyRequest = _reflection.GeneratedProtocolMessageType('ProxyRequest', (_messag
   # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ProxyRequest)
   })
 _sym_db.RegisterMessage(ProxyRequest)
+
+ProxyResponse = _reflection.GeneratedProtocolMessageType('ProxyResponse', (_message.Message,), {
+  'DESCRIPTOR' : _PROXYRESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.ProxyResponse)
+  })
+_sym_db.RegisterMessage(ProxyResponse)
+
+StorageRequest = _reflection.GeneratedProtocolMessageType('StorageRequest', (_message.Message,), {
+  'DESCRIPTOR' : _STORAGEREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.StorageRequest)
+  })
+_sym_db.RegisterMessage(StorageRequest)
+
+StorageResponse = _reflection.GeneratedProtocolMessageType('StorageResponse', (_message.Message,), {
+  'DESCRIPTOR' : _STORAGERESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.StorageResponse)
+  })
+_sym_db.RegisterMessage(StorageResponse)
+
+VideoCodec = _reflection.GeneratedProtocolMessageType('VideoCodec', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOCODEC,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoCodec)
+  })
+_sym_db.RegisterMessage(VideoCodec)
+
+VideoProbeRequest = _reflection.GeneratedProtocolMessageType('VideoProbeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOPROBEREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoProbeRequest)
+  })
+_sym_db.RegisterMessage(VideoProbeRequest)
+
+VideoProbeResponse = _reflection.GeneratedProtocolMessageType('VideoProbeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOPROBERESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoProbeResponse)
+  })
+_sym_db.RegisterMessage(VideoProbeResponse)
+
+VideoBuffer = _reflection.GeneratedProtocolMessageType('VideoBuffer', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOBUFFER,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.VideoBuffer)
+  })
+_sym_db.RegisterMessage(VideoBuffer)
+
+SystemTimeResponse = _reflection.GeneratedProtocolMessageType('SystemTimeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SYSTEMTIMERESPONSE,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.SystemTimeResponse)
+  })
+_sym_db.RegisterMessage(SystemTimeResponse)
+
+SystemTimeRequest = _reflection.GeneratedProtocolMessageType('SystemTimeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SYSTEMTIMEREQUEST,
+  '__module__' : 'video_streaming_pb2'
+  # @@protoc_insertion_point(class_scope:chrys.cloud.videostreaming.v1beta1.SystemTimeRequest)
+  })
+_sym_db.RegisterMessage(SystemTimeRequest)
+
+
+
+_IMAGE = _descriptor.ServiceDescriptor(
+  name='Image',
+  full_name='chrys.cloud.videostreaming.v1beta1.Image',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=2792,
+  serialized_end=3789,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='VideoLatestImage',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.VideoLatestImage',
+    index=0,
+    containing_service=None,
+    input_type=_VIDEOFRAMEREQUEST,
+    output_type=_VIDEOFRAME,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='VideoBufferedImage',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.VideoBufferedImage',
+    index=1,
+    containing_service=None,
+    input_type=_VIDEOFRAMEBUFFEREDREQUEST,
+    output_type=_VIDEOFRAME,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='VideoProbe',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.VideoProbe',
+    index=2,
+    containing_service=None,
+    input_type=_VIDEOPROBEREQUEST,
+    output_type=_VIDEOPROBERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ListStreams',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.ListStreams',
+    index=3,
+    containing_service=None,
+    input_type=_LISTSTREAMREQUEST,
+    output_type=_LISTSTREAM,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Annotate',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.Annotate',
+    index=4,
+    containing_service=None,
+    input_type=_ANNOTATEREQUEST,
+    output_type=_ANNOTATERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Proxy',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.Proxy',
+    index=5,
+    containing_service=None,
+    input_type=_PROXYREQUEST,
+    output_type=_PROXYRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Storage',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.Storage',
+    index=6,
+    containing_service=None,
+    input_type=_STORAGEREQUEST,
+    output_type=_STORAGERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SystemTime',
+    full_name='chrys.cloud.videostreaming.v1beta1.Image.SystemTime',
+    index=7,
+    containing_service=None,
+    input_type=_SYSTEMTIMEREQUEST,
+    output_type=_SYSTEMTIMERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_IMAGE)
+
+DESCRIPTOR.services_by_name['Image'] = _IMAGE
+
+# @@protoc_insertion_point(module_scope)
