@@ -192,3 +192,107 @@ class Image(object):
         return grpc.experimental.unary_stream(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/VideoBufferedImage',
             video__streaming__pb2.VideoFrameBufferedRequest.SerializeToString,
             video__streaming__pb2.VideoFrame.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def VideoProbe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/VideoProbe',
+            video__streaming__pb2.VideoProbeRequest.SerializeToString,
+            video__streaming__pb2.VideoProbeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListStreams(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/ListStreams',
+            video__streaming__pb2.ListStreamRequest.SerializeToString,
+            video__streaming__pb2.ListStream.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Annotate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/Annotate',
+            video__streaming__pb2.AnnotateRequest.SerializeToString,
+            video__streaming__pb2.AnnotateResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Proxy(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/Proxy',
+            video__streaming__pb2.ProxyRequest.SerializeToString,
+            video__streaming__pb2.ProxyResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Storage(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/Storage',
+            video__streaming__pb2.StorageRequest.SerializeToString,
+            video__streaming__pb2.StorageResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SystemTime(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chrys.cloud.videostreaming.v1beta1.Image/SystemTime',
+            video__streaming__pb2.SystemTimeRequest.SerializeToString,
+            video__streaming__pb2.SystemTimeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
