@@ -23,4 +23,13 @@ from datetime import datetime
 
 class ReadImage(threading.Thread):
 
-    def __init__(self, packet_queue, device_id, memory_buffer, redis_conn, is_decode_pack
+    def __init__(self, packet_queue, device_id, memory_buffer, redis_conn, is_decode_packets_event, lock_condition):
+        threading.Thread.__init__(self)
+        self._packet_queue = packet_queue
+        self.device_id = device_id
+        self._memory_buffer = memory_buffer
+        self.redis_conn = redis_conn
+        self.is_decode_packets_event = is_decode_packets_event
+        self.lock_condition = lock_condition
+        self.last_query_timestamp = 0
+       
