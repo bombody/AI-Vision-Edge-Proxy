@@ -12,4 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import t
+import threading, queue
+from proto import video_streaming_pb2
+import numpy as np
+import time
+import os
+import redis
+from global_vars import query_timestamp, RedisLastAccessPrefix, RedisIsKeyFrameOnlyPrefix, ChrysException
+from datetime import datetime
+
+class ReadImage(threading.Thread):
+
+    def __init__(self, packet_queue, device_id, memory_buffer, redis_conn, is_decode_pack
