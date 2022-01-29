@@ -32,4 +32,12 @@ class ReadImage(threading.Thread):
         self.is_decode_packets_event = is_decode_packets_event
         self.lock_condition = lock_condition
         self.last_query_timestamp = 0
-       
+        self.packet_group = []
+
+    # checks if only keyframes requested
+    def check_decode_only_keyframes(self):
+        global RedisIsKeyFrameOnlyPrefix
+        decode_only_keyframes = False
+        decodeOnlyKeyFramesKey = RedisIsKeyFrameOnlyPrefix + self.device_id
+        only_keyframes = self.redis_conn.get(decodeOnlyKeyFramesKey)
+        if only_ke
