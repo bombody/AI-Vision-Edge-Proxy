@@ -40,4 +40,18 @@ class ReadImage(threading.Thread):
         decode_only_keyframes = False
         decodeOnlyKeyFramesKey = RedisIsKeyFrameOnlyPrefix + self.device_id
         only_keyframes = self.redis_conn.get(decodeOnlyKeyFramesKey)
-        if only_ke
+        if only_keyframes is not None:
+            okeys = only_keyframes.decode('utf-8')
+            if okeys.lower() == "true":
+                decode_only_keyframes = True
+        return decode_only_keyframes
+
+    def join(self):
+        threading.Thread.join(self)
+        if self.exc:
+            raise self.exc
+    
+    def run(self):
+
+        packet_count = 0
+        keyframes_cou
