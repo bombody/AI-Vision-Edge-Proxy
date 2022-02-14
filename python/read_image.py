@@ -68,4 +68,13 @@ class ReadImage(threading.Thread):
                     try:
                         packet = self._packet_queue.get()
 
-                      
+                        decode_only_keyframes = self.check_decode_only_keyframes()
+
+                        if packet.is_keyframe:
+                            self.packet_group = []
+                            packet_count = 0
+                            keyframes_count = keyframes_count + 1
+                        
+                        self.packet_group.append(packet)
+
+          
