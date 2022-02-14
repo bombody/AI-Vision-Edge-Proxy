@@ -54,4 +54,18 @@ class ReadImage(threading.Thread):
     def run(self):
 
         packet_count = 0
-        keyframes_cou
+        keyframes_count = 0
+
+        self.exc = None
+
+        query_timestamp = self.last_query_timestamp
+
+        while True:
+            with self.lock_condition:
+                self.lock_condition.wait()
+
+                if not self._packet_queue.empty() and self.is_decode_packets_event.is_set():
+                    try:
+                        packet = self._packet_queue.get()
+
+                      
