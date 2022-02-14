@@ -77,4 +77,10 @@ class ReadImage(threading.Thread):
                         
                         self.packet_group.append(packet)
 
-          
+                        should_decode = True
+                        # if only keyframes, then decode only when len of packet_group == 1
+                        if decode_only_keyframes:
+                            should_decode = False
+
+                        if len(self.packet_group) == 1 or should_decode: # by default decode every keyframe
+                            for index, p in enumerate(self.pac
