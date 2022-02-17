@@ -83,4 +83,12 @@ class ReadImage(threading.Thread):
                             should_decode = False
 
                         if len(self.packet_group) == 1 or should_decode: # by default decode every keyframe
-                            for index, p in enumerate(self.pac
+                            for index, p in enumerate(self.packet_group):
+
+                                # skip already decoded packets in this packet group
+                                if index < packet_count:
+                                    continue
+
+                                for frame in p.decode() or ():
+                                    
+                                    timestamp = int(rou
