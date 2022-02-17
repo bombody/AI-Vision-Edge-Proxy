@@ -91,4 +91,10 @@ class ReadImage(threading.Thread):
 
                                 for frame in p.decode() or ():
                                     
-                                    timestamp = int(rou
+                                    timestamp = int(round(time.time() * 1000))
+                                    if frame.time is not None:
+                                        timestamp = int(frame.time * frame.time_base.denominator)
+
+                                    # add numpy array byte to redis stream
+                                    img = frame.to_ndarray(format='bgr24')
+             
