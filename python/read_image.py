@@ -97,4 +97,11 @@ class ReadImage(threading.Thread):
 
                                     # add numpy array byte to redis stream
                                     img = frame.to_ndarray(format='bgr24')
-             
+                                    shape = img.shape
+
+                                    img_bytes = np.ndarray.tobytes(img)
+
+                                    vf = video_streaming_pb2.VideoFrame()
+                                    vf.data = img_bytes
+                                    vf.width = frame.width
+                                    vf.height 
