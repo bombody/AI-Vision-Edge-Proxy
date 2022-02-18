@@ -111,4 +111,10 @@ class ReadImage(threading.Thread):
                                     vf.dts = frame.dts
                                     vf.packet = packet_count
                                     vf.keyframe = keyframes_count
-          
+                                    vf.time_base = float(frame.time_base)
+                                    vf.is_keyframe = packet.is_keyframe
+                                    vf.is_corrupt = packet.is_corrupt
+
+                                    for (i,dim) in enumerate(shape):
+                                        newDim = video_streaming_pb2.ShapeProto.Dim()
+                    
