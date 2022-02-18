@@ -104,4 +104,11 @@ class ReadImage(threading.Thread):
                                     vf = video_streaming_pb2.VideoFrame()
                                     vf.data = img_bytes
                                     vf.width = frame.width
-                                    vf.height 
+                                    vf.height = frame.height
+                                    vf.timestamp = timestamp
+                                    vf.frame_type = frame.pict_type.name
+                                    vf.pts = frame.pts
+                                    vf.dts = frame.dts
+                                    vf.packet = packet_count
+                                    vf.keyframe = keyframes_count
+          
