@@ -124,4 +124,11 @@ class ReadImage(threading.Thread):
                                     vfData = vf.SerializeToString()
                                     
                                     try:
-                                        self.redis_conn.xadd(self.device_id
+                                        self.redis_conn.xadd(self.device_id, {'data': vfData}, maxlen=10)
+                                    except Exception as rEx:
+                                        print("failed to communicate with redis", rEx)
+                                        self.exc = rEx
+                                        os._exit(1)
+
+                                    if decode_only_keyframes:
+                                        b
