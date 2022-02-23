@@ -117,4 +117,11 @@ class ReadImage(threading.Thread):
 
                                     for (i,dim) in enumerate(shape):
                                         newDim = video_streaming_pb2.ShapeProto.Dim()
-                    
+                                        newDim.size = dim
+                                        newDim.name = str(i)
+                                        vf.shape.dim.append(newDim)
+
+                                    vfData = vf.SerializeToString()
+                                    
+                                    try:
+                                        self.redis_conn.xadd(self.device_id
