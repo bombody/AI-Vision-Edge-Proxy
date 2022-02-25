@@ -131,4 +131,13 @@ class ReadImage(threading.Thread):
                                         os._exit(1)
 
                                     if decode_only_keyframes:
-                                        b
+                                        break
+
+                                    # self.last_query_timestamp = query_timestamp
+
+                                packet_count = packet_count + 1
+
+                    except Exception as e:
+                        print("failed to deode packet", e)
+                    finally:
+                        self._packet_queue.task_done()
