@@ -31,4 +31,12 @@ from global_vars import query_timestamp, RedisIsKeyFrameOnlyPrefix, RedisLastAcc
 import datetime
 
 
-class RTSPtoRTMP(thr
+class RTSPtoRTMP(threading.Thread):
+
+    def __init__(self, rtsp_endpoint, rtmp_endpoint, packet_queue, device_id, disk_path, redis_conn, memory_buffer, is_decode_packets_event, lock_condition):
+        threading.Thread.__init__(self) 
+        self._packet_queue = packet_queue
+        self._disk_path = disk_path
+        self.rtsp_endpoint = rtsp_endpoint
+        self.rtmp_endpoint = rtmp_endpoint
+        self.redis_con
