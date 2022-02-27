@@ -39,4 +39,12 @@ class RTSPtoRTMP(threading.Thread):
         self._disk_path = disk_path
         self.rtsp_endpoint = rtsp_endpoint
         self.rtmp_endpoint = rtmp_endpoint
-        self.redis_con
+        self.redis_conn = redis_conn
+        self.device_id = device_id
+        self.__memory_buffer_size = memory_buffer
+        self.is_decode_packets_event = is_decode_packets_event
+        self.lock_condition = lock_condition
+        self.query_timestamp = query_timestamp
+
+    def link_nodes(self,*nodes):
+        for c, n in zip(nodes, nodes[1
