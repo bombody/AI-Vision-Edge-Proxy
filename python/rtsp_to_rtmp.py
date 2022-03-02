@@ -47,4 +47,22 @@ class RTSPtoRTMP(threading.Thread):
         self.query_timestamp = query_timestamp
 
     def link_nodes(self,*nodes):
-        for c, n in zip(nodes, nodes[1
+        for c, n in zip(nodes, nodes[1:]):
+            c.link_to(n)
+
+    def join(self):
+        threading.Thread.join(self)
+        if self.exc:
+            raise self.exc
+
+    def run(self):
+        global RedisLastAccessPrefix    
+
+        # cleanup all redis memory
+        try:
+            memoryCleanup(self.redis_conn, self.device_id)
+        except Exception as ex:
+            self.exc = ex
+            os._exit(1)
+
+     
