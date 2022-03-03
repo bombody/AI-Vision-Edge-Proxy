@@ -65,4 +65,19 @@ class RTSPtoRTMP(threading.Thread):
             self.exc = ex
             os._exit(1)
 
-     
+        current_packet_group = []
+        flush_current_packet_group = False
+
+        # init archiving 
+        iframe_start_timestamp = 0
+        packet_group_queue = queue.Queue()
+
+        apg:ArchivePacketGroup = None
+
+        should_mux = False
+
+        last_loop_run = int(time.time() * 1000)
+
+        while True:
+            try:
+                options = {'rtsp_transpor
