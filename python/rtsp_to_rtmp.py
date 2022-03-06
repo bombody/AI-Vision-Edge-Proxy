@@ -84,4 +84,12 @@ class RTSPtoRTMP(threading.Thread):
                 self.in_container = av.open(self.rtsp_endpoint, options=options)
                 self.in_video_stream = self.in_container.streams.video[0]
                 self.in_audio_stream = None
-                if len
+                if len(self.in_container.streams.audio) > 0:
+                    for c in self.in_container.streams.audio:
+                        print(c)
+                    # self.in_audio_stream = self.in_container.streams.audio[0]
+
+                # set codec context in redis
+                setCodecInfo(self.redis_conn, self.in_container, self.device_id)
+
+                # init mp4 
