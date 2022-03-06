@@ -92,4 +92,10 @@ class RTSPtoRTMP(threading.Thread):
                 # set codec context in redis
                 setCodecInfo(self.redis_conn, self.in_container, self.device_id)
 
-                # init mp4 
+                # init mp4 local archive
+                if self._disk_path is not None:
+                    self._mp4archive = StoreMP4VideoChunks(queue=packet_group_queue, path=self._disk_path, device_id=self.device_id, video_stream=self.in_video_stream, audio_stream=self.in_audio_stream)
+                    self._mp4archive.daemon = True
+                    self._mp4archive.start()
+
+            excep
