@@ -98,4 +98,14 @@ class RTSPtoRTMP(threading.Thread):
                     self._mp4archive.daemon = True
                     self._mp4archive.start()
 
-            excep
+            except Exception as ex:
+                print("failed to connect to RTSP camera", ex)
+                self.exc = ex
+                os._exit(1)
+            
+            keyframe_found = False
+            global query_timestamp
+
+            if self.rtmp_endpoint is not None:
+                output = av.open(self.rtmp_endpoint, format="flv", mode='w')
+                output_video
