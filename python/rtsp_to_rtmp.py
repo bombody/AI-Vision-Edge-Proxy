@@ -133,4 +133,16 @@ class RTSPtoRTMP(threading.Thread):
 
                     keyframe_found = True
                     current_packet_group = []
-                    iframe_start_timestamp = int(round(time.time()
+                    iframe_start_timestamp = int(round(time.time() * 1000))
+
+                if keyframe_found == False:
+                    print("skipping, since not a keyframe")
+                    continue
+
+                if keyframe_found == False:
+                    print("skipping, since not a keyframe")
+                    continue
+
+                # method to push packet to the redis in a in-memory buffer
+                try:
+                  
