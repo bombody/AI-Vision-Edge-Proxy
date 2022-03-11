@@ -126,4 +126,11 @@ class RTSPtoRTMP(threading.Thread):
                     if len(current_packet_group) > 0:
                         packet_group = current_packet_group.copy()
                         
-                        # send to archiver! (packet_
+                        # send to archiver! (packet_group, iframe_start_timestamp)
+                        if self._disk_path is not None:
+                            apg = ArchivePacketGroup(packet_group, iframe_start_timestamp)
+                            packet_group_queue.put(apg)
+
+                    keyframe_found = True
+                    current_packet_group = []
+                    iframe_start_timestamp = int(round(time.time()
