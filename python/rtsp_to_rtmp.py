@@ -117,4 +117,13 @@ class RTSPtoRTMP(threading.Thread):
 
             for packet in self.in_container.demux(self.in_video_stream):
 
-                if packet.dts i
+                if packet.dts is None:
+                    continue
+                
+                if packet.is_keyframe:
+                    # if we already found a keyframe previously, archive what we have
+
+                    if len(current_packet_group) > 0:
+                        packet_group = current_packet_group.copy()
+                        
+                        # send to archiver! (packet_
