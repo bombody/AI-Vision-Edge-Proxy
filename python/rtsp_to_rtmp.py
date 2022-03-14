@@ -145,4 +145,13 @@ class RTSPtoRTMP(threading.Thread):
 
                 # method to push packet to the redis in a in-memory buffer
                 try:
-                  
+                    packetToInMemoryBuffer(self.redis_conn, self.__memory_buffer_size, self.device_id, self.in_container, packet)
+                except Exception as ex:
+                    self.exc = ex
+                    print(ex)
+                    os._exit(1)
+
+                '''
+                Live Redis Settings
+                -------------------
+                This should be invoked onl
