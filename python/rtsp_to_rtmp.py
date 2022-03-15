@@ -154,4 +154,10 @@ class RTSPtoRTMP(threading.Thread):
                 '''
                 Live Redis Settings
                 -------------------
-                This should be invoked onl
+                This should be invoked only every 500 ms, This If needs to moved to it's own method
+                '''
+                # shouldn't be a problem for redis but maybe every 200ms to query for latest timestamp only
+                settings_dict = self.redis_conn.hgetall(RedisLastAccessPrefix + device_id)
+
+                if settings_dict is not None and len(settings_dict) > 0:
+                    settings_dict
