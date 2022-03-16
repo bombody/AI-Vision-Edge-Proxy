@@ -166,4 +166,11 @@ class RTSPtoRTMP(threading.Thread):
                     else:
                         continue
                     
-                    # check if stream should be forwarded to Chrysali
+                    # check if stream should be forwarded to Chrysalis Cloud RTMP
+                    if "proxy_rtmp" in settings_dict:
+                        should_mux_string = settings_dict['proxy_rtmp']
+                        previous_should_mux = should_mux
+                        if should_mux_string == "1":
+                            should_mux = True
+                        else:
+                            should_mux = Fal
