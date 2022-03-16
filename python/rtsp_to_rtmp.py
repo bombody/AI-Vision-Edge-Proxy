@@ -160,4 +160,10 @@ class RTSPtoRTMP(threading.Thread):
                 settings_dict = self.redis_conn.hgetall(RedisLastAccessPrefix + device_id)
 
                 if settings_dict is not None and len(settings_dict) > 0:
-                    settings_dict
+                    settings_dict = { y.decode('utf-8'): settings_dict.get(y).decode('utf-8') for y in settings_dict.keys() } 
+                    if "last_query" in settings_dict:
+                        ts = settings_dict['last_query']
+                    else:
+                        continue
+                    
+                    # check if stream should be forwarded to Chrysali
