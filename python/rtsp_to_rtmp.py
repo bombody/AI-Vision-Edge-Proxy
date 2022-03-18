@@ -173,4 +173,12 @@ class RTSPtoRTMP(threading.Thread):
                         if should_mux_string == "1":
                             should_mux = True
                         else:
-                            should_mux = Fal
+                            should_mux = False
+                    
+                        # check if it's time for flushing of current_packet_group 
+                        if should_mux != previous_should_mux and should_mux == True:
+                            flush_current_packet_group = True
+                        else:
+                            flush_current_packet_group = False
+                    
+          
