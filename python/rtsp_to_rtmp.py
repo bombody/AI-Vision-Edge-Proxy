@@ -181,4 +181,12 @@ class RTSPtoRTMP(threading.Thread):
                         else:
                             flush_current_packet_group = False
                     
-          
+                    ts = int(ts)
+                    ts_now = int(round(time.time() * 1000))
+                    diff = ts_now - ts
+                    # if no request in 10 seconds, stop
+                    if diff < 10000:
+                        try:
+                            self.lock_condition.acquire()
+                            query_timestamp = ts
+            
