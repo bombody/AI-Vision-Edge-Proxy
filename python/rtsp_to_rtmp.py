@@ -189,4 +189,14 @@ class RTSPtoRTMP(threading.Thread):
                         try:
                             self.lock_condition.acquire()
                             query_timestamp = ts
-            
+                            self.lock_condition.notify_all()
+                        finally:
+                            self.lock_condition.release() 
+
+                        self.is_decode_packets_event.set()
+
+                if packet.is_keyframe:
+                    self.is_decode_packets_event.clear()
+                    self._packet_queue.queue.clear()
+                
+           
