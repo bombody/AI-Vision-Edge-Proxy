@@ -199,4 +199,12 @@ class RTSPtoRTMP(threading.Thread):
                     self.is_decode_packets_event.clear()
                     self._packet_queue.queue.clear()
                 
-           
+                
+                self._packet_queue.put(packet)
+
+                try:
+                    if self.rtmp_endpoint is not None and should_mux:
+                        # flush is necessary current_packet_group (start/stop RTMP stream)
+                        if flush_current_packet_group:
+                            for p in current_packet_group:
+                 
