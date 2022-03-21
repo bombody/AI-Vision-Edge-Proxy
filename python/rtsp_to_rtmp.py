@@ -207,4 +207,12 @@ class RTSPtoRTMP(threading.Thread):
                         # flush is necessary current_packet_group (start/stop RTMP stream)
                         if flush_current_packet_group:
                             for p in current_packet_group:
-                 
+                                if p.stream.type == "video":
+                                    p.stream = output_video_stream
+                                    output.mux(p)
+                                if p.stream.type == "audio":
+                                    p.stream = output_audio_stream
+                                    output.mux(p)
+
+                        if packet.stream.type == "video":
+     
