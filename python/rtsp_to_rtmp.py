@@ -215,4 +215,11 @@ class RTSPtoRTMP(threading.Thread):
                                     output.mux(p)
 
                         if packet.stream.type == "video":
-     
+                            packet.stream = output_video_stream
+                            output.mux(packet)            
+                        if packet.stream.type == "audio":
+                            if output_audio_stream is not None:
+                                packet.stream = output_audio_stream
+                                output.mux(packet)
+                except Exception as e:
+        
