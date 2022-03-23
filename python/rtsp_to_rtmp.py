@@ -238,4 +238,12 @@ if __name__ == "__main__":
     parser.add_argument("--device_id", type=str, default=None, required=True)
     parser.add_argument("--memory_buffer", type=int, default=1, required=False)
     parser.add_argument("--memory_scale", type=str, default="-1:-1", required=False)
-    parser.a
+    parser.add_argument("--disk_path", type=str, default=None, required=False)
+    parser.add_argument("--disk_cleanup_rate", type=str, default=None, required=False)
+    parser.add_argument("--redis_host", type=str, default=None, required=False)
+    parser.add_argument("--redis_port", type=str, default=None, required=False)
+
+    args = parser.parse_args()
+
+    rtmp = args.rtmp
+    rt
