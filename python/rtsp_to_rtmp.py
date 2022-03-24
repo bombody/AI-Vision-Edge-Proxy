@@ -258,4 +258,16 @@ if __name__ == "__main__":
     decode_packet = threading.Event()
     lock_condition = threading.Condition()
     
-    # print("RTPS Endpoint: ",rtsp
+    # print("RTPS Endpoint: ",rtsp)
+    # print("RTMP Endpoint: ", rtmp)
+    print("Device ID: ", device_id)
+    print("memory buffer: ", memory_buffer, "rescaling video: ", memory_scale)
+    print("disk path: ", disk_path)
+    print("redis host: ", redis_host)
+    print("redis port: ", redis_port)
+
+    redis_conn = None
+    try:
+        if redis_host:
+            if not redis_port:
+                redis_port 
