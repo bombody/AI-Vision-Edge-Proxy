@@ -246,4 +246,16 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     rtmp = args.rtmp
-    rt
+    rtsp = args.rtsp
+    device_id = args.device_id
+    memory_buffer=args.memory_buffer
+    memory_scale=args.memory_scale
+    disk_path=args.disk_path
+    disk_cleanup_rate=args.disk_cleanup_rate
+    redis_host = args.redis_host
+    redis_port = args.redis_port
+
+    decode_packet = threading.Event()
+    lock_condition = threading.Condition()
+    
+    # print("RTPS Endpoint: ",rtsp
