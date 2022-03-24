@@ -270,4 +270,12 @@ if __name__ == "__main__":
     try:
         if redis_host:
             if not redis_port:
-                redis_port 
+                redis_port = "6379"
+            
+            print("connecting to custom redis host: ", redis_host, redis_port)
+            pool = redis.ConnectionPool(host=redis_host, port=redis_port)
+        else:
+            pool = redis.ConnectionPool(host="redis", port="6379")
+        redis_conn = redis.Redis(connection_pool=pool)
+    except Exception as ex:
+        print("f
