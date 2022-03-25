@@ -300,4 +300,14 @@ if __name__ == "__main__":
     th.daemon = True
     th.start()
 
-    ri = ReadImage(pa
+    ri = ReadImage(packet_queue=packet_queue, 
+        device_id=device_id, 
+        memory_buffer=memory_buffer,
+        redis_conn=redis_conn, 
+        is_decode_packets_event=decode_packet, 
+        lock_condition=lock_condition)
+    ri.daemon = True
+    ri.start()
+
+    # # in memory buffer
+    inMemoryThread = InMemoryBuffer(device_id=device_id, memory_scale=memory
