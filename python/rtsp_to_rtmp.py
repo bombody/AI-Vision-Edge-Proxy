@@ -290,3 +290,14 @@ if __name__ == "__main__":
 
     th = RTSPtoRTMP(rtsp_endpoint=rtsp, 
                     rtmp_endpoint=rtmp, 
+                    packet_queue=packet_queue, 
+                    device_id=device_id,
+                    disk_path=disk_path, 
+                    redis_conn=redis_conn, 
+                    memory_buffer=memory_buffer,
+                    is_decode_packets_event=decode_packet, 
+                    lock_condition=lock_condition)
+    th.daemon = True
+    th.start()
+
+    ri = ReadImage(pa
