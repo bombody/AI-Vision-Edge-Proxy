@@ -310,4 +310,20 @@ if __name__ == "__main__":
     ri.start()
 
     # # in memory buffer
-    inMemoryThread = InMemoryBuffer(device_id=device_id, memory_scale=memory
+    inMemoryThread = InMemoryBuffer(device_id=device_id, memory_scale=memory_scale, redis_conn=redis_conn)
+    inMemoryThread.daemon = True
+    inMemoryThread.start()
+
+    if disk_path is not None:
+        if disk_cleanup_rate is None:
+            disk_cleanup_rate = "1m"
+
+        st = CleanupScheduler(folder=disk_path, device=device_id, remove_older_than=disk_cleanup_rate)
+        st.daemon = True
+        st.start()
+
+    ri.join()
+    
+    th.join()
+
+    if disk_path is not
