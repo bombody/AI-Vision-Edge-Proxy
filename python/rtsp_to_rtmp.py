@@ -326,4 +326,7 @@ if __name__ == "__main__":
     
     th.join()
 
-    if disk_path is not
+    if disk_path is not None:
+        st.join()
+
+    inMemoryThread.join()
