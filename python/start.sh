@@ -41,4 +41,19 @@ fi
 if [ ! -z "$disk_buffer_path" ]; then
     cmd="$cmd --disk_path $disk_buffer_path"
 fi
-if [ ! -z "$disk_cleanup_rate" ]; th
+if [ ! -z "$disk_cleanup_rate" ]; then
+    cmd="$cmd --disk_cleanup_rate $disk_cleanup_rate"
+fi
+if [ ! -z "$redis_host" ]; then
+    cmd="$cmd --redis_host $redis_host"
+fi
+if [ ! -z "$redis_port" ]; then
+    cmd="$cmd --redis_port $redis_port"
+fi
+
+echo "running: $cmd"
+
+python $cmd
+
+echo $?
+echo "Cant start rtsp_to_rtmp.py. Exiting..."
