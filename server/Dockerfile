@@ -21,4 +21,4 @@ RUN apk --no-cache --update add ca-certificates
 
 COPY --from=go-builder /build/main /app/
 
-ENT
+ENTRYPOINT [ "/app/main" ]
