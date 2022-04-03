@@ -74,3 +74,53 @@ func (aph *appProcessHandler) InstallApp(c *gin.Context) {
 		g.Log.Error("failed to pull image from dockerhub", err)
 		AbortWithError(c, http.StatusBadRequest, err.Error())
 		return
+	}
+
+	_, err = aph.appManager.Install(&apProcess)
+	if err != nil {
+		AbortWithError(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+}
+
+func (aph *appProcessHandler) RemoveApp(c *gin.Context) {
+	deviceID := c.Param("name")
+	if deviceID == "" {
+		AbortWithError(c, http.StatusBadRequest, "required device_id")
+		return
+	}
+	err := aph.processManager.Stop(deviceID, models.PrefixAppProcess)
+	if err != nil {
+		g.Log.Warn("failed to start process ", deviceID, err)
+		AbortWithError(c, http.StatusConflict, err.Error())
+		return
+	}
+	// publish to chrysalis cloud the change
+	utils.PublishToRedis(aph.rdb, deviceID, models.MQTTProcessOperation(models.DeviceOperationRemove), models.ProcessTypeApplication, nil)
+	c.Status(http.StatusOK)
+}
+
+func (aph *appProcessHandler) ListApps(c *gin.Context) {
+	apps, err := aph.appManager.ListApps()
+	if err != nil {
+		AbortWithError(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, apps)
+}
+
+// Info of the specific process
+func (aph *appProcessHandler) Info(c *gin.Context) {
+	deviceID := c.Param("name")
+	if deviceID == "" {
+		AbortWithError(c, http.StatusBadRequest, "required device_id")
+		return
+	}
+	info, err := aph.appManager.Info(deviceID)
+	if err != nil {
+		AbortWithError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, info)
+}
