@@ -8,4 +8,19 @@
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package api
+
+import (
+	"crypto/md5"
+	"fmt"
+	"net/http"
+	"strings"
+
+	g "github.com/chryscloud/video-edge-ai-proxy/globals"
+	"github.com/chryscloud/video-edge-ai-proxy/models"
+	"github.com/chryscloud/video-edge-ai-proxy/services"
+	"github
