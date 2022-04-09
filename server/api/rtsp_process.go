@@ -23,4 +23,16 @@ import (
 	g "github.com/chryscloud/video-edge-ai-proxy/globals"
 	"github.com/chryscloud/video-edge-ai-proxy/models"
 	"github.com/chryscloud/video-edge-ai-proxy/services"
-	"github
+	"github.com/chryscloud/video-edge-ai-proxy/utils"
+	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/go-redis/redis/v7"
+)
+
+type rtspProcessHandler struct {
+	processManager  *services.ProcessManager
+	settingsManager *services.SettingsManager
+	rdb             *redis.Client
+}
+
+func NewRTSPProcessHandler(rdb *redis.Client, processManager *services.ProcessManager, settingsManager 
