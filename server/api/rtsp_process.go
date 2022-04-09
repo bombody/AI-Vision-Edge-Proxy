@@ -35,4 +35,15 @@ type rtspProcessHandler struct {
 	rdb             *redis.Client
 }
 
-func NewRTSPProcessHandler(rdb *redis.Client, processManager *services.ProcessManager, settingsManager 
+func NewRTSPProcessHandler(rdb *redis.Client, processManager *services.ProcessManager, settingsManager *services.SettingsManager) *rtspProcessHandler {
+	return &rtspProcessHandler{
+		processManager:  processManager,
+		settingsManager: settingsManager,
+		rdb:             rdb,
+	}
+}
+
+func (ph *rtspProcessHandler) StartRTSP(c *gin.Context) {
+	var streamProcess models.StreamProcess
+	if err := c.ShouldBindWith(&streamProcess, binding.JSON); err != nil {
+		g.Log.Warn("m
