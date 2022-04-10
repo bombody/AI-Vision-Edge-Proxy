@@ -69,4 +69,15 @@ func (ph *rtspProcessHandler) StartRTSP(c *gin.Context) {
 	currentImagesList, err := ph.settingsManager.ListDockerImages(rtspImageTag)
 	if err != nil {
 		g.Log.Error("failed to list currently available images", err)
-		AbortWithErr
+		AbortWithError(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	err = ph.processManager.Start(&streamProcess, currentImagesList)
+	if err != nil {
+		g.Log.Warn("failed to start process ", deviceID, err)
+		AbortWithError(c, http.StatusConflict, err.Error())
+		return
+	}
+	// publish to chrysalis cloud the change
+	utils.PublishToRedis(ph.rdb, deviceID, models.MQTTProcessOperat
