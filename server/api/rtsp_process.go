@@ -60,4 +60,13 @@ func (ph *rtspProcessHandler) StartRTSP(c *gin.Context) {
 		hash := fmt.Sprintf("%x", md5.Sum([]byte(streamProcess.RTSPEndpoint)))
 		deviceID = hash
 	}
-	str
+	streamProcess.RTMPStreamStatus = &models.RTMPStreamStatus{
+		Storing:   false,
+		Streaming: true,
+	}
+
+	rtspImageTag := models.CameraTypeToImageTag["rtsp"]
+	currentImagesList, err := ph.settingsManager.ListDockerImages(rtspImageTag)
+	if err != nil {
+		g.Log.Error("failed to list currently available images", err)
+		AbortWithErr
