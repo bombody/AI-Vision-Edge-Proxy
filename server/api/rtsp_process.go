@@ -46,4 +46,18 @@ func NewRTSPProcessHandler(rdb *redis.Client, processManager *services.ProcessMa
 func (ph *rtspProcessHandler) StartRTSP(c *gin.Context) {
 	var streamProcess models.StreamProcess
 	if err := c.ShouldBindWith(&streamProcess, binding.JSON); err != nil {
-		g.Log.Warn("m
+		g.Log.Warn("missing required fields", err)
+		AbortWithError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if streamProcess.RTSPEndpoint == "" {
+		AbortWithError(c, http.StatusBadRequest, "RTP endpoint required")
+		return
+	}
+	deviceID := streamProcess.Name
+	if streamProcess.Name == "" {
+		hash := fmt.Sprintf("%x", md5.Sum([]byte(streamProcess.RTSPEndpoint)))
+		deviceID = hash
+	}
+	str
