@@ -80,4 +80,15 @@ func (ph *rtspProcessHandler) StartRTSP(c *gin.Context) {
 		return
 	}
 	// publish to chrysalis cloud the change
-	utils.PublishToRedis(ph.rdb, deviceID, models.MQTTProcessOperat
+	utils.PublishToRedis(ph.rdb, deviceID, models.MQTTProcessOperation(models.DeviceOperationAdd), models.ProcessTypeRTSP, nil)
+
+	c.Status(http.StatusOK)
+}
+
+// FindUpgrades - checks if each process has an upgradable version available on local disk
+func (ph *rtspProcessHandler) FindRTSPUpgrades(c *gin.Context) {
+
+	imageTag := models.CameraTypeToImageTag["rtsp"]
+
+	imageUpgrade, err := ph.settingsManager.ListDockerImages(imageTag)
+	if e
