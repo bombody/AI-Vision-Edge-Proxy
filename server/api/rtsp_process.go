@@ -91,4 +91,17 @@ func (ph *rtspProcessHandler) FindRTSPUpgrades(c *gin.Context) {
 	imageTag := models.CameraTypeToImageTag["rtsp"]
 
 	imageUpgrade, err := ph.settingsManager.ListDockerImages(imageTag)
-	if e
+	if err != nil {
+		AbortWithError(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	upgrades, err := ph.processManager.FindUpgrades(imageUpgrade)
+	if err != nil {
+		g.Log.Error("failed finding image upgrades", err)
+		AbortWithError(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	// publish to chrysalis cloud the change
+	for _, upgr := range upgrades {
+		utils.PublishToRedis
