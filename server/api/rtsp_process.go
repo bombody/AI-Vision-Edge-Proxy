@@ -104,4 +104,14 @@ func (ph *rtspProcessHandler) FindRTSPUpgrades(c *gin.Context) {
 	}
 	// publish to chrysalis cloud the change
 	for _, upgr := range upgrades {
-		utils.PublishToRedis
+		utils.PublishToRedis(ph.rdb, upgr.Name, models.MQTTProcessOperation(models.DeviceOperationUpgradeAvailable), models.ProcessTypeRTSP, nil)
+	}
+
+	c.JSON(http.StatusOK, upgrades)
+}
+
+// UpgradeContainer - upgrades a running container for specific process
+func (ph *rtspProcessHandler) UpgradeContainer(c *gin.Context) {
+
+	var process models.StreamProcess
+	if err := c.ShouldBindWith(&process, binding.JSON); err != nil 
