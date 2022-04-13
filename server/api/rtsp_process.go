@@ -127,4 +127,15 @@ func (ph *rtspProcessHandler) UpgradeContainer(c *gin.Context) {
 
 	splitted := strings.Split(process.ImageTag, ":")
 	if len(splitted) != 2 {
-		AbortWithError(c
+		AbortWithError(c, http.StatusBadRequest, "invalid image. tag (verion) required")
+		return
+	}
+	baseTag := splitted[0]
+
+	newProc, err := ph.processManager.UpgradeRunningContainer(&process, baseTag+":"+process.NewerVersion)
+	if err != nil {
+		g.Log.Error("failed to upgrade running container", process.Name, process.ImageTag)
+		AbortWithError(c, http.StatusConflict, err.Error())
+		return
+	}
+	// publish
