@@ -114,4 +114,17 @@ func (ph *rtspProcessHandler) FindRTSPUpgrades(c *gin.Context) {
 func (ph *rtspProcessHandler) UpgradeContainer(c *gin.Context) {
 
 	var process models.StreamProcess
-	if err := c.ShouldBindWith(&process, binding.JSON); err != nil 
+	if err := c.ShouldBindWith(&process, binding.JSON); err != nil {
+		g.Log.Warn("missing required fields", err)
+		AbortWithError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if process.ImageTag == "" {
+		AbortWithError(c, http.StatusBadRequest, "imagetag is empty on StreamProcess")
+		return
+	}
+
+	splitted := strings.Split(process.ImageTag, ":")
+	if len(splitted) != 2 {
+		AbortWithError(c
