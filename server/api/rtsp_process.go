@@ -150,4 +150,15 @@ func (ph *rtspProcessHandler) Stop(c *gin.Context) {
 		AbortWithError(c, http.StatusBadRequest, "required device_id")
 		return
 	}
-	err := ph.processManager.Stop(de
+	err := ph.processManager.Stop(deviceID, models.PrefixRTSPProcess)
+	if err != nil {
+		g.Log.Warn("failed to start process ", deviceID, err)
+		AbortWithError(c, http.StatusConflict, err.Error())
+		return
+	}
+	// publish to chrysalis cloud the change
+	utils.PublishToRedis(ph.rdb, deviceID, models.MQTTProcessOperation(models.DeviceOperationRemove), models.ProcessTypeRTSP, nil)
+	c.Status(http.StatusOK)
+}
+
+// Info of the spe
