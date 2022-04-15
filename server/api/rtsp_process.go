@@ -138,4 +138,16 @@ func (ph *rtspProcessHandler) UpgradeContainer(c *gin.Context) {
 		AbortWithError(c, http.StatusConflict, err.Error())
 		return
 	}
-	// publish
+	// publish to chrysalis cloud the change
+	utils.PublishToRedis(ph.rdb, process.Name, models.MQTTProcessOperation(models.DeviceOperationAdd), models.ProcessTypeRTSP, nil)
+
+	c.JSON(http.StatusOK, newProc)
+}
+
+func (ph *rtspProcessHandler) Stop(c *gin.Context) {
+	deviceID := c.Param("name")
+	if deviceID == "" {
+		AbortWithError(c, http.StatusBadRequest, "required device_id")
+		return
+	}
+	err := ph.processManager.Stop(de
