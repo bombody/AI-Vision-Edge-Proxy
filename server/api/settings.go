@@ -107,3 +107,23 @@ func (sh *settingsHandler) DockerPullImage(c *gin.Context) {
 	if name == "" || version == "" {
 		AbortWithError(c, http.StatusNotFound, "not found")
 		return
+	}
+
+	pullResp, err := sh.settingsManager.PullDockerImage(name, version)
+	if err != nil {
+		g.Log.Error("failed to pull docker image", err)
+		AbortWithError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, pullResp)
+}
+
+func (sh *settingsHandler) SetCurrentCameraDockerImageVersion(c *gin.Context) {
+	tagWithVersion := c.Query("tag")
+	if tagWithVersion == "" {
+		AbortWithError(c, http.StatusBadRequest, "tag with version missing")
+		return
+	}
+
+}
