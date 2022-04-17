@@ -161,4 +161,19 @@ func (ph *rtspProcessHandler) Stop(c *gin.Context) {
 	c.Status(http.StatusOK)
 }
 
-// Info of the spe
+// Info of the specific process
+func (ph *rtspProcessHandler) Info(c *gin.Context) {
+	deviceID := c.Param("name")
+	if deviceID == "" {
+		AbortWithError(c, http.StatusBadRequest, "required device_id")
+		return
+	}
+	info, err := ph.processManager.Info(deviceID)
+	if err != nil {
+		AbortWithError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, info)
+}
+
+fu
