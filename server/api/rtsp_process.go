@@ -176,4 +176,11 @@ func (ph *rtspProcessHandler) Info(c *gin.Context) {
 	c.JSON(http.StatusOK, info)
 }
 
-fu
+func (ph *rtspProcessHandler) List(c *gin.Context) {
+	processes, err := ph.processManager.List()
+	if err != nil {
+		AbortWithError(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, processes)
+}
