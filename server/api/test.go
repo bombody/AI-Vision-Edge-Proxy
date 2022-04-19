@@ -14,4 +14,19 @@ type testApiHandler struct {
 	rdb *redis.Client
 }
 
-func NewTestApiHandler(rdb *redis.Client) *testApiHan
+func NewTestApiHandler(rdb *redis.Client) *testApiHandler {
+	return &testApiHandler{
+		rdb: rdb,
+	}
+}
+
+// TestMqttDeviceStatus Testing mqtt device status
+// @Security ApiKeyAuth
+// @Summary Testing mqtt device status
+// @Description Sends a mqtt message regarding device status
+// @Tags MQTT
+// @Param deviceId query string true "device name/id"
+// @Success 200
+// @Failure 417 {object} api.JSONError "test failed"
+// @Accept json
+// 
