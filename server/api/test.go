@@ -37,4 +37,10 @@ func (th *testApiHandler) TestMqttDeviceStatus(c *gin.Context) {
 	processType := models.ProcessTypeRTSP
 	err := utils.PublishToRedis(th.rdb, deviceId, models.MQTTProcessOperation(models.DeviceInternalTesting), processType, nil)
 	if err != nil {
-		g.Log.Error("test mqtt device statu
+		g.Log.Error("test mqtt device status failed", err)
+		AbortWithError(c, http.StatusExpectationFailed, err.Error())
+		return
+	}
+
+	c.Status(http.StatusOK)
+}
