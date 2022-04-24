@@ -29,4 +29,12 @@ func NewTestApiHandler(rdb *redis.Client) *testApiHandler {
 // @Success 200
 // @Failure 417 {object} api.JSONError "test failed"
 // @Accept json
-// 
+// @Produce json
+// @Router /testmqtt/api/v1/devicestatus [get]
+func (th *testApiHandler) TestMqttDeviceStatus(c *gin.Context) {
+	deviceId := c.Query("deviceId")
+
+	processType := models.ProcessTypeRTSP
+	err := utils.PublishToRedis(th.rdb, deviceId, models.MQTTProcessOperation(models.DeviceInternalTesting), processType, nil)
+	if err != nil {
+		g.Log.Error("test mqtt device statu
