@@ -31,4 +31,16 @@ var doc = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Sends a mqtt message regard
+                "description": "Sends a mqtt message regarding device status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MQTT"
+                ],
+                "summary": "Testing mqtt device status",
+                "parameters": [
+          
