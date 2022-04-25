@@ -43,4 +43,14 @@ var doc = `{
                 ],
                 "summary": "Testing mqtt device status",
                 "parameters": [
-          
+                    {
+                        "type": "string",
+                        "description": "device name/id",
+                        "name": "deviceId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    
