@@ -53,4 +53,18 @@ var doc = `{
                 ],
                 "responses": {
                     "200": {
-                    
+                        "description": ""
+                    },
+                    "417": {
+                        "description": "test failed",
+                        "schema": {
+                            "$ref": "#/definitions/api.JSONError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.JSONError": {
+           
