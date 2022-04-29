@@ -86,4 +86,23 @@ type swaggerInfo struct {
 	BasePath    string
 	Schemes     []string
 	Title       string
-	Descript
+	Description string
+}
+
+// SwaggerInfo holds exported Swagger Info so clients can modify it
+var SwaggerInfo = swaggerInfo{
+	Version:     "",
+	Host:        "",
+	BasePath:    "",
+	Schemes:     []string{},
+	Title:       "",
+	Description: "",
+}
+
+type s struct{}
+
+func (s *s) ReadDoc() string {
+	sInfo := SwaggerInfo
+	sInfo.Description = strings.Replace(sInfo.Description, "\n", "\\n", -1)
+
+	t, err
