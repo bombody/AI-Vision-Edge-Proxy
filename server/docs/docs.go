@@ -67,4 +67,23 @@ var doc = `{
     },
     "definitions": {
         "api.JSONError": {
-           
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}`
+
+type swaggerInfo struct {
+	Version     string
+	Host        string
+	BasePath    string
+	Schemes     []string
+	Title       string
+	Descript
