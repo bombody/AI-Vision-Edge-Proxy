@@ -55,3 +55,8 @@
                 },
                 "message": {
                     "type": "string"
+                }
+            }
+        }
+    }
+}
