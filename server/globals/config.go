@@ -16,4 +16,18 @@ package globals
 
 import (
 	cfg "github.com/chryscloud/go-microkit-plugins/config"
-	mclog "gith
+	mclog "github.com/chryscloud/go-microkit-plugins/log"
+)
+
+// Conf global config
+var Conf Config
+
+// Log global wide logging
+var Log mclog.Logger
+
+type Config struct {
+	cfg.YamlConfig `yaml:",inline"`
+	GrpcPort       string               `yaml:"grpc_port"`
+	Redis          *RedisSubconfig      `yaml:"redis"`
+	Annotation     *AnnotationSubconfig `yaml:"annotation"`
+	API            *ApiSubconfig      
