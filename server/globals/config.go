@@ -43,4 +43,7 @@ type RedisSubconfig struct {
 
 // AnnotationSubconfig - annotation consumer rates
 type AnnotationSubconfig struct {
-	Endpoint       string `yaml:
+	Endpoint       string `yaml:"endpoint"`         // chryscloud annotation endpoint
+	UnackedLimit   int    `yaml:"unacked_limit"`    // maximum number of unacknowledged annotations
+	PollDurationMs int    `yaml:"poll_duration_ms"` // time to wait until new poll of annotations (miliseconds)
+	MaxBatchSize   int    `yaml:"max_batch_size"`   // maximum number of events processed in one batch
