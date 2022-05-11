@@ -30,4 +30,17 @@ type Config struct {
 	GrpcPort       string               `yaml:"grpc_port"`
 	Redis          *RedisSubconfig      `yaml:"redis"`
 	Annotation     *AnnotationSubconfig `yaml:"annotation"`
-	API            *ApiSubconfig      
+	API            *ApiSubconfig        `yaml:"api"`
+	Buffer         *BufferSubconfig     `yaml:"buffer"`
+}
+
+// RedisSubconfig connnection settings
+type RedisSubconfig struct {
+	Connection string `yaml:"connection"`
+	Database   int    `yaml:"database"`
+	Password   string `yaml:"password"`
+}
+
+// AnnotationSubconfig - annotation consumer rates
+type AnnotationSubconfig struct {
+	Endpoint       string `yaml:
