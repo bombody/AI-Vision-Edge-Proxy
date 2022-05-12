@@ -47,3 +47,14 @@ type AnnotationSubconfig struct {
 	UnackedLimit   int    `yaml:"unacked_limit"`    // maximum number of unacknowledged annotations
 	PollDurationMs int    `yaml:"poll_duration_ms"` // time to wait until new poll of annotations (miliseconds)
 	MaxBatchSize   int    `yaml:"max_batch_size"`   // maximum number of events processed in one batch
+}
+
+// VideoApiSubconfig - video api specifics
+type ApiSubconfig struct {
+	Endpoint string `yaml:"endpoint"` // video storage on/off endpoint
+}
+
+// Buffer - in memory and on disk buffering
+type BufferSubconfig struct {
+	InMemory               int    `yaml:"in_memory"`                // number of decoded frames to store in memory per camera
+	InMemoryScale          string `yaml:"in_memory_scale"`          // scal
