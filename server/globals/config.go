@@ -60,4 +60,14 @@ type BufferSubconfig struct {
 	InMemoryScale          string `yaml:"in_memory_scale"`          // scale in-memory video to desired size (e.g.: default = "-1:-1" , "400:-1", "300x200", "iw/2:ih/2")
 	OnDisk                 bool   `yaml:"on_disk"`                  // store key-frame segmented mp4 files to disk
 	OnDiskCleanupOlderThan string `yaml:"on_disk_clean_older_than"` // clean up mp4 segments after X time
-	OnDiskFolder           string `ya
+	OnDiskFolder           string `yaml:"on_disk_folder"`           // location to store mp4 segments
+	OnDiskSchedule         string `yaml:"on_disk_schedule"`         // schedule cleanup every X duration
+}
+
+func init() {
+	l, err := mclog.NewZapLogger("info")
+	if err != nil {
+		panic("failed to initalize logging")
+	}
+	Log = l
+}
