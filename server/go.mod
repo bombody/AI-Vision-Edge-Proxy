@@ -22,4 +22,10 @@ require (
 	github.com/rs/xid v1.2.1
 	github.com/stretchr/testify v1.6.1 // indirect
 	github.com/swaggo/gin-swagger v1.2.0
-	
+	github.com/swaggo/swag v1.6.7
+	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
+	google.golang.org/genproto v0.0.0-20200916143405-f6a2fa72f0c4 // indirect
+	google.golang.org/grpc v1.35.0
+	google.golang.org/protobuf v1.25.0
+	honnef.co/go/tools v0.0.1-2020.1.4 // indirect
+)
