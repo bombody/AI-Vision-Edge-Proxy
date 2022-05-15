@@ -11,4 +11,15 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/docker/docker v20.10.3+incompatible
 	github.com/docker/go-connections v0.4.0
-	gith
+	github.com/eclipse/paho.mqtt.golang v1.3.1
+	github.com/gin-contrib/cors v1.3.1
+	github.com/gin-gonic/gin v1.6.3
+	github.com/go-redis/redis/v7 v7.4.0
+	github.com/go-resty/resty/v2 v2.3.0
+	github.com/golang/protobuf v1.4.2
+	github.com/hashicorp/go-version v1.2.1
+	github.com/kr/pretty v0.2.1 // indirect
+	github.com/rs/xid v1.2.1
+	github.com/stretchr/testify v1.6.1 // indirect
+	github.com/swaggo/gin-swagger v1.2.0
+	
