@@ -26,4 +26,15 @@ func (gih *grpcImageHandler) Annotate(ctx context.Context, req *pb.AnnotateReque
 	weekPast := time.Now().AddDate(0, 0, -7).Unix() * 1000
 	weekFuture := time.Now().AddDate(0, 0, 7).Unix() * 1000
 	if req.DeviceName == "" || req.Type == "" || req.StartTimestamp < 0 {
-		return nil, status.Errorf(codes.Invalid
+		return nil, status.Errorf(codes.InvalidArgument, "device_name and type (event type) required")
+	}
+	if req.StartTimestamp < weekPast || req.StartTimestamp > weekFuture {
+		return nil, status.Errorf(codes.InvalidArgument, "start_timestamp must not be older than 7 days and not more than 7 days in the future")
+	}
+
+	edgeKey := *gih.edgeKey
+	if edgeKey == "" {
+		g.Log.Info("WTF>")
+	}
+
+	reqBytes, err :=
