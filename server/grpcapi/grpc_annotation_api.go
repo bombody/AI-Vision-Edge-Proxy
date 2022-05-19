@@ -37,4 +37,14 @@ func (gih *grpcImageHandler) Annotate(ctx context.Context, req *pb.AnnotateReque
 		g.Log.Info("WTF>")
 	}
 
-	reqBytes, err :=
+	reqBytes, err := proto.Marshal(req)
+	if err != nil {
+		g.Log.Error("invalid proto format for annotation", err)
+		return nil, status.Errorf(codes.InvalidArgument, "invalid annotation proto format")
+	}
+	ok := gih.msgQueue.PublishBytes(reqBytes)
+	if !ok {
+		g.Log.Error("failed to publish to msg queue", ok)
+		return nil, status.Errorf(codes.Internal, "failed to publish to msg queue")
+	}
+
