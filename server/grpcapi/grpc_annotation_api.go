@@ -48,3 +48,10 @@ func (gih *grpcImageHandler) Annotate(ctx context.Context, req *pb.AnnotateReque
 		return nil, status.Errorf(codes.Internal, "failed to publish to msg queue")
 	}
 
+	resp := &pb.AnnotateResponse{
+		DeviceName:     req.DeviceName,
+		StartTimestamp: req.StartTimestamp,
+		Type:           req.Type,
+	}
+	return resp, nil
+}
