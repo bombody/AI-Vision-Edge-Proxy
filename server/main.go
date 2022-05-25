@@ -256,3 +256,13 @@ func setupRedis() (*redis.Client, error) {
 	}
 	return rdb, nil
 }
+
+// usage will print out the flag options for the server.
+func usage() {
+	usageStr := `Usage: monitor [options]
+	Server Options:
+	-c, --config <file>              Configuration file path
+`
+	g.Log.Warn(usageStr)
+	os.Exit(0)
+}
