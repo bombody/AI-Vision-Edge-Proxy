@@ -12,4 +12,5 @@ type EdgeCommandPayload struct {
 	PortMapping    []string `json:"pm,omitempty"`   // port mapping (format: name=value)
 	Mounts         []string `json:"mnt,omitempty"`  // folder mounting (format: name=value)
 	ArgVars        []string `json:"av,omitempty"`   // argument variables (format: name=value)
-	DockerHubToken 
+	DockerHubToken string   `json:"dht,omitempty"`  // docker hub token (optional)
+}
