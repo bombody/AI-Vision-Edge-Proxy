@@ -11,4 +11,10 @@ const (
 	GatewayOperationCheckIn string = "gwcheckin"     // gateway checkin
 	DeviceInternalTesting   string = "internal_test" // internal development event. Not used or required for regular operations (TODO: movw to unit tests)
 
-	DeviceOper
+	DeviceOperationStart  string = "start"  // start a new device on the edge
+	DeviceOperationDelete string = "delete" // delete the device from the edge
+
+	DeviceOperationUpgradeAvailable string = "upgrade_avail" // device has an upgrade available
+	DeviceOperationUpgradeFinished  string = "upgrade"       // device has performed an upgrade
+
+	DeviceOperationError string = "error" // device oper
