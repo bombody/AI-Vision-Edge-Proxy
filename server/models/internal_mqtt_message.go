@@ -17,4 +17,14 @@ const (
 	DeviceOperationUpgradeAvailable string = "upgrade_avail" // device has an upgrade available
 	DeviceOperationUpgradeFinished  string = "upgrade"       // device has performed an upgrade
 
-	DeviceOperationError string = "error" // device oper
+	DeviceOperationError string = "error" // device operation failed
+
+	ProcessTypeRTSP        string = "rtsp"
+	ProcessTypeApplication string = "app"
+	ProcessTypeStats       string = "stats"
+	ProcessTypeUnknown     string = "unknown"
+)
+
+// InternalMQTTMessage is a message within local redis system to respond to changes such as adding/removing camera
+type MQTTMessage struct {
+	DeviceID         string               `json:"deviceId"`       
