@@ -27,4 +27,8 @@ const (
 
 // InternalMQTTMessage is a message within local redis system to respond to changes such as adding/removing camera
 type MQTTMessage struct {
-	DeviceID         string               `json:"deviceId"`       
+	DeviceID         string               `json:"deviceId"`                 // for which device the internal message is
+	Created          int64                `json:"created,omitempty"`        // time of creation of the message
+	ImageTag         string               `json:"imageTag,omitempty"`       // docker image tag
+	RTMPEndpoint     string               `json:"rtmpEndpoint,omitempty"`   // possible rtmp endpoint
+	RTSPConnection   string               `j
