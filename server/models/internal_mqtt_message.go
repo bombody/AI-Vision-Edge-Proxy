@@ -31,4 +31,7 @@ type MQTTMessage struct {
 	Created          int64                `json:"created,omitempty"`        // time of creation of the message
 	ImageTag         string               `json:"imageTag,omitempty"`       // docker image tag
 	RTMPEndpoint     string               `json:"rtmpEndpoint,omitempty"`   // possible rtmp endpoint
-	RTSPConnection   string               `j
+	RTSPConnection   string               `json:"rtspConnection,omitempty"` // rtspConnection string
+	ProcessOperation MQTTProcessOperation `json:"operation"`                // the state of the internal process
+	ProcessType      MQTTProcessType      `json:"type,omitempty"`           // type of internal process
+	State            string               `json:"state,omitempty"`          // process state 
