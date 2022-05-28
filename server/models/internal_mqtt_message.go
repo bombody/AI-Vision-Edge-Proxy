@@ -34,4 +34,6 @@ type MQTTMessage struct {
 	RTSPConnection   string               `json:"rtspConnection,omitempty"` // rtspConnection string
 	ProcessOperation MQTTProcessOperation `json:"operation"`                // the state of the internal process
 	ProcessType      MQTTProcessType      `json:"type,omitempty"`           // type of internal process
-	State            string               `json:"state,omitempty"`          // process state 
+	State            string               `json:"state,omitempty"`          // process state (running, restarting, ...)
+	Message          []byte               `json:"message,omitempty"`        // optional custom message
+}
