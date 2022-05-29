@@ -21,4 +21,9 @@ const (
 	// RedisIsKeyFrameOnlyPrefix - setting if only keyframes required for decoding for specific deviceID/Name
 	RedisIsKeyFrameOnlyPrefix = "is_key_frame_only_"
 
-	/
+	// RedisLastAccessPrefix subkeys for the HSET map
+	RedisLastAccessQueryTimeKey = "last_query" // last request query time
+	RedisProxyRTMPKey           = "proxy_rtmp" // if the RTMP should be proxied to the Chrysalis cloud
+	RedisProxyStoreKey          = "store"      // if Chrysalis cloud should store the stream to permanent storage
+
+	RedisInMemoryBufferChannel       = "
