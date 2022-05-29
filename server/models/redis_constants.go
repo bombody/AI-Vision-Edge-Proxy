@@ -14,4 +14,11 @@
 
 package models
 
-// Constants for Redis stored keys, used to communica
+// Constants for Redis stored keys, used to communicate between operating containers and use APIs
+const (
+	// RedisLastAccessPrefix - latest access time in milliseconds for particual deviceID/Name
+	RedisLastAccessPrefix = "last_access_time_"
+	// RedisIsKeyFrameOnlyPrefix - setting if only keyframes required for decoding for specific deviceID/Name
+	RedisIsKeyFrameOnlyPrefix = "is_key_frame_only_"
+
+	/
