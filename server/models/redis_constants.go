@@ -26,4 +26,13 @@ const (
 	RedisProxyRTMPKey           = "proxy_rtmp" // if the RTMP should be proxied to the Chrysalis cloud
 	RedisProxyStoreKey          = "store"      // if Chrysalis cloud should store the stream to permanent storage
 
-	RedisInMemoryBufferChannel       = "
+	RedisInMemoryBufferChannel       = "memory_buffer_channel" // pub/sub channel to communicate with python process in order to start decoding frames in the memory buffer
+	RedisInMemoryDecodedImagesPrefix = "memory_decoded_"
+	RedisInMemoryIFrameListPrefix    = "memory_iframe_list_"
+	RedisInMemoryQueue               = "in_memory_queue_"
+
+	// video codec info
+	RedisCodecVideoInfo = "codec_video_info"
+
+	// mqtt local pubsub
+	R
