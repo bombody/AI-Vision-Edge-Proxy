@@ -35,4 +35,5 @@ const (
 	RedisCodecVideoInfo = "codec_video_info"
 
 	// mqtt local pubsub
-	R
+	RedisLocalMQTTChannel = "local_mqtt_channel" // this is for notifying and receiving messages for mqtt to chryscloud reporting
+)
