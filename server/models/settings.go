@@ -10,4 +10,18 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations unde
+// limitations under the License.
+
+package models
+
+const (
+	PrefixSettingsKey               = "/settings/"
+	PrefixSettingsDockerTagVersions = "/dockertagsettings/"
+
+	SettingDefaultKey = "default"
+)
+
+// Settings - keeping setting on the edge
+type Settings struct {
+	Name          string `json:"name"`                      // name of the setting
+	EdgeKey       string `json:"edge_key,omitempty"`        // edge key genera
