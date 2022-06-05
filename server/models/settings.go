@@ -24,4 +24,9 @@ const (
 // Settings - keeping setting on the edge
 type Settings struct {
 	Name          string `json:"name"`                      // name of the setting
-	EdgeKey       string `json:"edge_key,omitempty"`        // edge key genera
+	EdgeKey       string `json:"edge_key,omitempty"`        // edge key generated on Chrysalis Cloud
+	EdgeSecret    string `json:"edge_secret,omitempty"`     // edge secret key generated on Chrysalis Cloud
+	ProjectID     string `json:"project_id,omitempty"`      // Cloud project ID
+	Region        string `json:"region,omitempty"`          // Edge region
+	RegistryID    string `json:"registry_id,omitempty"`     // RegistryID
+	GatewayID     string `json:"gateway_id,omitempty"`      // g
