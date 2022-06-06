@@ -29,4 +29,12 @@ type Settings struct {
 	ProjectID     string `json:"project_id,omitempty"`      // Cloud project ID
 	Region        string `json:"region,omitempty"`          // Edge region
 	RegistryID    string `json:"registry_id,omitempty"`     // RegistryID
-	GatewayID     string `json:"gateway_id,omitempty"`      // g
+	GatewayID     string `json:"gateway_id,omitempty"`      // gatewayID
+	PrivateRSAKey []byte `json:"private_rsa_key,omitempty"` // private RSA key for this gateway
+	Created       int64  `json:"created,omitempty"`
+	Modified      int64  `json:"modified,omitempty"`
+}
+
+// SettingsDockerTagVersion - current docker tag and version of the e.g. RTSP camera docker image
+type SettingDockerTagVersion struct {
+	Tag        string `json:"tag" binding:"requi
