@@ -37,4 +37,7 @@ type Settings struct {
 
 // SettingsDockerTagVersion - current docker tag and version of the e.g. RTSP camera docker image
 type SettingDockerTagVersion struct {
-	Tag        string `json:"tag" binding:"requi
+	Tag        string `json:"tag" binding:"required"`
+	Version    string `json:"version" binding:"required"`
+	CameraType string `json:"camera_type" binding:"required"` // e.g. rtsp for rtsp camera
+}
