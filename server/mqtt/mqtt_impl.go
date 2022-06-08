@@ -11,4 +11,20 @@ import (
 	"github.com/chryscloud/video-edge-ai-proxy/models"
 	"github.com/chryscloud/video-edge-ai-proxy/utils"
 	badger "github.com/dgraph-io/badger/v2"
-	"github.com/docker/docker/api/types/event
+	"github.com/docker/docker/api/types/events"
+)
+
+const (
+	ProcessActionDie   = "die"
+	ProcessActionStart = "start"
+)
+
+type ProcessState struct {
+	Time     int64  // seconds since epoch
+	DeviceID string // deviceID
+	Action   string // process action from docker events
+}
+
+// Check settings and also if MQTT initial connection has been made
+func (mqtt *mqttManager) getMQTTSettings() (*models.Settings, error) {
+	// 
