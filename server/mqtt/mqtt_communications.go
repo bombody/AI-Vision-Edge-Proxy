@@ -402,3 +402,42 @@ func (mqtt *mqttManager) monitorTokenExpiration() error {
 				return
 			}
 			today := time.Now().UTC().Unix() * 1000
+
+			diff := today - (expirationTime.Unix() * 1000)
+
+			if diff >= -(60 * 1000) {
+				g.Log.Info("Re-issuing JWT token and re-connecting MQTT client", diff)
+				sett, err := mqtt.settingsService.Get()
+				if err != nil {
+					g.Log.Error("failed to retrieve settings", sett)
+					return
+				}
+				cl := (*mqtt.client)
+
+				cl.Disconnect(300)
+
+				jwt, ccErr := utils.CreateJWT(sett.ProjectID, sett.PrivateRSAKey, time.Hour*1)
+				if ccErr != nil {
+					g.Log.Error("Failed to create JWT key for communication with ChrysCloud MQTT", ccErr)
+					return
+				}
+				mqtt.clientOpts.SetPassword(jwt)
+				mqtt.jwt = jwt
+				_, cErr := mqtt.connectClient(mqtt.clientOpts, sett, jwt)
+				if cErr != nil {
+					g.Log.Error("failed to reconnect client", cErr)
+					return
+				}
+			}
+
+			select {
+			case <-time.After(delay):
+			case <-mqtt.stop:
+				g.Log.Info("mqtt stopped")
+				return
+			}
+		}
+	}()
+
+	return nil
+}
