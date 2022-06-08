@@ -27,4 +27,13 @@ type ProcessState struct {
 
 // Check settings and also if MQTT initial connection has been made
 func (mqtt *mqttManager) getMQTTSettings() (*models.Settings, error) {
-	// 
+	// check settings if they exist
+	settings, err := mqtt.settingsService.Get()
+	if err != nil {
+		if err == badger.ErrKeyNotFound {
+			return nil, ErrNoMQTTSettings
+		}
+		g.Log.Error("failed to retrieve edge settings", err)
+		return nil, err
+	}
+	if settings.ProjectID == "" || settings.Region == "" || settings.GatewayID == "" || settings.RegistryID == "" || settings.Pr
