@@ -52,4 +52,19 @@ func (mqtt *mqttManager) gatewaySubscribers() error {
 		return errBind
 	}
 
-	errCfg := mqtt.subscribeToConfig(mqtt.
+	errCfg := mqtt.subscribeToConfig(mqtt.gatewayID)
+	if errCfg != nil {
+		g.Log.Error("failed to subscribe to mqtt config subscription", mqtt.gatewayID, errCfg)
+		return errCfg
+	}
+
+	errCmd := mqtt.subscribeToCommands(mqtt.gatewayID)
+	if errCmd != nil {
+		g.Log.Error("failed to subscribe to mqtt commands", mqtt.gatewayID, errCmd)
+		return errCmd
+	}
+
+	return nil
+}
+
+// detecting device state change and reporting if changes occ
