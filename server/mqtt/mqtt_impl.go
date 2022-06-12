@@ -36,4 +36,20 @@ func (mqtt *mqttManager) getMQTTSettings() (*models.Settings, error) {
 		g.Log.Error("failed to retrieve edge settings", err)
 		return nil, err
 	}
-	if settings.ProjectID == "" || settings.Region == "" || settings.GatewayID == "" || settings.RegistryID == "" || settings.Pr
+	if settings.ProjectID == "" || settings.Region == "" || settings.GatewayID == "" || settings.RegistryID == "" || settings.PrivateRSAKey == nil {
+		return nil, ErrNoMQTTSettings
+	}
+	return settings, nil
+}
+
+// config and commans subscribers
+func (mqtt *mqttManager) gatewaySubscribers() error {
+	// wait for connection to be opened and propagate
+
+	errBind := mqtt.bindAllDevices()
+	if errBind != nil {
+		g.Log.Error("failed to report bind devices", errBind)
+		return errBind
+	}
+
+	errCfg := mqtt.subscribeToConfig(mqtt.
