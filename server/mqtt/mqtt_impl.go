@@ -78,4 +78,16 @@ func (mqtt *mqttManager) changedDeviceState(gatewayID string, message events.Mes
 		defer mqtt.mutex.Unlock()
 
 		var history []events.Message
-		if val, ok := mqtt
+		if val, ok := mqtt.processEvents.Load(deviceID); ok {
+			history = val.([]events.Message)
+			if len(history) >= 10 {
+				startIndex := len(history) - 10
+				history = history[startIndex:]
+			}
+			history = append(history, message)
+		} else {
+			history = []events.Message{message}
+		}
+		mqtt.processEvents.Store(deviceID, history)
+
+		// check last value after 5 seconds (avoiding t
