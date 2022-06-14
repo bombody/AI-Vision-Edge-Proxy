@@ -67,4 +67,15 @@ func (mqtt *mqttManager) gatewaySubscribers() error {
 	return nil
 }
 
-// detecting device state change and reporting if changes occ
+// detecting device state change and reporting if changes occured
+func (mqtt *mqttManager) changedDeviceState(gatewayID string, message events.Message) error {
+
+	actor := message.Actor
+
+	// fairly complicated logic to handle container restarts and report only true changes, not attempty of restarting the container
+	if deviceID, ok := actor.Attributes["name"]; ok {
+		mqtt.mutex.Lock()
+		defer mqtt.mutex.Unlock()
+
+		var history []events.Message
+		if val, ok := mqtt
