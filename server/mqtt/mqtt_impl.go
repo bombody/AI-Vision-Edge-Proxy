@@ -90,4 +90,12 @@ func (mqtt *mqttManager) changedDeviceState(gatewayID string, message events.Mes
 		}
 		mqtt.processEvents.Store(deviceID, history)
 
-		// check last value after 5 seconds (avoiding t
+		// check last value after 5 seconds (avoiding the possible burst of events for a specific container)
+		go func(deviceID string) {
+			time.Sleep(time.Second * 5)
+			if val, ok := mqtt.processEvents.Load(deviceID); ok {
+				history := val.([]events.Message)
+				last := history[len(history)-1]
+				// for _, last := range history {
+				if lastNotified, ok := mqtt.lastProcessEventNotified.Load(deviceID); ok {
+					if mqtt.hasDeviceDiffe
