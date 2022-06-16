@@ -98,4 +98,14 @@ func (mqtt *mqttManager) changedDeviceState(gatewayID string, message events.Mes
 				last := history[len(history)-1]
 				// for _, last := range history {
 				if lastNotified, ok := mqtt.lastProcessEventNotified.Load(deviceID); ok {
-					if mqtt.hasDeviceDiffe
+					if mqtt.hasDeviceDifferences(lastNotified.(events.Message), last) {
+						stat := mqtt.deviceActionToStatus(last.Action)
+						rErr := mqtt.reportDeviceStateChange(deviceID, stat)
+						if rErr != nil {
+							g.Log.Error("failed to report device state change", rErr)
+							return
+						}
+						g.Log.Info("device status reported ", stat, deviceID)
+					}
+				} else {
+					mqtt.lastProcessEventNotified.Store(devic
