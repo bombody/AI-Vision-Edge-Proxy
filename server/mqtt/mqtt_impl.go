@@ -125,4 +125,16 @@ func (mqtt *mqttManager) changedDeviceState(gatewayID string, message events.Mes
 	return nil
 }
 
-// converting docker
+// converting docker event name to status
+func (mqtt *mqttManager) deviceActionToStatus(lastAction string) string {
+	stat := models.ProcessStatusRestarting
+
+	switch action := lastAction; action {
+	case ProcessActionDie:
+		stat = models.ProcessStatusRestarting
+	case ProcessActionStart:
+		stat = models.ProcessStatusRunning
+	default:
+		stat = lastAction
+	}
+	return
