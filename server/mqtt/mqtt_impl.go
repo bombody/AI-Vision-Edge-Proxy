@@ -157,4 +157,15 @@ func (mqtt *mqttManager) reportDeviceStateChange(deviceID string, status string)
 				if pErr == models.ErrProcessNotFoundDatastore || pErr == models.ErrProcessNotFound {
 					return nil
 				}
-				g.Log.Error("failed to find application for reporting state chang
+				g.Log.Error("failed to find application for reporting state change", pErr)
+				return pErr
+			}
+			tp = models.MQTTProcessType(models.ProcessTypeApplication)
+			imageTag = utils.ImageTagPartToString(proc.DockerHubUser, proc.DockerhubRepository, proc.DockerHubVersion)
+		} else {
+			g.Log.Error("failed to retrieve device info for reporting state change", err)
+			return err
+		}
+	} else {
+		tp = models.MQTTProcessType(models.ProcessTypeRTSP)
+		rtmpEndpoint = device.RTMP
