@@ -150,4 +150,11 @@ func (mqtt *mqttManager) reportDeviceStateChange(deviceID string, status string)
 
 	device, err := mqtt.processService.Info(deviceID)
 	if err != nil {
-		// check if application (prevent reporting of events hap
+		// check if application (prevent reporting of events happening not related to chrysalis)
+		if err == models.ErrProcessNotFoundDatastore || err == models.ErrProcessNotFound {
+			proc, pErr := mqtt.appService.Info(deviceID)
+			if pErr != nil {
+				if pErr == models.ErrProcessNotFoundDatastore || pErr == models.ErrProcessNotFound {
+					return nil
+				}
+				g.Log.Error("failed to find application for reporting state chang
