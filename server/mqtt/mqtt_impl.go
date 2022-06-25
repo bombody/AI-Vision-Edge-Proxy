@@ -168,4 +168,19 @@ func (mqtt *mqttManager) reportDeviceStateChange(deviceID string, status string)
 		}
 	} else {
 		tp = models.MQTTProcessType(models.ProcessTypeRTSP)
-		rtmpEndpoint = device.RTMP
+		rtmpEndpoint = device.RTMPEndpoint
+		rtspEndpoint = device.RTSPEndpoint
+	}
+
+	sett, err := mqtt.settingsService.Get()
+	if err != nil {
+		g.Log.Error("failed to retrieve settings", err)
+		return err
+	}
+
+	mqttMsg := &models.MQTTMessage{
+		DeviceID:         deviceID,
+		ImageTag:         imageTag,
+		RTMPEndpoint:     rtmpEndpoint,
+		RTSPConnection:   rtspEndpoint,
+		State:            status,
