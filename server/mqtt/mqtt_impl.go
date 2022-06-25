@@ -137,4 +137,17 @@ func (mqtt *mqttManager) deviceActionToStatus(lastAction string) string {
 	default:
 		stat = lastAction
 	}
-	return
+	return stat
+}
+
+func (mqtt *mqttManager) reportDeviceStateChange(deviceID string, status string) error {
+
+	tp := models.MQTTProcessType(models.ProcessTypeUnknown)
+
+	var imageTag string
+	var rtmpEndpoint string
+	var rtspEndpoint string
+
+	device, err := mqtt.processService.Info(deviceID)
+	if err != nil {
+		// check if application (prevent reporting of events hap
