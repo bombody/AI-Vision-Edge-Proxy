@@ -196,4 +196,11 @@ func (mqtt *mqttManager) reportDeviceStateChange(deviceID string, status string)
 	return nil
 }
 
-// Ga
+// GatewayState reporting gateway state to ChrysalisCloud (the way for entire gateway to check in)
+func (mqtt *mqttManager) gatewayState(gatewayID string) error {
+
+	// report state to coreiot (this can be removed also)
+	gatewayStateTopic := fmt.Sprintf("/devices/%s/state", gatewayID)
+	gatewayInitPayload := fmt.Sprintf("%d", time.Now().Unix())
+
+	if token := (*mqtt.client).Publish(gate
