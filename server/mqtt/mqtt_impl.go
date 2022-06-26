@@ -203,4 +203,12 @@ func (mqtt *mqttManager) gatewayState(gatewayID string) error {
 	gatewayStateTopic := fmt.Sprintf("/devices/%s/state", gatewayID)
 	gatewayInitPayload := fmt.Sprintf("%d", time.Now().Unix())
 
-	if token := (*mqtt.client).Publish(gate
+	if token := (*mqtt.client).Publish(gatewayStateTopic, 1, false, gatewayInitPayload); token.Wait() && token.Error() != nil {
+		g.Log.Error("failed to publish initial gateway payload", token.Error())
+		return token.Error()
+	}
+
+	// report state to chrysalis cloud
+	g.Log.Info("Gateway state reported", time.Now())
+	mqttMsg := &models.MQTTMessage{
+		Created:          time.Now().UTC().Unix() *
