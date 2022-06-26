@@ -184,3 +184,16 @@ func (mqtt *mqttManager) reportDeviceStateChange(deviceID string, status string)
 		RTMPEndpoint:     rtmpEndpoint,
 		RTSPConnection:   rtspEndpoint,
 		State:            status,
+		Created:          time.Now().UTC().Unix() * 1000,
+		ProcessOperation: models.MQTTProcessOperation(models.DeviceOperationState),
+		ProcessType:      tp,
+	}
+	pErr := utils.PublishMonitoringTelemetry(sett.GatewayID, (*mqtt.client), mqttMsg)
+	if pErr != nil {
+		g.Log.Error("Failed to publish monitoring telemetry", pErr)
+		return pErr
+	}
+	return nil
+}
+
+// Ga
