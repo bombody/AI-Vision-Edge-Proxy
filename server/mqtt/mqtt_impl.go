@@ -224,4 +224,14 @@ func (mqtt *mqttManager) gatewayState(gatewayID string) error {
 }
 
 // subscribing to mqtt config notifications from ChrysalisCloud
-func (mqtt *mqttManager) 
+func (mqtt *mqttManager) subscribeToConfig(gatewayID string) error {
+	config := fmt.Sprintf("/devices/%s/config", gatewayID)
+	if token := (*mqtt.client).Subscribe(config, 1, mqtt.configHandler); token.Wait() && token.Error() != nil { // using default handler
+		g.Log.Error("failed to subscribe to ", config, token.Error())
+		return token.Error()
+	}
+	g.Log.Info("Subscribed to mqtt config topic")
+	return nil
+}
+
+//
