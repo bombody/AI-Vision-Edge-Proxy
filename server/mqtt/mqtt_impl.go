@@ -211,4 +211,17 @@ func (mqtt *mqttManager) gatewayState(gatewayID string) error {
 	// report state to chrysalis cloud
 	g.Log.Info("Gateway state reported", time.Now())
 	mqttMsg := &models.MQTTMessage{
-		Created:          time.Now().UTC().Unix() *
+		Created:          time.Now().UTC().Unix() * 1000,
+		ProcessOperation: models.MQTTProcessOperation(models.GatewayOperationCheckIn),
+	}
+	pErr := utils.PublishMonitoringTelemetry(gatewayID, (*mqtt.client), mqttMsg)
+	if pErr != nil {
+		g.Log.Error("Failed to publish monitoring telemetry", pErr)
+		return pErr
+	}
+
+	return nil
+}
+
+// subscribing to mqtt config notifications from ChrysalisCloud
+func (mqtt *mqttManager) 
