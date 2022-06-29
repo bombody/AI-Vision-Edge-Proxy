@@ -234,4 +234,14 @@ func (mqtt *mqttManager) subscribeToConfig(gatewayID string) error {
 	return nil
 }
 
-//
+// subscribing to mqtt commands
+func (mqtt *mqttManager) subscribeToCommands(gatewayID string) error {
+	comm := fmt.Sprintf("/devices/%s/commands/#", gatewayID)
+	if token := (*mqtt.client).Subscribe(comm, 1, nil); token.Wait() && token.Error() != nil {
+		g.Log.Error("Failed to subscribe to mqtt commands", comm, token.Error())
+		return token.Error()
+	}
+	return nil
+}
+
+// bind single de
