@@ -255,4 +255,16 @@ func (mqtt *mqttManager) bindDevice(deviceID string, processType models.MQTTProc
 		ImageTag:         device.ImageTag,
 		RTMPEndpoint:     device.RTMPEndpoint,
 		RTSPConnection:   device.RTSPEndpoint,
-		State:            device.S
+		State:            device.State.Status,
+		Created:          time.Now().UTC().Unix() * 1000,
+		ProcessOperation: models.MQTTProcessOperation(models.DeviceOperationAdd),
+		ProcessType:      processType,
+	}
+	attErr := utils.AttachDeviceToGateway(mqtt.gatewayID, (*mqtt.client), mqttMsg)
+	if attErr != nil {
+		g.Log.Error("failed to attach ", device.Name, "to this gateway", attErr)
+	}
+	return nil
+}
+
+/
