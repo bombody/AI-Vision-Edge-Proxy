@@ -244,4 +244,15 @@ func (mqtt *mqttManager) subscribeToCommands(gatewayID string) error {
 	return nil
 }
 
-// bind single de
+// bind single device to this gateway
+func (mqtt *mqttManager) bindDevice(deviceID string, processType models.MQTTProcessType) error {
+	device, err := mqtt.processService.Info(deviceID)
+	if err != nil {
+		return err
+	}
+	mqttMsg := &models.MQTTMessage{
+		DeviceID:         device.Name,
+		ImageTag:         device.ImageTag,
+		RTMPEndpoint:     device.RTMPEndpoint,
+		RTSPConnection:   device.RTSPEndpoint,
+		State:            device.S
