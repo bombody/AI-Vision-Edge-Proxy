@@ -267,4 +267,13 @@ func (mqtt *mqttManager) bindDevice(deviceID string, processType models.MQTTProc
 	return nil
 }
 
-/
+// unbiding single device from this gateway
+func (mqtt *mqttManager) unbindDevice(deviceID string, processType models.MQTTProcessType) error {
+	set, err := mqtt.settingsService.Get()
+	if err != nil {
+		return err
+	}
+	mqttMsg := &models.MQTTMessage{
+		DeviceID:         deviceID,
+		Created:          time.Now().UTC().Unix() * 1000,
+		ProcessOperation: models.MQTTProcessOpe
