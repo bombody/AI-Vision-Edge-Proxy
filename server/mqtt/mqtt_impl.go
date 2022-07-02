@@ -276,4 +276,17 @@ func (mqtt *mqttManager) unbindDevice(deviceID string, processType models.MQTTPr
 	mqttMsg := &models.MQTTMessage{
 		DeviceID:         deviceID,
 		Created:          time.Now().UTC().Unix() * 1000,
-		ProcessOperation: models.MQTTProcessOpe
+		ProcessOperation: models.MQTTProcessOperation(models.DeviceOperationRemove),
+		ProcessType:      processType,
+	}
+
+	attErr := utils.DetachGatewayDevice(set.GatewayID, (*mqtt.client), mqttMsg)
+	if attErr != nil {
+		g.Log.Error("failed to dettach ", deviceID, "from this gateway", attErr)
+	}
+	return nil
+}
+
+// Lists all processes (running ones) and binds them to this gateway
+func (mqtt *mqttManager) bindAllDevices() error {
+	all, err 
