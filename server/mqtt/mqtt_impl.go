@@ -289,4 +289,17 @@ func (mqtt *mqttManager) unbindDevice(deviceID string, processType models.MQTTPr
 
 // Lists all processes (running ones) and binds them to this gateway
 func (mqtt *mqttManager) bindAllDevices() error {
-	all, err 
+	all, err := mqtt.processService.List()
+	if err != nil {
+		g.Log.Error("failed to list all processes", err)
+		return err
+	}
+	var hasErr error
+	for _, device := range all {
+		processType := models.ProcessTypeUnknown
+		if strings.Contains(device.ImageTag, "chrysedgeproxy") {
+			processType = models.ProcessTypeRTSP
+		}
+		mqttMsg := &models.MQTTMessage{
+			DeviceID:         device.Name,
+			ImageTag:     
