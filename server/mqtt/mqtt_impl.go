@@ -302,4 +302,12 @@ func (mqtt *mqttManager) bindAllDevices() error {
 		}
 		mqttMsg := &models.MQTTMessage{
 			DeviceID:         device.Name,
-			ImageTag:     
+			ImageTag:         device.ImageTag,
+			Created:          device.Created,
+			State:            device.State.Status,
+			ProcessOperation: models.MQTTProcessOperation(models.DeviceOperationAdd),
+			ProcessType:      models.MQTTProcessType(processType),
+		}
+		attErr := utils.AttachDeviceToGateway(mqtt.gatewayID, (*mqtt.client), mqttMsg)
+		if attErr != nil {
+			g.Log.Error("failed to attach devic
