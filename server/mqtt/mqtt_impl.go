@@ -310,4 +310,14 @@ func (mqtt *mqttManager) bindAllDevices() error {
 		}
 		attErr := utils.AttachDeviceToGateway(mqtt.gatewayID, (*mqtt.client), mqttMsg)
 		if attErr != nil {
-			g.Log.Error("failed to attach devic
+			g.Log.Error("failed to attach device", device.Name, attErr)
+			hasErr = attErr
+		}
+	}
+	return hasErr
+}
+
+// hasDeviceDifferences checks if the previously reported device has changed (only important fields check):
+// status, state, rtsp link, rtmp link, containerID
+func (mqtt *mqttManager) hasDeviceDifferences(stored events.Message, current events.Message) bool {
+	h1 := extractDeviceSignature(stored)
