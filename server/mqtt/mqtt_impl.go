@@ -321,3 +321,14 @@ func (mqtt *mqttManager) bindAllDevices() error {
 // status, state, rtsp link, rtmp link, containerID
 func (mqtt *mqttManager) hasDeviceDifferences(stored events.Message, current events.Message) bool {
 	h1 := extractDeviceSignature(stored)
+	h2 := extractDeviceSignature(current)
+	return h1 != h2
+}
+
+// creates StreamProcess signature for it's main fields
+func extractDeviceSignature(processMsg events.Message) string {
+	payload := processMsg.Status + processMsg.Actor.ID
+	h := md5.New()
+	h.Write([]byte(payload))
+	return hex.EncodeToString(h.Sum(nil))
+}
