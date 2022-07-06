@@ -26,4 +26,16 @@ func (mqtt *mqttManager) StopCamera(configPayload []byte) error {
 	if pErr != nil {
 		if pErr == models.ErrProcessNotFound {
 			// nothing to do, but report unbinding
-			e
+			err = mqtt.unbindDevice(payload.Name, models.MQTTProcessType(models.ProcessTypeRTSP))
+			if err != nil {
+				g.Log.Error("failed to publish binding event to chrysalis cloud of the new device", err)
+				return err
+			}
+		}
+		return pErr
+	}
+
+	// process found, can delete
+	err = mqtt.processService.Stop(payload.Name, models.PrefixRTSPProcess)
+	if err != nil {
+		g.Log.Inf
