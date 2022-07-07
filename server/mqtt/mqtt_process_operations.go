@@ -38,4 +38,18 @@ func (mqtt *mqttManager) StopCamera(configPayload []byte) error {
 	// process found, can delete
 	err = mqtt.processService.Stop(payload.Name, models.PrefixRTSPProcess)
 	if err != nil {
-		g.Log.Inf
+		g.Log.Info("failed to delete process from edge", err)
+		return err
+	}
+
+	// report unbiding of device to chrysalis cloud
+	err = mqtt.unbindDevice(payload.Name, models.MQTTProcessType(models.ProcessTypeRTSP))
+	if err != nil {
+		g.Log.Error("failed to publish binding event to chrysalis cloud of the new device", err)
+		return err
+	}
+	return nil
+}
+
+// Starts a new camera on the edge
+func (
