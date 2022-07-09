@@ -52,4 +52,15 @@ func (mqtt *mqttManager) StopCamera(configPayload []byte) error {
 }
 
 // Starts a new camera on the edge
-func (
+func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
+	g.Log.Info("received payload to start a new camera")
+	var payload models.EdgeCommandPayload
+	err := json.Unmarshal(configPayload, &payload)
+	if err != nil {
+		g.Log.Error("failed to unmarshal config payload", err)
+		return err
+	}
+
+	// check if camera already installed
+
+	streamProcess := &models.StreamProce
