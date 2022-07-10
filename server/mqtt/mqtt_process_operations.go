@@ -76,4 +76,15 @@ func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
 	}
 	_, pErr := mqtt.processService.Info(streamProcess.Name)
 	if pErr == nil {
-		// already running, nothing to do but report it
+		// already running, nothing to do but report it's here
+		err = mqtt.bindDevice(streamProcess.Name, models.MQTTProcessType(models.ProcessTypeRTSP))
+		if err != nil {
+			g.Log.Error("failed to publish binding event to chrysalis cloud of the new device", err)
+			return err
+		}
+	}
+
+	rtspImageTag := models.CameraTypeToImageTag[payload.Type]
+	if rtspImageTag == "" {
+		g.Log.Error("failed to find payload type", payload.Type)
+		return errors.New("no payl
