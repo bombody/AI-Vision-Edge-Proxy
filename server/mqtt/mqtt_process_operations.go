@@ -63,4 +63,17 @@ func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
 
 	// check if camera already installed
 
-	streamProcess := &models.StreamProce
+	streamProcess := &models.StreamProcess{
+		Name:         payload.Name,
+		ImageTag:     payload.ImageTag,
+		RTSPEndpoint: payload.RTSPEndpoint,
+		RTMPEndpoint: payload.RTMPEndpoint,
+		Created:      time.Now().Unix() * 1000,
+		RTMPStreamStatus: &models.RTMPStreamStatus{
+			Streaming: true,
+			Storing:   false,
+		},
+	}
+	_, pErr := mqtt.processService.Info(streamProcess.Name)
+	if pErr == nil {
+		// already running, nothing to do but report it
