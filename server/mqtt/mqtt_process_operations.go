@@ -87,4 +87,13 @@ func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
 	rtspImageTag := models.CameraTypeToImageTag[payload.Type]
 	if rtspImageTag == "" {
 		g.Log.Error("failed to find payload type", payload.Type)
-		return errors.New("no payl
+		return errors.New("no payload type for " + payload.Type)
+	}
+	highestImgVersion, err := mqtt.settingsService.ListDockerImages(rtspImageTag)
+	if err != nil {
+		g.Log.Error("failed to list currently available images", err)
+		return err
+	}
+	// if image doesn't exist, pull it down (this is in case where edge hasn't been initialized yet with specified docker image)
+	if !highestImgVersion.HasImage {
+		splitted :
