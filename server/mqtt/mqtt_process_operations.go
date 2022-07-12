@@ -96,4 +96,15 @@ func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
 	}
 	// if image doesn't exist, pull it down (this is in case where edge hasn't been initialized yet with specified docker image)
 	if !highestImgVersion.HasImage {
-		splitted :
+		splitted := strings.Split(streamProcess.ImageTag, ":")
+
+		_, err := mqtt.settingsService.PullDockerImage(splitted[0], splitted[1])
+		if err != nil {
+			g.Log.Error("failed to pull specified version", streamProcess.ImageTag, err)
+			return err
+		}
+	}
+	// re-list local docker images
+	highestImgVersion, err = mqtt.settingsService.ListDockerImages(rtspImageTag)
+	if err != nil {
+		g.Log.Error("faile
