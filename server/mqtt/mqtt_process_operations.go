@@ -107,4 +107,16 @@ func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
 	// re-list local docker images
 	highestImgVersion, err = mqtt.settingsService.ListDockerImages(rtspImageTag)
 	if err != nil {
-		g.Log.Error("faile
+		g.Log.Error("failed to list currently available images", err)
+		return err
+	}
+
+	g.Log.Info(highestImgVersion)
+
+	err = mqtt.processService.Start(streamProcess, highestImgVersion)
+	if err != nil {
+		g.Log.Error("failed to start new device", streamProcess.Name, streamProcess.ImageTag, streamProcess.RTSPEndpoint, err)
+		return err
+	}
+
+	err = mqtt.bindDevice(streamProcess.Name, models.MQTTProcessType(mo
