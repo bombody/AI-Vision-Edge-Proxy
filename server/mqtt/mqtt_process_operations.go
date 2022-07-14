@@ -119,4 +119,18 @@ func (mqtt *mqttManager) StartCamera(configPayload []byte) error {
 		return err
 	}
 
-	err = mqtt.bindDevice(streamProcess.Name, models.MQTTProcessType(mo
+	err = mqtt.bindDevice(streamProcess.Name, models.MQTTProcessType(models.ProcessTypeRTSP))
+	if err != nil {
+		g.Log.Error("failed to publish binding event to chrysalis cloud of the new device", err)
+		return err
+	}
+
+	return nil
+}
+
+// Report to the cloud all container stats in one go
+func (mqtt *mqttManager) ReportContainersStats() error {
+
+	sett, err := mqtt.settingsService.Get()
+	if err != nil {
+		g.Log.Error("failed to get 
