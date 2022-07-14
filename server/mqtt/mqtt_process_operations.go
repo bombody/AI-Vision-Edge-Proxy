@@ -133,4 +133,11 @@ func (mqtt *mqttManager) ReportContainersStats() error {
 
 	sett, err := mqtt.settingsService.Get()
 	if err != nil {
-		g.Log.Error("failed to get 
+		g.Log.Error("failed to get default settings", err)
+		return err
+	}
+	if sett.GatewayID == "" || sett.RegistryID == "" {
+		g.Log.Error("failed to report full system stats, gatewayID or registryID in settings missing", sett.GatewayID, sett.RegistryID)
+		return errors.New("missing gateway or report id in settings")
+	}
+	procStats, err := mqtt.processService.StatsAllProce
