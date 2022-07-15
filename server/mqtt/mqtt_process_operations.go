@@ -154,4 +154,16 @@ func (mqtt *mqttManager) ReportContainersStats() error {
 
 	mqttMsg := &models.MQTTMessage{
 		Created:          time.Now().UTC().Unix() * 1000,
-		ProcessOperation: models.MQTTProces
+		ProcessOperation: models.MQTTProcessOperation(models.DeviceOperationStats),
+		ProcessType:      models.MQTTProcessType(models.ProcessTypeStats),
+		Message:          statsBytes,
+	}
+	pErr := utils.PublishMonitoringTelemetry(sett.GatewayID, (*mqtt.client), mqttMsg)
+	if pErr != nil {
+		g.Log.Error("Failed to publish monitoring telemetry", pErr)
+		return pErr
+	}
+	return nil
+}
+
+// PullApplication - pull
