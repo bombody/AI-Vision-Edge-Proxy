@@ -166,4 +166,16 @@ func (mqtt *mqttManager) ReportContainersStats() error {
 	return nil
 }
 
-// PullApplication - pull
+// PullApplication - pull/refresh docker image
+func (mqtt *mqttManager) PullApplication(configPayload []byte) (*models.EdgeCommandPayload, error) {
+	g.Log.Info("received payload to start installing new app")
+
+	var payload models.EdgeCommandPayload
+	err := json.Unmarshal(configPayload, &payload)
+	if err != nil {
+		g.Log.Error("failed to unmarshal app config payload", err)
+		return nil, err
+	}
+
+	// check if app already pulled
+	cl := 
