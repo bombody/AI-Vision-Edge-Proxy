@@ -178,4 +178,20 @@ func (mqtt *mqttManager) PullApplication(configPayload []byte) (*models.EdgeComm
 	}
 
 	// check if app already pulled
-	cl := 
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+
+	images, err := cl.ImagesList()
+	if err != nil {
+		g.Log.Error("failed to retrieve container list", err)
+		return nil, err
+	}
+
+	for _, im := range images {
+		for _, tag := range im.RepoTags {
+			if tag == payload.ImageTag {
+				return &payload, nil
+			}
+		}
+	}
+
+	// notify cloud about pulling down 
