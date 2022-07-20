@@ -194,4 +194,10 @@ func (mqtt *mqttManager) PullApplication(configPayload []byte) (*models.EdgeComm
 		}
 	}
 
-	// notify cloud about pulling down 
+	// notify cloud about pulling down the image
+	mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationAdd), models.MQTTProcessType(payload.Type), models.ProcessStatusInProgress, "Image pull")
+
+	splitted := strings.Split(payload.ImageTag, ":")
+	if len(splitted) == 2 {
+		pullResponse, pullErr := mqtt.settingsService.PullDockerImage(splitted[0], splitted[1])
+		
