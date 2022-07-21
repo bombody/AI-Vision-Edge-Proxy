@@ -200,4 +200,11 @@ func (mqtt *mqttManager) PullApplication(configPayload []byte) (*models.EdgeComm
 	splitted := strings.Split(payload.ImageTag, ":")
 	if len(splitted) == 2 {
 		pullResponse, pullErr := mqtt.settingsService.PullDockerImage(splitted[0], splitted[1])
-		
+		if pullErr != nil {
+			mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationError), models.MQTTProcessType(payload.Type), models.ProcessStatusFailed, "Pull failed")
+			g.Log.Error("failed to pull docker app", pullErr, pullResponse)
+			return nil, pullErr
+		}
+	} else {
+		// report error to cloud
+		mqtt.notifyMqtt(payload.Name, payl
