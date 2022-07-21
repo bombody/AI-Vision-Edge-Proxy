@@ -207,4 +207,11 @@ func (mqtt *mqttManager) PullApplication(configPayload []byte) (*models.EdgeComm
 		}
 	} else {
 		// report error to cloud
-		mqtt.notifyMqtt(payload.Name, payl
+		mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationError), models.MQTTProcessType(payload.Type), models.ProcessStatusFailed, "ImageTag parse failed")
+		return nil, errors.New("failed to parse imageTag: " + payload.ImageTag)
+	}
+
+	return &payload, nil
+}
+
+// StartApplication - start the application and report status to cloud (this method ca
