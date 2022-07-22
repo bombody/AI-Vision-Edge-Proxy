@@ -223,4 +223,16 @@ func (mqtt *mqttManager) StartApplication(payload *models.EdgeCommandPayload) er
 		Name:                payload.Name,
 		Runtime:             payload.Runtime,
 		DockerHubUser:       dockerUser,
-		DockerhubRepository: d
+		DockerhubRepository: dockerRepo,
+		DockerHubVersion:    dockerVersion,
+	}
+
+	var varArgs []*models.VarPair
+	var envVars []*models.VarPair
+	var mounts []*models.VarPair
+	var portMapping []*models.PortMap
+	if len(payload.ArgVars) > 0 {
+		varArgs = utils.StringPairsToVarPairs(payload.ArgVars)
+	}
+	if len(payload.EnvVars) > 0 {
+		envVars = utils.StringPairsToVarPairs(payload.EnvVars)
