@@ -214,4 +214,13 @@ func (mqtt *mqttManager) PullApplication(configPayload []byte) (*models.EdgeComm
 	return &payload, nil
 }
 
-// StartApplication - start the application and report status to cloud (this method ca
+// StartApplication - start the application and report status to cloud (this method can assume image has been pulled succesfully)
+func (mqtt *mqttManager) StartApplication(payload *models.EdgeCommandPayload) error {
+
+	dockerUser, dockerRepo, dockerVersion := utils.ImageTagToParts(payload.ImageTag)
+
+	app := &models.AppProcess{
+		Name:                payload.Name,
+		Runtime:             payload.Runtime,
+		DockerHubUser:       dockerUser,
+		DockerhubRepository: d
