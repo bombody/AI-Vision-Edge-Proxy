@@ -236,3 +236,16 @@ func (mqtt *mqttManager) StartApplication(payload *models.EdgeCommandPayload) er
 	}
 	if len(payload.EnvVars) > 0 {
 		envVars = utils.StringPairsToVarPairs(payload.EnvVars)
+	}
+	if len(payload.Mounts) > 0 {
+		mounts = utils.StringPairsToVarPairs(payload.Mounts)
+	}
+	if len(payload.PortMapping) > 0 {
+		portMaps := utils.StringPairsToVarPairs(payload.PortMapping)
+		for _, pair := range portMaps {
+			from, err := strconv.Atoi(pair.Name)
+			to, err := strconv.Atoi(pair.Value)
+			if err != nil {
+				continue
+			}
+			pm := &models
