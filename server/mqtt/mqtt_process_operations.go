@@ -248,4 +248,19 @@ func (mqtt *mqttManager) StartApplication(payload *models.EdgeCommandPayload) er
 			if err != nil {
 				continue
 			}
-			pm := &models
+			pm := &models.PortMap{
+				Exposed: from,
+				MapTo:   to,
+			}
+			portMapping = append(portMapping, pm)
+		}
+	}
+	app.EnvVars = envVars
+	app.ArgsVars = varArgs
+	app.MountFolders = mounts
+	app.PortMapping = portMapping
+
+	app, err := mqtt.appService.Install(app)
+	if err != nil {
+		if err == models.ErrProcessConflict {
+			mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperati
