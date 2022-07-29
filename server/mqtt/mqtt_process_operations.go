@@ -263,4 +263,12 @@ func (mqtt *mqttManager) StartApplication(payload *models.EdgeCommandPayload) er
 	app, err := mqtt.appService.Install(app)
 	if err != nil {
 		if err == models.ErrProcessConflict {
-			mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperati
+			mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationError), models.MQTTProcessType(payload.Type), models.ProcessStatusFailed, "name conflict")
+			return err
+		}
+		g.Log.Error("failed to install application", payload.Name, err)
+		mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationError), models.MQTTProcessType(payload.Type), models.ProcessStatusFailed, "install failed")
+		return err
+	}
+
+	mqtt.
