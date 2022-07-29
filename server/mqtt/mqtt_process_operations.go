@@ -271,4 +271,13 @@ func (mqtt *mqttManager) StartApplication(payload *models.EdgeCommandPayload) er
 		return err
 	}
 
-	mqtt.
+	mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationAdd), models.MQTTProcessType(payload.Type), app.Status, "")
+	return nil
+}
+
+// stop the application (doesn't remove docker image)
+func (mqtt *mqttManager) StopApplication(configPayload []byte) error {
+	var payload models.EdgeCommandPayload
+	err := json.Unmarshal(configPayload, &payload)
+	if err != nil {
+		g.Log
