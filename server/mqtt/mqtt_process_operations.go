@@ -280,4 +280,11 @@ func (mqtt *mqttManager) StopApplication(configPayload []byte) error {
 	var payload models.EdgeCommandPayload
 	err := json.Unmarshal(configPayload, &payload)
 	if err != nil {
-		g.Log
+		g.Log.Error("failed to unmarshal app config payload", err)
+		mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationError), models.MQTTProcessType(payload.Type), models.ProcessStatusFailed, "stop failed")
+		return err
+	}
+
+	err = mqtt.processService.Stop(payload.Name, models.PrefixAppProcess)
+	if err != nil {
+		// only report error
