@@ -287,4 +287,11 @@ func (mqtt *mqttManager) StopApplication(configPayload []byte) error {
 
 	err = mqtt.processService.Stop(payload.Name, models.PrefixAppProcess)
 	if err != nil {
-		// only report error
+		// only report error if process exists
+		if err != models.ErrProcessNotFound {
+			g.Log.Warn("failed to start process ", payload.Name, err)
+			mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationError), models.MQTTProcessType(payload.Type), models.ProcessStatusFailed, "stop failed")
+			return err
+		}
+	}
+	// p
