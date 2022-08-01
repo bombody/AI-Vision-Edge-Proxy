@@ -294,4 +294,10 @@ func (mqtt *mqttManager) StopApplication(configPayload []byte) error {
 			return err
 		}
 	}
-	// p
+	// publish to chrysalis cloud the change
+	mqtt.notifyMqtt(payload.Name, payload.ImageTag, models.MQTTProcessOperation(models.DeviceOperationRemove), models.MQTTProcessType(payload.Type), models.ProcessStatusExited, "")
+	return nil
+}
+
+// mqtt notification message to chrys cloud
+func (mqtt *mqttManager) notifyMqtt(appName string, imageTag string, operation models.MQTTProcessOperation, opera
