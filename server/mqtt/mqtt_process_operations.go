@@ -300,4 +300,22 @@ func (mqtt *mqttManager) StopApplication(configPayload []byte) error {
 }
 
 // mqtt notification message to chrys cloud
-func (mqtt *mqttManager) notifyMqtt(appName string, imageTag string, operation models.MQTTProcessOperation, opera
+func (mqtt *mqttManager) notifyMqtt(appName string, imageTag string, operation models.MQTTProcessOperation, operationType models.MQTTProcessType, status string, msg string) error {
+
+	set, err := mqtt.settingsService.Get()
+	if err != nil {
+		g.Log.Error("failed to retrieve settings", err)
+		return err
+	}
+
+	var message []byte
+
+	if msg != "" {
+		message = []byte(msg)
+	}
+
+	payload := &models.MQTTMessage{
+		DeviceID:         appName,
+		ImageTag:         imageTag,
+		ProcessOperation: operation,
+		Pr
