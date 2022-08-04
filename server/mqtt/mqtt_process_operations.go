@@ -318,4 +318,14 @@ func (mqtt *mqttManager) notifyMqtt(appName string, imageTag string, operation m
 		DeviceID:         appName,
 		ImageTag:         imageTag,
 		ProcessOperation: operation,
-		Pr
+		ProcessType:      operationType,
+		State:            status,
+		Message:          message,
+	}
+	err = utils.PublishOperationTelemetry(set.GatewayID, (*mqtt.client), payload)
+	if err != nil {
+		g.Log.Error("failed to report operation status to chrys cloud", err)
+		return err
+	}
+	return nil
+}
