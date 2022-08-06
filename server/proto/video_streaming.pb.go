@@ -74,3 +74,391 @@ func (x *AnnotateRequest) Reset() {
 
 func (x *AnnotateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AnnotateRequest) ProtoMessage() {}
+
+func (x *AnnotateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AnnotateRequest.ProtoReflect.Descriptor instead.
+func (*AnnotateRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AnnotateRequest) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetRemoteStreamId() string {
+	if x != nil {
+		return x.RemoteStreamId
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetStartTimestamp() int64 {
+	if x != nil {
+		return x.StartTimestamp
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetEndTimestamp() int64 {
+	if x != nil {
+		return x.EndTimestamp
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetObjectType() string {
+	if x != nil {
+		return x.ObjectType
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetObjectId() string {
+	if x != nil {
+		return x.ObjectId
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetObjectTrackingId() string {
+	if x != nil {
+		return x.ObjectTrackingId
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetConfidence() float64 {
+	if x != nil {
+		return x.Confidence
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetObjectBoudingBox() *BoudingBox {
+	if x != nil {
+		return x.ObjectBoudingBox
+	}
+	return nil
+}
+
+func (x *AnnotateRequest) GetLocation() *Location {
+	if x != nil {
+		return x.Location
+	}
+	return nil
+}
+
+func (x *AnnotateRequest) GetObjectCoordinate() *Coordinate {
+	if x != nil {
+		return x.ObjectCoordinate
+	}
+	return nil
+}
+
+func (x *AnnotateRequest) GetMask() []*Coordinate {
+	if x != nil {
+		return x.Mask
+	}
+	return nil
+}
+
+func (x *AnnotateRequest) GetObjectSignature() []float64 {
+	if x != nil {
+		return x.ObjectSignature
+	}
+	return nil
+}
+
+func (x *AnnotateRequest) GetMlModel() string {
+	if x != nil {
+		return x.MlModel
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetMlModelVersion() string {
+	if x != nil {
+		return x.MlModelVersion
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetWidth() int32 {
+	if x != nil {
+		return x.Width
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetHeight() int32 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetIsKeyframe() bool {
+	if x != nil {
+		return x.IsKeyframe
+	}
+	return false
+}
+
+func (x *AnnotateRequest) GetVideoType() string {
+	if x != nil {
+		return x.VideoType
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetOffsetTimestamp() int64 {
+	if x != nil {
+		return x.OffsetTimestamp
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetOffsetDuration() int64 {
+	if x != nil {
+		return x.OffsetDuration
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetOffsetFrameId() int64 {
+	if x != nil {
+		return x.OffsetFrameId
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetOffsetPacketId() int64 {
+	if x != nil {
+		return x.OffsetPacketId
+	}
+	return 0
+}
+
+func (x *AnnotateRequest) GetCustomMeta_1() string {
+	if x != nil {
+		return x.CustomMeta_1
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetCustomMeta_2() string {
+	if x != nil {
+		return x.CustomMeta_2
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetCustomMeta_3() string {
+	if x != nil {
+		return x.CustomMeta_3
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetCustomMeta_4() string {
+	if x != nil {
+		return x.CustomMeta_4
+	}
+	return ""
+}
+
+func (x *AnnotateRequest) GetCustomMeta_5() string {
+	if x != nil {
+		return x.CustomMeta_5
+	}
+	return ""
+}
+
+type AnnotateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceName     string `protobuf:"bytes,1,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	RemoteStreamId string `protobuf:"bytes,2,opt,name=remote_stream_id,json=remoteStreamId,proto3" json:"remote_stream_id,omitempty"`
+	Type           string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	StartTimestamp int64  `protobuf:"varint,4,opt,name=start_timestamp,json=startTimestamp,proto3" json:"start_timestamp,omitempty"`
+}
+
+func (x *AnnotateResponse) Reset() {
+	*x = AnnotateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AnnotateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AnnotateResponse) ProtoMessage() {}
+
+func (x *AnnotateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AnnotateResponse.ProtoReflect.Descriptor instead.
+func (*AnnotateResponse) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AnnotateResponse) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *AnnotateResponse) GetRemoteStreamId() string {
+	if x != nil {
+		return x.RemoteStreamId
+	}
+	return ""
+}
+
+func (x *AnnotateResponse) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *AnnotateResponse) GetStartTimestamp() int64 {
+	if x != nil {
+		return x.StartTimestamp
+	}
+	return 0
+}
+
+type Location struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Lat float64 `protobuf:"fixed64,1,opt,name=lat,proto3" json:"lat,omitempty"` // latitude
+	Lon float64 `protobuf:"fixed64,2,opt,name=lon,proto3" json:"lon,omitempty"` // longitude
+}
+
+func (x *Location) Reset() {
+	*x = Location{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Location) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Location) ProtoMessage() {}
+
+func (x *Location) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Location.ProtoReflect.Descriptor instead.
+func (*Location) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Location) GetLat() float64 {
+	if x != nil {
+		return x.Lat
+	}
+	return 0
+}
+
+func (x *Location) GetLon() float64 {
+	if x != nil {
+		return x.Lon
+	}
+	return 0
+}
+
+type Coordinate struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	X float64 `protobuf:"fixed64,1,opt,name=x,proto3" json:"x,omitempty"`
+	Y float64 `protobuf:"fixed64,2,opt,name=y,proto3" json:"y,omitempty"`
+	Z float64 `protobuf:"fixed64,3,opt,name=z,proto3" json:"z,omitempty"`
+}
+
+func (x *Coordinate) Reset() {
+	*x = Coordinate{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Coordinate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Coordinate) ProtoMessage() {}
+
+func (x *Coordinate) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Coordinate.ProtoReflect.Descriptor instead.
