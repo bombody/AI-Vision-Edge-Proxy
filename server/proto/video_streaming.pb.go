@@ -857,3 +857,339 @@ func (x *VideoFrameBufferedRequest) Reset() {
 
 func (x *VideoFrameBufferedRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoFrameBufferedRequest) ProtoMessage() {}
+
+func (x *VideoFrameBufferedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoFrameBufferedRequest.ProtoReflect.Descriptor instead.
+func (*VideoFrameBufferedRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *VideoFrameBufferedRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+func (x *VideoFrameBufferedRequest) GetTimestampFrom() int64 {
+	if x != nil {
+		return x.TimestampFrom
+	}
+	return 0
+}
+
+func (x *VideoFrameBufferedRequest) GetTimestampTo() int64 {
+	if x != nil {
+		return x.TimestampTo
+	}
+	return 0
+}
+
+// ListStream messages
+type ListStream struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Status        string `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	FailingStreak int64  `protobuf:"varint,3,opt,name=failing_streak,json=failingStreak,proto3" json:"failing_streak,omitempty"`
+	HealthStatus  string `protobuf:"bytes,4,opt,name=health_status,json=healthStatus,proto3" json:"health_status,omitempty"`
+	Dead          bool   `protobuf:"varint,5,opt,name=dead,proto3" json:"dead,omitempty"`
+	ExitCode      int64  `protobuf:"varint,6,opt,name=exit_code,json=exitCode,proto3" json:"exit_code,omitempty"`
+	Pid           int32  `protobuf:"varint,7,opt,name=pid,proto3" json:"pid,omitempty"`
+	Running       bool   `protobuf:"varint,8,opt,name=running,proto3" json:"running,omitempty"`
+	Paused        bool   `protobuf:"varint,9,opt,name=paused,proto3" json:"paused,omitempty"`
+	Restarting    bool   `protobuf:"varint,10,opt,name=restarting,proto3" json:"restarting,omitempty"`
+	Oomkilled     bool   `protobuf:"varint,11,opt,name=oomkilled,proto3" json:"oomkilled,omitempty"`
+	Error         string `protobuf:"bytes,12,opt,name=error,proto3" json:"error,omitempty"`
+}
+
+func (x *ListStream) Reset() {
+	*x = ListStream{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListStream) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStream) ProtoMessage() {}
+
+func (x *ListStream) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStream.ProtoReflect.Descriptor instead.
+func (*ListStream) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListStream) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ListStream) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *ListStream) GetFailingStreak() int64 {
+	if x != nil {
+		return x.FailingStreak
+	}
+	return 0
+}
+
+func (x *ListStream) GetHealthStatus() string {
+	if x != nil {
+		return x.HealthStatus
+	}
+	return ""
+}
+
+func (x *ListStream) GetDead() bool {
+	if x != nil {
+		return x.Dead
+	}
+	return false
+}
+
+func (x *ListStream) GetExitCode() int64 {
+	if x != nil {
+		return x.ExitCode
+	}
+	return 0
+}
+
+func (x *ListStream) GetPid() int32 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *ListStream) GetRunning() bool {
+	if x != nil {
+		return x.Running
+	}
+	return false
+}
+
+func (x *ListStream) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
+func (x *ListStream) GetRestarting() bool {
+	if x != nil {
+		return x.Restarting
+	}
+	return false
+}
+
+func (x *ListStream) GetOomkilled() bool {
+	if x != nil {
+		return x.Oomkilled
+	}
+	return false
+}
+
+func (x *ListStream) GetError() string {
+	if x != nil {
+		return x.Error
+	}
+	return ""
+}
+
+type ListStreamRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListStreamRequest) Reset() {
+	*x = ListStreamRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListStreamRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStreamRequest) ProtoMessage() {}
+
+func (x *ListStreamRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStreamRequest.ProtoReflect.Descriptor instead.
+func (*ListStreamRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{10}
+}
+
+// Proxy messages
+type ProxyRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceId    string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Passthrough bool   `protobuf:"varint,2,opt,name=passthrough,proto3" json:"passthrough,omitempty"` // true = passthrough streaming, false = stop passthrough streaming
+}
+
+func (x *ProxyRequest) Reset() {
+	*x = ProxyRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ProxyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProxyRequest) ProtoMessage() {}
+
+func (x *ProxyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProxyRequest.ProtoReflect.Descriptor instead.
+func (*ProxyRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ProxyRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+func (x *ProxyRequest) GetPassthrough() bool {
+	if x != nil {
+		return x.Passthrough
+	}
+	return false
+}
+
+type ProxyResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceId    string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Passthrough bool   `protobuf:"varint,2,opt,name=passthrough,proto3" json:"passthrough,omitempty"`
+}
+
+func (x *ProxyResponse) Reset() {
+	*x = ProxyResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ProxyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProxyResponse) ProtoMessage() {}
+
+func (x *ProxyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProxyResponse.ProtoReflect.Descriptor instead.
+func (*ProxyResponse) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ProxyResponse) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+func (x *ProxyResponse) GetPassthrough() bool {
+	if x != nil {
+		return x.Passthrough
+	}
+	return false
+}
+
+// Storage messages
+type StorageRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Start    bool   `protobuf:"varint,2,opt,name=start,proto3" json:"start,omitempty"`
+}
