@@ -462,3 +462,398 @@ func (x *Coordinate) ProtoReflect() protoreflect.Message {
 }
 
 // Deprecated: Use Coordinate.ProtoReflect.Descriptor instead.
+func (*Coordinate) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Coordinate) GetX() float64 {
+	if x != nil {
+		return x.X
+	}
+	return 0
+}
+
+func (x *Coordinate) GetY() float64 {
+	if x != nil {
+		return x.Y
+	}
+	return 0
+}
+
+func (x *Coordinate) GetZ() float64 {
+	if x != nil {
+		return x.Z
+	}
+	return 0
+}
+
+type BoudingBox struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Top    int32 `protobuf:"varint,1,opt,name=top,proto3" json:"top,omitempty"`
+	Left   int32 `protobuf:"varint,2,opt,name=left,proto3" json:"left,omitempty"`
+	Width  int32 `protobuf:"varint,3,opt,name=width,proto3" json:"width,omitempty"`
+	Height int32 `protobuf:"varint,4,opt,name=height,proto3" json:"height,omitempty"`
+}
+
+func (x *BoudingBox) Reset() {
+	*x = BoudingBox{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BoudingBox) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BoudingBox) ProtoMessage() {}
+
+func (x *BoudingBox) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BoudingBox.ProtoReflect.Descriptor instead.
+func (*BoudingBox) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *BoudingBox) GetTop() int32 {
+	if x != nil {
+		return x.Top
+	}
+	return 0
+}
+
+func (x *BoudingBox) GetLeft() int32 {
+	if x != nil {
+		return x.Left
+	}
+	return 0
+}
+
+func (x *BoudingBox) GetWidth() int32 {
+	if x != nil {
+		return x.Width
+	}
+	return 0
+}
+
+func (x *BoudingBox) GetHeight() int32 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+// Video Streaming messages
+type ShapeProto struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Dim []*ShapeProto_Dim `protobuf:"bytes,2,rep,name=dim,proto3" json:"dim,omitempty"`
+}
+
+func (x *ShapeProto) Reset() {
+	*x = ShapeProto{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ShapeProto) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShapeProto) ProtoMessage() {}
+
+func (x *ShapeProto) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShapeProto.ProtoReflect.Descriptor instead.
+func (*ShapeProto) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ShapeProto) GetDim() []*ShapeProto_Dim {
+	if x != nil {
+		return x.Dim
+	}
+	return nil
+}
+
+type VideoFrame struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Width      int64       `protobuf:"varint,1,opt,name=width,proto3" json:"width,omitempty"`
+	Height     int64       `protobuf:"varint,2,opt,name=height,proto3" json:"height,omitempty"`
+	Data       []byte      `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	Timestamp  int64       `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	IsKeyframe bool        `protobuf:"varint,5,opt,name=is_keyframe,json=isKeyframe,proto3" json:"is_keyframe,omitempty"`
+	Pts        int64       `protobuf:"varint,6,opt,name=pts,proto3" json:"pts,omitempty"`
+	Dts        int64       `protobuf:"varint,7,opt,name=dts,proto3" json:"dts,omitempty"`
+	FrameType  string      `protobuf:"bytes,8,opt,name=frame_type,json=frameType,proto3" json:"frame_type,omitempty"`
+	IsCorrupt  bool        `protobuf:"varint,9,opt,name=is_corrupt,json=isCorrupt,proto3" json:"is_corrupt,omitempty"`
+	TimeBase   float64     `protobuf:"fixed64,10,opt,name=time_base,json=timeBase,proto3" json:"time_base,omitempty"`
+	Shape      *ShapeProto `protobuf:"bytes,11,opt,name=shape,proto3" json:"shape,omitempty"`
+	DeviceId   string      `protobuf:"bytes,12,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Packet     int64       `protobuf:"varint,13,opt,name=packet,proto3" json:"packet,omitempty"`
+	Keyframe   int64       `protobuf:"varint,14,opt,name=keyframe,proto3" json:"keyframe,omitempty"`
+	Extradata  []byte      `protobuf:"bytes,15,opt,name=extradata,proto3" json:"extradata,omitempty"`
+	CodecName  string      `protobuf:"bytes,16,opt,name=codec_name,json=codecName,proto3" json:"codec_name,omitempty"`
+	PixFmt     string      `protobuf:"bytes,17,opt,name=pix_fmt,json=pixFmt,proto3" json:"pix_fmt,omitempty"`
+}
+
+func (x *VideoFrame) Reset() {
+	*x = VideoFrame{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoFrame) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoFrame) ProtoMessage() {}
+
+func (x *VideoFrame) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoFrame.ProtoReflect.Descriptor instead.
+func (*VideoFrame) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *VideoFrame) GetWidth() int64 {
+	if x != nil {
+		return x.Width
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetHeight() int64 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetData() []byte {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+func (x *VideoFrame) GetTimestamp() int64 {
+	if x != nil {
+		return x.Timestamp
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetIsKeyframe() bool {
+	if x != nil {
+		return x.IsKeyframe
+	}
+	return false
+}
+
+func (x *VideoFrame) GetPts() int64 {
+	if x != nil {
+		return x.Pts
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetDts() int64 {
+	if x != nil {
+		return x.Dts
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetFrameType() string {
+	if x != nil {
+		return x.FrameType
+	}
+	return ""
+}
+
+func (x *VideoFrame) GetIsCorrupt() bool {
+	if x != nil {
+		return x.IsCorrupt
+	}
+	return false
+}
+
+func (x *VideoFrame) GetTimeBase() float64 {
+	if x != nil {
+		return x.TimeBase
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetShape() *ShapeProto {
+	if x != nil {
+		return x.Shape
+	}
+	return nil
+}
+
+func (x *VideoFrame) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+func (x *VideoFrame) GetPacket() int64 {
+	if x != nil {
+		return x.Packet
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetKeyframe() int64 {
+	if x != nil {
+		return x.Keyframe
+	}
+	return 0
+}
+
+func (x *VideoFrame) GetExtradata() []byte {
+	if x != nil {
+		return x.Extradata
+	}
+	return nil
+}
+
+func (x *VideoFrame) GetCodecName() string {
+	if x != nil {
+		return x.CodecName
+	}
+	return ""
+}
+
+func (x *VideoFrame) GetPixFmt() string {
+	if x != nil {
+		return x.PixFmt
+	}
+	return ""
+}
+
+type VideoFrameRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	KeyFrameOnly bool   `protobuf:"varint,1,opt,name=key_frame_only,json=keyFrameOnly,proto3" json:"key_frame_only,omitempty"`
+	DeviceId     string `protobuf:"bytes,2,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+}
+
+func (x *VideoFrameRequest) Reset() {
+	*x = VideoFrameRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoFrameRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoFrameRequest) ProtoMessage() {}
+
+func (x *VideoFrameRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoFrameRequest.ProtoReflect.Descriptor instead.
+func (*VideoFrameRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *VideoFrameRequest) GetKeyFrameOnly() bool {
+	if x != nil {
+		return x.KeyFrameOnly
+	}
+	return false
+}
+
+func (x *VideoFrameRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+type VideoFrameBufferedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceId      string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	TimestampFrom int64  `protobuf:"varint,2,opt,name=timestamp_from,json=timestampFrom,proto3" json:"timestamp_from,omitempty"`
+	TimestampTo   int64  `protobuf:"varint,3,opt,name=timestamp_to,json=timestampTo,proto3" json:"timestamp_to,omitempty"`
+}
+
+func (x *VideoFrameBufferedRequest) Reset() {
+	*x = VideoFrameBufferedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoFrameBufferedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
