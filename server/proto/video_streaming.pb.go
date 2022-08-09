@@ -1193,3 +1193,364 @@ type StorageRequest struct {
 	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	Start    bool   `protobuf:"varint,2,opt,name=start,proto3" json:"start,omitempty"`
 }
+
+func (x *StorageRequest) Reset() {
+	*x = StorageRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StorageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StorageRequest) ProtoMessage() {}
+
+func (x *StorageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StorageRequest.ProtoReflect.Descriptor instead.
+func (*StorageRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *StorageRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+func (x *StorageRequest) GetStart() bool {
+	if x != nil {
+		return x.Start
+	}
+	return false
+}
+
+type StorageResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Start    bool   `protobuf:"varint,2,opt,name=start,proto3" json:"start,omitempty"`
+}
+
+func (x *StorageResponse) Reset() {
+	*x = StorageResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StorageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StorageResponse) ProtoMessage() {}
+
+func (x *StorageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StorageResponse.ProtoReflect.Descriptor instead.
+func (*StorageResponse) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *StorageResponse) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+func (x *StorageResponse) GetStart() bool {
+	if x != nil {
+		return x.Start
+	}
+	return false
+}
+
+// VideoCodec information about the stream
+type VideoCodec struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Width         int32  `protobuf:"varint,2,opt,name=width,proto3" json:"width,omitempty"`
+	Height        int32  `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
+	PixFmt        string `protobuf:"bytes,4,opt,name=pix_fmt,json=pixFmt,proto3" json:"pix_fmt,omitempty"`
+	Extradata     []byte `protobuf:"bytes,5,opt,name=extradata,proto3" json:"extradata,omitempty"`
+	ExtradataSize int32  `protobuf:"varint,6,opt,name=extradata_size,json=extradataSize,proto3" json:"extradata_size,omitempty"`
+	LongName      string `protobuf:"bytes,7,opt,name=long_name,json=longName,proto3" json:"long_name,omitempty"`
+}
+
+func (x *VideoCodec) Reset() {
+	*x = VideoCodec{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoCodec) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoCodec) ProtoMessage() {}
+
+func (x *VideoCodec) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoCodec.ProtoReflect.Descriptor instead.
+func (*VideoCodec) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *VideoCodec) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *VideoCodec) GetWidth() int32 {
+	if x != nil {
+		return x.Width
+	}
+	return 0
+}
+
+func (x *VideoCodec) GetHeight() int32 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *VideoCodec) GetPixFmt() string {
+	if x != nil {
+		return x.PixFmt
+	}
+	return ""
+}
+
+func (x *VideoCodec) GetExtradata() []byte {
+	if x != nil {
+		return x.Extradata
+	}
+	return nil
+}
+
+func (x *VideoCodec) GetExtradataSize() int32 {
+	if x != nil {
+		return x.ExtradataSize
+	}
+	return 0
+}
+
+func (x *VideoCodec) GetLongName() string {
+	if x != nil {
+		return x.LongName
+	}
+	return ""
+}
+
+type VideoProbeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+}
+
+func (x *VideoProbeRequest) Reset() {
+	*x = VideoProbeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoProbeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoProbeRequest) ProtoMessage() {}
+
+func (x *VideoProbeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoProbeRequest.ProtoReflect.Descriptor instead.
+func (*VideoProbeRequest) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *VideoProbeRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
+type VideoProbeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	VideoCodec *VideoCodec  `protobuf:"bytes,1,opt,name=video_codec,json=videoCodec,proto3" json:"video_codec,omitempty"`
+	Buffer     *VideoBuffer `protobuf:"bytes,2,opt,name=buffer,proto3" json:"buffer,omitempty"`
+}
+
+func (x *VideoProbeResponse) Reset() {
+	*x = VideoProbeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoProbeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoProbeResponse) ProtoMessage() {}
+
+func (x *VideoProbeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoProbeResponse.ProtoReflect.Descriptor instead.
+func (*VideoProbeResponse) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *VideoProbeResponse) GetVideoCodec() *VideoCodec {
+	if x != nil {
+		return x.VideoCodec
+	}
+	return nil
+}
+
+func (x *VideoProbeResponse) GetBuffer() *VideoBuffer {
+	if x != nil {
+		return x.Buffer
+	}
+	return nil
+}
+
+type VideoBuffer struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StartTime       int64 `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime         int64 `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	DurationSeconds int64 `protobuf:"varint,3,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
+	ApproximateFps  int32 `protobuf:"varint,4,opt,name=approximate_fps,json=approximateFps,proto3" json:"approximate_fps,omitempty"`
+	Frames          int64 `protobuf:"varint,5,opt,name=frames,proto3" json:"frames,omitempty"`
+}
+
+func (x *VideoBuffer) Reset() {
+	*x = VideoBuffer{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_video_streaming_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VideoBuffer) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoBuffer) ProtoMessage() {}
+
+func (x *VideoBuffer) ProtoReflect() protoreflect.Message {
+	mi := &file_video_streaming_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoBuffer.ProtoReflect.Descriptor instead.
+func (*VideoBuffer) Descriptor() ([]byte, []int) {
+	return file_video_streaming_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *VideoBuffer) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *VideoBuffer) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *VideoBuffer) GetDurationSeconds() int64 {
+	if x != nil {
+		return x.DurationSeconds
