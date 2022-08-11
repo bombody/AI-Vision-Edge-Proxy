@@ -2300,3 +2300,392 @@ func file_video_streaming_proto_init() {
 				return &v.unknownFields
 			default:
 				return nil
+			}
+		}
+		file_video_streaming_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VideoProbeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_video_streaming_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VideoBuffer); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_video_streaming_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SystemTimeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_video_streaming_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SystemTimeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_video_streaming_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ShapeProto_Dim); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+	}
+	type x struct{}
+	out := protoimpl.TypeBuilder{
+		File: protoimpl.DescBuilder{
+			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
+			RawDescriptor: file_video_streaming_proto_rawDesc,
+			NumEnums:      0,
+			NumMessages:   22,
+			NumExtensions: 0,
+			NumServices:   1,
+		},
+		GoTypes:           file_video_streaming_proto_goTypes,
+		DependencyIndexes: file_video_streaming_proto_depIdxs,
+		MessageInfos:      file_video_streaming_proto_msgTypes,
+	}.Build()
+	File_video_streaming_proto = out.File
+	file_video_streaming_proto_rawDesc = nil
+	file_video_streaming_proto_goTypes = nil
+	file_video_streaming_proto_depIdxs = nil
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConnInterface
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion6
+
+// ImageClient is the client API for Image service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type ImageClient interface {
+	VideoLatestImage(ctx context.Context, in *VideoFrameRequest, opts ...grpc.CallOption) (*VideoFrame, error)
+	VideoBufferedImage(ctx context.Context, in *VideoFrameBufferedRequest, opts ...grpc.CallOption) (Image_VideoBufferedImageClient, error)
+	VideoProbe(ctx context.Context, in *VideoProbeRequest, opts ...grpc.CallOption) (*VideoProbeResponse, error)
+	ListStreams(ctx context.Context, in *ListStreamRequest, opts ...grpc.CallOption) (Image_ListStreamsClient, error)
+	Annotate(ctx context.Context, in *AnnotateRequest, opts ...grpc.CallOption) (*AnnotateResponse, error)
+	Proxy(ctx context.Context, in *ProxyRequest, opts ...grpc.CallOption) (*ProxyResponse, error)
+	Storage(ctx context.Context, in *StorageRequest, opts ...grpc.CallOption) (*StorageResponse, error)
+	SystemTime(ctx context.Context, in *SystemTimeRequest, opts ...grpc.CallOption) (*SystemTimeResponse, error)
+}
+
+type imageClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewImageClient(cc grpc.ClientConnInterface) ImageClient {
+	return &imageClient{cc}
+}
+
+func (c *imageClient) VideoLatestImage(ctx context.Context, in *VideoFrameRequest, opts ...grpc.CallOption) (*VideoFrame, error) {
+	out := new(VideoFrame)
+	err := c.cc.Invoke(ctx, "/chrys.cloud.videostreaming.v1beta1.Image/VideoLatestImage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *imageClient) VideoBufferedImage(ctx context.Context, in *VideoFrameBufferedRequest, opts ...grpc.CallOption) (Image_VideoBufferedImageClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Image_serviceDesc.Streams[0], "/chrys.cloud.videostreaming.v1beta1.Image/VideoBufferedImage", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &imageVideoBufferedImageClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Image_VideoBufferedImageClient interface {
+	Recv() (*VideoFrame, error)
+	grpc.ClientStream
+}
+
+type imageVideoBufferedImageClient struct {
+	grpc.ClientStream
+}
+
+func (x *imageVideoBufferedImageClient) Recv() (*VideoFrame, error) {
+	m := new(VideoFrame)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *imageClient) VideoProbe(ctx context.Context, in *VideoProbeRequest, opts ...grpc.CallOption) (*VideoProbeResponse, error) {
+	out := new(VideoProbeResponse)
+	err := c.cc.Invoke(ctx, "/chrys.cloud.videostreaming.v1beta1.Image/VideoProbe", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *imageClient) ListStreams(ctx context.Context, in *ListStreamRequest, opts ...grpc.CallOption) (Image_ListStreamsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Image_serviceDesc.Streams[1], "/chrys.cloud.videostreaming.v1beta1.Image/ListStreams", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &imageListStreamsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Image_ListStreamsClient interface {
+	Recv() (*ListStream, error)
+	grpc.ClientStream
+}
+
+type imageListStreamsClient struct {
+	grpc.ClientStream
+}
+
+func (x *imageListStreamsClient) Recv() (*ListStream, error) {
+	m := new(ListStream)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *imageClient) Annotate(ctx context.Context, in *AnnotateRequest, opts ...grpc.CallOption) (*AnnotateResponse, error) {
+	out := new(AnnotateResponse)
+	err := c.cc.Invoke(ctx, "/chrys.cloud.videostreaming.v1beta1.Image/Annotate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *imageClient) Proxy(ctx context.Context, in *ProxyRequest, opts ...grpc.CallOption) (*ProxyResponse, error) {
+	out := new(ProxyResponse)
+	err := c.cc.Invoke(ctx, "/chrys.cloud.videostreaming.v1beta1.Image/Proxy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *imageClient) Storage(ctx context.Context, in *StorageRequest, opts ...grpc.CallOption) (*StorageResponse, error) {
+	out := new(StorageResponse)
+	err := c.cc.Invoke(ctx, "/chrys.cloud.videostreaming.v1beta1.Image/Storage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *imageClient) SystemTime(ctx context.Context, in *SystemTimeRequest, opts ...grpc.CallOption) (*SystemTimeResponse, error) {
+	out := new(SystemTimeResponse)
+	err := c.cc.Invoke(ctx, "/chrys.cloud.videostreaming.v1beta1.Image/SystemTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ImageServer is the server API for Image service.
+type ImageServer interface {
+	VideoLatestImage(context.Context, *VideoFrameRequest) (*VideoFrame, error)
+	VideoBufferedImage(*VideoFrameBufferedRequest, Image_VideoBufferedImageServer) error
+	VideoProbe(context.Context, *VideoProbeRequest) (*VideoProbeResponse, error)
+	ListStreams(*ListStreamRequest, Image_ListStreamsServer) error
+	Annotate(context.Context, *AnnotateRequest) (*AnnotateResponse, error)
+	Proxy(context.Context, *ProxyRequest) (*ProxyResponse, error)
+	Storage(context.Context, *StorageRequest) (*StorageResponse, error)
+	SystemTime(context.Context, *SystemTimeRequest) (*SystemTimeResponse, error)
+}
+
+// UnimplementedImageServer can be embedded to have forward compatible implementations.
+type UnimplementedImageServer struct {
+}
+
+func (*UnimplementedImageServer) VideoLatestImage(context.Context, *VideoFrameRequest) (*VideoFrame, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VideoLatestImage not implemented")
+}
+func (*UnimplementedImageServer) VideoBufferedImage(*VideoFrameBufferedRequest, Image_VideoBufferedImageServer) error {
+	return status.Errorf(codes.Unimplemented, "method VideoBufferedImage not implemented")
+}
+func (*UnimplementedImageServer) VideoProbe(context.Context, *VideoProbeRequest) (*VideoProbeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VideoProbe not implemented")
+}
+func (*UnimplementedImageServer) ListStreams(*ListStreamRequest, Image_ListStreamsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListStreams not implemented")
+}
+func (*UnimplementedImageServer) Annotate(context.Context, *AnnotateRequest) (*AnnotateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Annotate not implemented")
+}
+func (*UnimplementedImageServer) Proxy(context.Context, *ProxyRequest) (*ProxyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Proxy not implemented")
+}
+func (*UnimplementedImageServer) Storage(context.Context, *StorageRequest) (*StorageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Storage not implemented")
+}
+func (*UnimplementedImageServer) SystemTime(context.Context, *SystemTimeRequest) (*SystemTimeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SystemTime not implemented")
+}
+
+func RegisterImageServer(s *grpc.Server, srv ImageServer) {
+	s.RegisterService(&_Image_serviceDesc, srv)
+}
+
+func _Image_VideoLatestImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VideoFrameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImageServer).VideoLatestImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chrys.cloud.videostreaming.v1beta1.Image/VideoLatestImage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImageServer).VideoLatestImage(ctx, req.(*VideoFrameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Image_VideoBufferedImage_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(VideoFrameBufferedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ImageServer).VideoBufferedImage(m, &imageVideoBufferedImageServer{stream})
+}
+
+type Image_VideoBufferedImageServer interface {
+	Send(*VideoFrame) error
+	grpc.ServerStream
+}
+
+type imageVideoBufferedImageServer struct {
+	grpc.ServerStream
+}
+
+func (x *imageVideoBufferedImageServer) Send(m *VideoFrame) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Image_VideoProbe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VideoProbeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImageServer).VideoProbe(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chrys.cloud.videostreaming.v1beta1.Image/VideoProbe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImageServer).VideoProbe(ctx, req.(*VideoProbeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Image_ListStreams_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListStreamRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ImageServer).ListStreams(m, &imageListStreamsServer{stream})
+}
+
+type Image_ListStreamsServer interface {
+	Send(*ListStream) error
+	grpc.ServerStream
+}
+
+type imageListStreamsServer struct {
+	grpc.ServerStream
+}
+
+func (x *imageListStreamsServer) Send(m *ListStream) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Image_Annotate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AnnotateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImageServer).Annotate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chrys.cloud.videostreaming.v1beta1.Image/Annotate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImageServer).Annotate(ctx, req.(*AnnotateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Image_Proxy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProxyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImageServer).Proxy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chrys.cloud.videostreaming.v1beta1.Image/Proxy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImageServer).Proxy(ctx, req.(*ProxyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
