@@ -2689,3 +2689,83 @@ func _Image_Proxy_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	}
 	return interceptor(ctx, in, info, handler)
 }
+
+func _Image_Storage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StorageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImageServer).Storage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chrys.cloud.videostreaming.v1beta1.Image/Storage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImageServer).Storage(ctx, req.(*StorageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Image_SystemTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SystemTimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImageServer).SystemTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chrys.cloud.videostreaming.v1beta1.Image/SystemTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImageServer).SystemTime(ctx, req.(*SystemTimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Image_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "chrys.cloud.videostreaming.v1beta1.Image",
+	HandlerType: (*ImageServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "VideoLatestImage",
+			Handler:    _Image_VideoLatestImage_Handler,
+		},
+		{
+			MethodName: "VideoProbe",
+			Handler:    _Image_VideoProbe_Handler,
+		},
+		{
+			MethodName: "Annotate",
+			Handler:    _Image_Annotate_Handler,
+		},
+		{
+			MethodName: "Proxy",
+			Handler:    _Image_Proxy_Handler,
+		},
+		{
+			MethodName: "Storage",
+			Handler:    _Image_Storage_Handler,
+		},
+		{
+			MethodName: "SystemTime",
+			Handler:    _Image_SystemTime_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "VideoBufferedImage",
+			Handler:       _Image_VideoBufferedImage_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListStreams",
+			Handler:       _Image_ListStreams_Handler,
+			ServerStreams: true,
+		},
+	},
+	Metadata: "video_streaming.proto",
+}
