@@ -9,4 +9,20 @@
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package services
+
+import (
+	"encoding/json"
+	"strconv"
+	"strings"
+	"time"
+
+	"github.com/chryscloud/go-microkit-plugins/docker"
+	g "github.com/chryscloud/video-edge-ai-proxy/globals"
+	"github.com/chryscloud/video-edge-ai-proxy/models"
+	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/filters"
+	"githu
