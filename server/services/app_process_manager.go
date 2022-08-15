@@ -25,4 +25,17 @@ import (
 	"github.com/chryscloud/video-edge-ai-proxy/models"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/filters"
-	"githu
+	"github.com/docker/docker/api/types/mount"
+	dockerErrors "github.com/docker/docker/client"
+	"github.com/docker/go-connections/nat"
+	"github.com/go-redis/redis/v7"
+)
+
+// ProcessManager - start, stop of docker containers
+type AppProcessManager struct {
+	storage *Storage
+	rdb     *redis.Client
+}
+
+func NewAppManager(storage *Storage, rdb *redis.Client) *AppProcessManager {
+	return &
