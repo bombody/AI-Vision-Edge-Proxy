@@ -38,4 +38,17 @@ type AppProcessManager struct {
 }
 
 func NewAppManager(storage *Storage, rdb *redis.Client) *AppProcessManager {
-	return &
+	return &AppProcessManager{
+		storage: storage,
+		rdb:     rdb,
+	}
+}
+
+// Install - installs the new app
+func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess, error) {
+
+	// installation process
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+
+	fl := filters.NewArgs()
+	pruneReport, pruneErr := cl.
