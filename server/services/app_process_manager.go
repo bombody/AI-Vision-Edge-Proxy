@@ -51,4 +51,16 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
 
 	fl := filters.NewArgs()
-	pruneReport, pruneErr := cl.
+	pruneReport, pruneErr := cl.ContainersPrune(fl)
+	if pruneErr != nil {
+		g.Log.Error("container prunning fialed", pruneErr)
+		return nil, pruneErr
+	}
+	g.Log.Info("app prune successfull. Report and space reclaimed", pruneReport.ContainersDeleted, pruneReport.SpaceReclaimed)
+
+	// expose desired ports mappings if any
+	portMap := nat.PortMap{}
+	portSet := nat.PortSet{}
+	if len(app.PortMapping) > 0 {
+
+		for _, pm := range app.P
