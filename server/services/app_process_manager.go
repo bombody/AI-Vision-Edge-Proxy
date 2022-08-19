@@ -63,4 +63,16 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 	portSet := nat.PortSet{}
 	if len(app.PortMapping) > 0 {
 
-		for _, pm := range app.P
+		for _, pm := range app.PortMapping {
+			exposedPort := strconv.Itoa(pm.Exposed)
+			mapsTo := pm.MapTo
+
+			mapsToPort := strconv.Itoa(mapsTo) + "/tcp"
+			portSet[nat.Port(mapsToPort)] = struct{}{}
+			portMap[nat.Port(mapsToPort)] = []nat.PortBinding{{HostIP: "0.0.0.0", HostPort: exposedPort}}
+		}
+	}
+
+	// prepare host configuration
+	hostConfig := &container.HostConfig{
+		LogConfig: container.LogConfig
