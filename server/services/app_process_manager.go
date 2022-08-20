@@ -75,4 +75,12 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 
 	// prepare host configuration
 	hostConfig := &container.HostConfig{
-		LogConfig: container.LogConfig
+		LogConfig: container.LogConfig{
+			Type:   "json-file",
+			Config: map[string]string{"max-file": "3", "max-size": "3M"},
+		},
+		RestartPolicy: container.RestartPolicy{Name: "on-failure", MaximumRetryCount: 10},
+		Resources: container.Resources{
+			CPUShares: 1024, // equal weight to all containers. check here the docs here:  https://docs.docker.com/config/containers/resource_constraints/
+		},
+		NetworkM
