@@ -83,4 +83,15 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 		Resources: container.Resources{
 			CPUShares: 1024, // equal weight to all containers. check here the docs here:  https://docs.docker.com/config/containers/resource_constraints/
 		},
-		NetworkM
+		NetworkMode: container.NetworkMode("chrysnet"),
+	}
+	if app.Runtime == models.RuntimeNvidia {
+		hostConfig.Runtime = models.RuntimeNvidia
+		capabilites := [][]string{{"gpu", "nvidia", "compute"}}
+		hostConfig.DeviceRequests = []container.DeviceRequest{{Driver: models.RuntimeNvidia, Capabilities: capabilites, Count: -1}}
+	}
+	if len(portMap) > 0 {
+		hostConfig.PortBindings = portMap
+	}
+
+	// prepare mo
