@@ -109,4 +109,15 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 		hostConfig.Mounts = mounts
 	}
 
-	// prepare 
+	// prepare environment variables if any
+	envVars := []string{}
+	if len(app.EnvVars) > 0 {
+		for _, env := range app.EnvVars {
+			envVars = append(envVars, env.Name+"="+env.Value)
+		}
+	}
+
+	envVars = append(envVars, "PYTHONUNBUFFERED=0") // for output to console
+
+	// prepare image tag
+	imageTag := app.DockerHubUser + "/" + app.DockerhubRepository + ":" + app.DockerHubVersion
