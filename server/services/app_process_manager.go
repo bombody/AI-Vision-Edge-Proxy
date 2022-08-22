@@ -94,4 +94,19 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 		hostConfig.PortBindings = portMap
 	}
 
-	// prepare mo
+	// prepare mounted folders if any
+	if len(app.MountFolders) > 0 {
+		mounts := make([]mount.Mount, 0)
+		for _, mnt := range app.MountFolders {
+			mount := mount.Mount{
+				Type:     mount.TypeBind,
+				Source:   mnt.Name,
+				Target:   mnt.Value,
+				ReadOnly: false,
+			}
+			mounts = append(mounts, mount)
+		}
+		hostConfig.Mounts = mounts
+	}
+
+	// prepare 
