@@ -135,4 +135,19 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 	if ccErr != nil {
 
 		g.Log.Error("failed to create container ", app.Name, ccErr)
-		return nil, models.ErrProce
+		return nil, models.ErrProcessConflict
+	}
+
+	err := cl.ContainerStart(app.Name)
+	if err != nil {
+		g.Log.Error("failed to start container", app.Name, err)
+		return nil, err
+	}
+
+	app.Status = models.ProcessStatusRunning
+	app.Created = time.Now().Unix() * 1000
+	app.Modified = time.Now().Unix() * 1000
+
+	obj, err := json.Marshal(app)
+	if err != nil {
+		g.Log.Error("failed to marshal
