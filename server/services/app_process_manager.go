@@ -121,3 +121,18 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 
 	// prepare image tag
 	imageTag := app.DockerHubUser + "/" + app.DockerhubRepository + ":" + app.DockerHubVersion
+
+	// preapre container configuration
+	containerConf := &container.Config{
+		Image: imageTag,
+		Env:   envVars,
+	}
+	if len(portSet) > 0 {
+		containerConf.ExposedPorts = portSet
+	}
+	_, ccErr := cl.ContainerCreate(strings.ToLower(app.Name), containerConf, hostConfig, nil)
+
+	if ccErr != nil {
+
+		g.Log.Error("failed to create container ", app.Name, ccErr)
+		return nil, models.ErrProce
