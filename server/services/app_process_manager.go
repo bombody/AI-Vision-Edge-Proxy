@@ -166,4 +166,18 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 func (am *AppProcessManager) ListApps() ([]*models.AppProcess, error) {
 	objects, err := am.storage.List(models.PrefixAppProcess)
 	if err != nil {
-		g
+		g.Log.Error("failed to list devices", err)
+		return nil, err
+	}
+	processes := make([]*models.AppProcess, 0)
+	for _, v := range objects {
+		var process models.AppProcess
+		dErr := json.Unmarshal(v, &process)
+		if dErr != nil {
+			g.Log.Error("failed to unamrshal object", err)
+			return nil, err
+		}
+		processes = append(processes, &process)
+	}
+	deleteProcesses := make([]*models.AppProcess, 0)
+	cleanProc
