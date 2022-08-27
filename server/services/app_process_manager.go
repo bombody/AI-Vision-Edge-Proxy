@@ -150,4 +150,20 @@ func (am *AppProcessManager) Install(app *models.AppProcess) (*models.AppProcess
 
 	obj, err := json.Marshal(app)
 	if err != nil {
-		g.Log.Error("failed to marshal
+		g.Log.Error("failed to marshal process json", err)
+		return nil, err
+	}
+
+	err = am.storage.Put(models.PrefixAppProcess, app.Name, obj)
+	if err != nil {
+		g.Log.Error("failed to store process into datastore", err)
+		return nil, err
+	}
+
+	return app, nil
+}
+
+func (am *AppProcessManager) ListApps() ([]*models.AppProcess, error) {
+	objects, err := am.storage.List(models.PrefixAppProcess)
+	if err != nil {
+		g
