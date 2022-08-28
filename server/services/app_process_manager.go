@@ -188,4 +188,16 @@ func (am *AppProcessManager) ListApps() ([]*models.AppProcess, error) {
 			g.Log.Warn("failed to load process", err)
 			if err == models.ErrProcessNotFound {
 				// remove from the list and datastore
-				deleteProcesses = append(deleteProcesses, pro
+				deleteProcesses = append(deleteProcesses, proc)
+				continue
+			}
+			g.Log.Error("failed to get process info", err)
+			return nil, err
+		}
+		cleanProcesses = append(cleanProcesses, info)
+	}
+	if len(deleteProcesses) > 0 {
+		for _, proc := range deleteProcesses {
+			err := am.storage.Del(models.PrefixRTSPProcess, proc.Name)
+			if err != nil {
+				g.Log.Error("failed to delete process with name", proc.N
