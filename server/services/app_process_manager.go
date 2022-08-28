@@ -180,4 +180,12 @@ func (am *AppProcessManager) ListApps() ([]*models.AppProcess, error) {
 		processes = append(processes, &process)
 	}
 	deleteProcesses := make([]*models.AppProcess, 0)
-	cleanProc
+	cleanProcesses := make([]*models.AppProcess, 0)
+	// clean up and update the list
+	for _, proc := range processes {
+		info, err := am.Info(proc.Name)
+		if err != nil {
+			g.Log.Warn("failed to load process", err)
+			if err == models.ErrProcessNotFound {
+				// remove from the list and datastore
+				deleteProcesses = append(deleteProcesses, pro
