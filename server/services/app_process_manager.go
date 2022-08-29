@@ -200,4 +200,15 @@ func (am *AppProcessManager) ListApps() ([]*models.AppProcess, error) {
 		for _, proc := range deleteProcesses {
 			err := am.storage.Del(models.PrefixRTSPProcess, proc.Name)
 			if err != nil {
-				g.Log.Error("failed to delete process with name", proc.N
+				g.Log.Error("failed to delete process with name", proc.Name, err)
+				return nil, err
+			}
+		}
+	}
+	return cleanProcesses, nil
+}
+
+func (am *AppProcessManager) Info(appName string) (*models.AppProcess, error) {
+	// Info - return information on the streaming docker container (it also updates the process status)
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+	contai
