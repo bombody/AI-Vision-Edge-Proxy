@@ -224,4 +224,16 @@ func (am *AppProcessManager) Info(appName string) (*models.AppProcess, error) {
 	// max 100 lines of logs
 	logs, err := cl.ContainerLogs(container.ID, 100, time.Unix(0, 0))
 	if err != nil {
-		g.Log.Error
+		g.Log.Error("failed to retrieve container logs", err)
+		return nil, err
+	}
+
+	sp, err := am.storage.Get(models.PrefixAppProcess, appName)
+	if err != nil {
+		g.Log.Error("failed to find device with name", appName, err)
+		return nil, models.ErrProcessNotFoundDatastore
+	}
+	var status models.AppProcess
+	err = json.Unmarshal(sp, &status)
+	if err != nil {
+		g.Log.Error("failed to unmarshal stored process ", err)
