@@ -211,4 +211,17 @@ func (am *AppProcessManager) ListApps() ([]*models.AppProcess, error) {
 func (am *AppProcessManager) Info(appName string) (*models.AppProcess, error) {
 	// Info - return information on the streaming docker container (it also updates the process status)
 	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
-	contai
+	container, err := cl.ContainerGet(appName)
+	if err != nil {
+		if dockerErrors.IsErrNotFound(err) {
+			g.Log.Info("container not found to be stopeed", err)
+			return nil, models.ErrProcessNotFound
+		}
+		g.Log.Error("failed to retrieve container", err)
+		return nil, err
+	}
+
+	// max 100 lines of logs
+	logs, err := cl.ContainerLogs(container.ID, 100, time.Unix(0, 0))
+	if err != nil {
+		g.Log.Error
