@@ -237,3 +237,18 @@ func (am *AppProcessManager) Info(appName string) (*models.AppProcess, error) {
 	err = json.Unmarshal(sp, &status)
 	if err != nil {
 		g.Log.Error("failed to unmarshal stored process ", err)
+		return nil, err
+	}
+	status.ContainerID = container.ID
+	if container != nil {
+		status.State = container.State
+		status.Status = container.State.Status
+	} else {
+		status.Status = "unknown"
+	}
+	status.Logs = logs
+	status.Modified = time.Now().Unix() * 1000
+
+	b, err := json.Marshal(&status)
+	if err != nil {
+		g.Log.Error("failed to m
