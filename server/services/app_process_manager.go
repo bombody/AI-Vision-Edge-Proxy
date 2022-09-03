@@ -251,4 +251,14 @@ func (am *AppProcessManager) Info(appName string) (*models.AppProcess, error) {
 
 	b, err := json.Marshal(&status)
 	if err != nil {
-		g.Log.Error("failed to m
+		g.Log.Error("failed to marshal process", err)
+		return nil, err
+	}
+	err = am.storage.Put(models.PrefixAppProcess, status.Name, b)
+	if err != nil {
+		g.Log.Error("failed to store process after info", err)
+		return nil, err
+	}
+
+	return &status, nil
+}
