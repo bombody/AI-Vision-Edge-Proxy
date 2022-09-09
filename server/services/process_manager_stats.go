@@ -35,4 +35,15 @@ func (pm *ProcessManager) StatsAllProcesses(sett *models.Settings) (*models.AllS
 
 	stats.Containers = totalContainers
 	stats.ContainersRunning = runningContainers
-	st
+	stats.ContainersStopped = stoppedContainers
+	stats.ActiveImages = int(activeImages)
+	stats.TotalVolumeSize = totalVolumeSize
+	stats.TotalActiveVolumes = int(activeVolumes)
+	stats.GatewayID = sett.GatewayID
+	stats.TotalImageSize = totalImgSize
+
+	stats.ContainersStats = make([]*models.ProcessStats, 0)
+
+	pList, err := pm.List()
+	if err != nil {
+		g.Log.Erro
