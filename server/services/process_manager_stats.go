@@ -46,4 +46,17 @@ func (pm *ProcessManager) StatsAllProcesses(sett *models.Settings) (*models.AllS
 
 	pList, err := pm.List()
 	if err != nil {
-		g.Log.Erro
+		g.Log.Error("failed to list all containers", err)
+		return nil, err
+	}
+
+	// gather all container stats
+	for _, process := range pList {
+		c, err := cl.ContainerGet(process.ContainerID)
+		if err != nil {
+			g.Log.Error("failed to get container from docker system", err)
+			continue
+		}
+		n := c.Name
+		// skip default running components
+		if strings.Contain
