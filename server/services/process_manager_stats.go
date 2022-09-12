@@ -59,4 +59,19 @@ func (pm *ProcessManager) StatsAllProcesses(sett *models.Settings) (*models.AllS
 		}
 		n := c.Name
 		// skip default running components
-		if strings.Contain
+		if strings.Contains(n, "chrysedgeportal") || strings.Contains(n, "chrysedgeserver") || strings.Contains(n, "redis") {
+			continue
+		}
+
+		s, err := cl.ContainerStats(c.ID)
+		if err != nil {
+			return nil, err
+		}
+		calculated := cl.CalculateStats(s)
+		calculated.Status = c.State.Status
+		restartCount := 0
+		if c.State.ExitCode > 0 {
+			restartCount = c.RestartCount
+		}
+
+		pro
