@@ -84,4 +84,8 @@ func (pm *ProcessManager) StatsAllProcesses(sett *models.Settings) (*models.AllS
 			NumRestarts: restartCount,
 			Status:      c.State.Status,
 		}
-		stats.ContainersStats = append(stats.Con
+		stats.ContainersStats = append(stats.ContainersStats, procStats)
+	}
+
+	return stats, nil
+}
