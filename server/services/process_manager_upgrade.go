@@ -14,4 +14,20 @@ import (
 	"github.com/hashicorp/go-version"
 )
 
-func (pm *ProcessManager) FindUpgrad
+func (pm *ProcessManager) FindUpgrades(imageUpgrade *models.ImageUpgrade) ([]*models.StreamProcess, error) {
+	processes, err := pm.List()
+
+	if err != nil {
+		g.Log.Error("failed to list local processes", err)
+		return nil, err
+	}
+
+	upgradesAvailable := make([]*models.StreamProcess, 0)
+
+	if imageUpgrade.CurrentVersion == "" {
+		return upgradesAvailable, nil
+	}
+
+	currentVersion, vErr := version.NewVersion(imageUpgrade.CurrentVersion)
+	if vErr != nil {
+	
