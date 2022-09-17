@@ -30,4 +30,16 @@ func (pm *ProcessManager) FindUpgrades(imageUpgrade *models.ImageUpgrade) ([]*mo
 
 	currentVersion, vErr := version.NewVersion(imageUpgrade.CurrentVersion)
 	if vErr != nil {
-	
+		g.Log.Error("version conversion failed", imageUpgrade.CurrentVersion, vErr)
+		return nil, vErr
+	}
+
+	for _, proc := range processes {
+		imgTag := proc.ImageTag
+		splitted := strings.Split(imgTag, ":")
+		if len(splitted) == 2 {
+			ver := splitted[1]
+			processVersion, pErr := version.NewVersion(ver)
+			if pErr != nil {
+				g.Log.Warn("failed to convert version for", ver, pErr)
+				c
