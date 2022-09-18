@@ -53,4 +53,17 @@ func (pm *ProcessManager) FindUpgrades(imageUpgrade *models.ImageUpgrade) ([]*mo
 				upgradesAvailable = append(upgradesAvailable, proc)
 			}
 		} else {
-			upgradesAvailable = append(upgradesAvailable, p
+			upgradesAvailable = append(upgradesAvailable, proc)
+		}
+	}
+
+	return upgradesAvailable, nil
+}
+
+func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess, newImage string) (*models.StreamProcess, error) {
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+
+	// find container
+	containers, err := cl.ContainersList()
+	if err != nil {
+		g.Log.Error("failed to list running con
