@@ -42,4 +42,15 @@ func (pm *ProcessManager) FindUpgrades(imageUpgrade *models.ImageUpgrade) ([]*mo
 			processVersion, pErr := version.NewVersion(ver)
 			if pErr != nil {
 				g.Log.Warn("failed to convert version for", ver, pErr)
-				c
+				continue
+			}
+			// check if upgrade available
+			if currentVersion.GreaterThan(processVersion) {
+				proc.UpgradeAvailable = true
+				proc.NewerVersion = currentVersion.Original()
+				upgradesAvailable = append(upgradesAvailable, proc)
+			} else {
+				upgradesAvailable = append(upgradesAvailable, proc)
+			}
+		} else {
+			upgradesAvailable = append(upgradesAvailable, p
