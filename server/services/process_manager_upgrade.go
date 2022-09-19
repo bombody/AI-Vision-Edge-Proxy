@@ -66,4 +66,23 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 	// find container
 	containers, err := cl.ContainersList()
 	if err != nil {
-		g.Log.Error("failed to list running con
+		g.Log.Error("failed to list running containers", err)
+		return nil, err
+	}
+
+	var runningContainer types.Container
+
+	for _, container := range containers {
+		names := container.Names
+		if len(names) > 0 {
+			name := names[0][1:]
+			if name == process.Name {
+				// found it
+				runningContainer = container
+				break
+			}
+		}
+	}
+
+	if runningContainer.ID == "" {
+		g.Log.Warn("container for 
