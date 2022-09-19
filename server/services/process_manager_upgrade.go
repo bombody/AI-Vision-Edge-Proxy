@@ -85,4 +85,16 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 	}
 
 	if runningContainer.ID == "" {
-		g.Log.Warn("container for 
+		g.Log.Warn("container for process not found", process.Name, process.ImageTag, process.ContainerID)
+		return nil, models.ErrProcessNotFound
+	}
+
+	// validate that the new version of image exists on disk
+	existingImages, err := cl.ImagesList()
+	if err != nil {
+		g.Log.Error("failed to list local images", err)
+		return nil, err
+	}
+	repoTagFound := false
+	for _, img := range existingImages {
+		repoTags := img.Re
