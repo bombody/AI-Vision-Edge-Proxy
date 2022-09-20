@@ -97,4 +97,18 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 	}
 	repoTagFound := false
 	for _, img := range existingImages {
-		repoTags := img.Re
+		repoTags := img.RepoTags
+		for _, repoTag := range repoTags {
+			if repoTag == newImage {
+				// found it
+				repoTagFound = true
+			}
+		}
+	}
+	if !repoTagFound {
+		g.Log.Error("upgrade failed due to new image version doesn't exist (docker images)", newImage)
+		return nil, errors.New("new image version donesn't exist")
+	}
+
+	// check if process exists in database
+	processBytes, err := pm.storage.Get(models.PrefixRTSPProcess, process
