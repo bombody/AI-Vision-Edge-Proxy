@@ -111,4 +111,16 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 	}
 
 	// check if process exists in database
-	processBytes, err := pm.storage.Get(models.PrefixRTSPProcess, process
+	processBytes, err := pm.storage.Get(models.PrefixRTSPProcess, process.Name)
+	if err != nil {
+		if err == badger.ErrKeyNotFound {
+			return nil, models.ErrProcessNotFound
+		}
+		g.Log.Error("failed to retrieve process from datastore", err)
+		return nil, err
+	}
+	var existingProcess models.StreamProcess
+	err = json.Unmarshal(processBytes, &existingProcess)
+	if err != nil {
+		g.Log.Error("failed to unmarshal existing process", err)
+		return nil
