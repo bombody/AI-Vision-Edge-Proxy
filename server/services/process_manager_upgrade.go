@@ -135,4 +135,13 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 		return nil, rErr
 	}
 
-	existingPr
+	existingProcess.ImageTag = newBaseImage + ":" + newVersion
+	existingProcess.Modified = time.Now().Unix() * 1000
+
+	newExistingProcessBytes, err := json.Marshal(existingProcess)
+	if err != nil {
+		g.Log.Error("failed to marshal back to bytes existing process", err)
+		return nil, err
+	}
+
+	err = pm.storage.Put(models.PrefixR
