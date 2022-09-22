@@ -123,4 +123,16 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 	err = json.Unmarshal(processBytes, &existingProcess)
 	if err != nil {
 		g.Log.Error("failed to unmarshal existing process", err)
-		return nil
+		return nil, err
+	}
+
+	splitted := strings.Split(newImage, ":")
+	newVersion := splitted[1]
+	newBaseImage := splitted[0]
+	rErr := cl.ContainerReplace(runningContainer.ID, newBaseImage, newVersion)
+	if rErr != nil {
+		g.Log.Error("failed to replace running container", runningContainer.Names, runningContainer.ID, rErr)
+		return nil, rErr
+	}
+
+	existingPr
