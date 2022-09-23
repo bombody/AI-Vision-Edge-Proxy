@@ -144,4 +144,11 @@ func (pm *ProcessManager) UpgradeRunningContainer(process *models.StreamProcess,
 		return nil, err
 	}
 
-	err = pm.storage.Put(models.PrefixR
+	err = pm.storage.Put(models.PrefixRTSPProcess, existingProcess.Name, newExistingProcessBytes)
+	if err != nil {
+		g.Log.Error("failed to store upgraded process", err)
+		return nil, err
+	}
+
+	return &existingProcess, nil
+}
