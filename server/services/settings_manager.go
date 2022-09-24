@@ -195,3 +195,229 @@ func (sm *SettingsManager) updateSettingsWithMQTTCredentials(sysInfo *models.Sys
 	settings.GatewayID = cloudResponse.GatewayID
 	settings.Region = cloudResponse.Region
 	settings.PrivateRSAKey = cloudResponse.PrivateKeyPem
+
+	// curently only edgekey setting
+	settings.ProjectID = cloudResponse.ProjectID
+	settings.GatewayID = cloudResponse.GatewayID
+	settings.PrivateRSAKey = cloudResponse.PrivateKeyPem
+	settings.Region = cloudResponse.Region
+	settings.RegistryID = cloudResponse.RegistryID
+
+	if settings.Created < 0 {
+		settings.Created = time.Now().Unix() * 1000
+	}
+	settings.Modified = time.Now().Unix() * 1000
+
+	settingsBytes, err := json.Marshal(settings)
+	if err != nil {
+		g.Log.Error("failed to marshal settings", err)
+		return nil, err
+	}
+	sm.mux.Lock()
+	defer sm.mux.Unlock()
+	sm.current_edge_key = settings.EdgeKey
+	sm.current_edge_secret = settings.EdgeSecret
+	newSettingsErr := sm.storage.Put(models.PrefixSettingsKey, settings.Name, settingsBytes)
+
+	return settings, newSettingsErr
+}
+
+// Get settings from datastore
+func (sm *SettingsManager) Get() (*models.Settings, error) {
+	return sm.getDefault()
+}
+
+func (sm *SettingsManager) ListLocalDockerImages() ([]types.ImageSummary, error) {
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+	images, err := cl.ImagesList()
+	if err != nil {
+		return nil, err
+	}
+	return images, nil
+}
+
+// ListDockerImages - listing local docker images based on tag name and checking if there is a newer version available
+func (sm *SettingsManager) ListDockerImages(nameTag string) (*models.ImageUpgrade, error) {
+	// cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+	images, err := sm.ListLocalDockerImages()
+	if err != nil {
+		return nil, err
+	}
+
+	var options dockerhub.Option
+	hubCl := dockerhub.NewClient(options)
+
+	remoteTags, err := hubCl.Tags(nameTag)
+	if err != nil {
+		g.Log.Error("failed to retrieve remote tags", err)
+		return nil, err
+	}
+
+	// adding support for finding highest version for specific architecture
+	versionSuffix := ""
+	arch := runtime.GOARCH
+	if suffix, ok := ArchitectureSuffixMap[arch]; ok {
+		versionSuffix = suffix
+	}
+
+	// getting local tags
+	localTags := make([]string, 0)
+
+	for _, img := range images {
+		tags := img.RepoTags
+		for _, tag := range tags {
+			if strings.HasPrefix(tag, nameTag) {
+				// get the tag version
+				splitted := strings.Split(tag, ":")
+				if len(splitted) == 2 {
+					v := strings.Trim(splitted[1], "")
+					if versionSuffix != "" {
+						if !strings.Contains(v, versionSuffix) {
+							continue
+						}
+					}
+					if v != "latest" { // ignore latest versions
+						localTags = append(localTags, v)
+					}
+				}
+			}
+		}
+	}
+
+	highestRemoteTagVersion := ""
+	highestLocalTagVersion := ""
+	highestRemoteVersion := sm.findHighestVersion(remoteTags)
+	highestLocalVersion := sm.findHighestVersion(localTags)
+
+	hasUpgrade := false
+	if highestLocalVersion != nil && highestRemoteVersion != nil {
+		if highestLocalVersion.LessThan(highestRemoteVersion) {
+			hasUpgrade = true
+		}
+	}
+	if highestRemoteVersion != nil {
+		highestRemoteTagVersion = highestRemoteVersion.Original()
+	}
+	if highestLocalVersion != nil {
+		highestLocalTagVersion = highestLocalVersion.Original()
+	}
+
+	camType := "unknown"
+	if ct, ok := models.ImageTagVersionToCameraType[nameTag]; ok {
+		camType = ct
+	}
+
+	resp := &models.ImageUpgrade{
+		HasImage:             len(localTags) > 0,
+		HasUpgrade:           hasUpgrade,
+		Name:                 nameTag,
+		HighestRemoteVersion: highestRemoteTagVersion,
+		CurrentVersion:       highestLocalTagVersion,
+		CameraType:           camType,
+	}
+
+	return resp, nil
+}
+
+// PullDockerImage - pull docker image from dockerhub
+func (sm *SettingsManager) PullDockerImage(name, version string) (*models.PullDockerResponse, error) {
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+
+	arch := runtime.GOARCH
+	versionSuffix := ""
+	if suffix, ok := ArchitectureSuffixMap[arch]; ok {
+		versionSuffix = suffix
+	}
+	version = version + versionSuffix
+
+	resp, err := cl.ImagePullDockerHub(name, version, "", "")
+	if err != nil {
+		g.Log.Error("failed to pull image from dockerhub", name, version, err)
+		return nil, err
+	}
+
+	g.Log.Info(resp)
+	camType := "unknown"
+	if ct, ok := models.ImageTagVersionToCameraType[name]; ok {
+		camType = ct
+	}
+
+	settingTag := &models.SettingDockerTagVersion{
+		CameraType: camType,
+		Tag:        name,
+		Version:    version,
+	}
+	settingsTagBytes, err := json.Marshal(settingTag)
+	if err != nil {
+		g.Log.Error("failed to marshal settings", err)
+		return nil, err
+	}
+
+	sErr := sm.storage.Put(models.PrefixSettingsDockerTagVersions, camType, settingsTagBytes)
+	if sErr != nil {
+		g.Log.Error("failed to store latest docker tag version", sErr)
+		return nil, sErr
+	}
+
+	response := &models.PullDockerResponse{
+		Response: resp,
+	}
+
+	return response, nil
+}
+
+// findHighestVersion - finding the highest version from the list of tag:version strings
+func (sm *SettingsManager) findHighestVersion(versionsRaw []string) *version.Version {
+	if len(versionsRaw) == 0 {
+		return nil
+	}
+
+	// adding support for finding highest version for specific architecture
+	versionSuffix := ""
+	arch := runtime.GOARCH
+	if suffix, ok := ArchitectureSuffixMap[arch]; ok {
+		versionSuffix = suffix
+	}
+
+	versions := make([]*version.Version, 0)
+	for _, raw := range versionsRaw {
+		ver := raw
+		if versionSuffix != "" && !strings.Contains(raw, versionSuffix) {
+			// skip versions not matching cpu architecture
+			continue
+		}
+		v, _ := version.NewVersion(ver)
+		if v != nil {
+			versions = append(versions, v)
+		}
+	}
+	sort.Sort(version.Collection(versions))
+	if len(versions) > 0 {
+		return versions[len(versions)-1]
+	}
+	return nil
+}
+
+// getting dockers host system info
+func (sm *SettingsManager) GetSystemInfo() (*models.SystemInfo, error) {
+	cl := docker.NewSocketClient(docker.Log(g.Log), docker.Host("unix:///var/run/docker.sock"))
+
+	sys, _, err := cl.SystemWideInfo()
+	if err != nil {
+		g.Log.Error("Failed to get host system info", err)
+		return nil, err
+	}
+	systemInfo := &models.SystemInfo{
+		Architecture:  sys.Architecture,
+		NCPUs:         sys.NCPU,
+		TotalMemory:   sys.MemTotal,
+		Name:          sys.Name,
+		ID:            sys.ID,
+		KernelVersion: sys.KernelVersion,
+		OSType:        sys.OSType,
+		OS:            sys.OperatingSystem,
+		DockerVersion: sys.ServerVersion,
+	}
+
+	return systemInfo, nil
+}
