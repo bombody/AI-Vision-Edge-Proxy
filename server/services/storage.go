@@ -39,4 +39,21 @@ func (s *Storage) Put(prefix, key string, value []byte) error {
 		err := txn.Set([]byte(prefix+key), value)
 		return err
 	})
-	retur
+	return err
+}
+
+func (s *Storage) Get(prefix, key string) ([]byte, error) {
+	var valCopy []byte
+	err := s.db.View(func(txn *badger.Txn) error {
+		item, err := txn.Get([]byte(prefix + key))
+		if err != nil {
+			return err
+		}
+		valCopy, err = item.ValueCopy(nil)
+		return err
+	})
+	return valCopy, err
+}
+
+func (s *Storage) Del(prefix, key string) error {
+	err := s.db.Update(func(txn *badger.Txn) e
