@@ -23,4 +23,20 @@ const (
 	TablePrefixRTSP = "/rtsp/"
 )
 
-// Storage - main st
+// Storage - main storage functions (Get, Put, Del, List)
+type Storage struct {
+	db *badger.DB
+}
+
+func NewStorage(db *badger.DB) *Storage {
+	return &Storage{
+		db: db,
+	}
+}
+
+func (s *Storage) Put(prefix, key string, value []byte) error {
+	err := s.db.Update(func(txn *badger.Txn) error {
+		err := txn.Set([]byte(prefix+key), value)
+		return err
+	})
+	retur
