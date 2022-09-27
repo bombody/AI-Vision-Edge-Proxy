@@ -56,4 +56,19 @@ func (s *Storage) Get(prefix, key string) ([]byte, error) {
 }
 
 func (s *Storage) Del(prefix, key string) error {
-	err := s.db.Update(func(txn *badger.Txn) e
+	err := s.db.Update(func(txn *badger.Txn) error {
+		err := txn.Delete([]byte(prefix + key))
+		return err
+	})
+	return err
+}
+
+func (s *Storage) List(prefix string) (map[string][]byte, error) {
+
+	results := make(map[string][]byte, 0)
+	err := s.db.View(func(txn *badger.Txn) error {
+		opts := badger.DefaultIteratorOptions
+		opts.PrefetchSize = 128
+		it := txn.NewIterator(opts)
+		defer it.Close()
+		pfix :
