@@ -71,4 +71,20 @@ func (s *Storage) List(prefix string) (map[string][]byte, error) {
 		opts.PrefetchSize = 128
 		it := txn.NewIterator(opts)
 		defer it.Close()
-		pfix :
+		pfix := []byte(prefix)
+		for it.Seek(pfix); it.ValidForPrefix(pfix); it.Next() {
+			item := it.Item()
+			k := item.Key()
+			err := item.Value(func(v []byte) error {
+				results[string(k)] = v
+				return nil
+			})
+			if err != nil {
+				g.Log.Error("failed to iterate in db", err)
+				return err
+			}
+		}
+		return nil
+	})
+	return results, err
+}
