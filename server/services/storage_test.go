@@ -38,4 +38,23 @@ func setupDB() (*badger.DB, error) {
 	} else {
 		err := os.RemoveAll(testDBPath)
 		if err != nil {
-			return ni
+			return nil, err
+		}
+	}
+	db, err := badger.Open(badger.DefaultOptions(testDBPath))
+	if err != nil {
+		g.Log.Error("faile to open database", err)
+		return nil, err
+	}
+	return db, nil
+}
+
+func TestStorage(t *testing.T) {
+	db, err := setupDB()
+	if err != nil {
+		t.Fatal(err)
+	}
+	prefix := "/test/"
+	testValue := "this is test"
+	s := NewStorage(db)
+	pErr := s.Put(prefix, "test", 
