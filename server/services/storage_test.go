@@ -26,3 +26,16 @@ import (
 var (
 	testDBPath = "/tmp/chrystest"
 )
+
+func setupDB() (*badger.DB, error) {
+	if _, err := os.Stat(testDBPath); os.IsNotExist(err) {
+		// path/to/whatever does not exist
+		errDir := os.Mkdir(testDBPath, 0755)
+		if errDir != nil {
+			g.Log.Error("failed to create directiory for DB", testDBPath, errDir)
+			return nil, errDir
+		}
+	} else {
+		err := os.RemoveAll(testDBPath)
+		if err != nil {
+			return ni
