@@ -57,4 +57,23 @@ func TestStorage(t *testing.T) {
 	prefix := "/test/"
 	testValue := "this is test"
 	s := NewStorage(db)
-	pErr := s.Put(prefix, "test", 
+	pErr := s.Put(prefix, "test", []byte(testValue))
+	if pErr != nil {
+		t.Fatal(pErr)
+	}
+	val, gErr := s.Get(prefix, "test")
+	if gErr != nil {
+		t.Fatal(gErr)
+	}
+	if string(val) != testValue {
+		t.Fatal("test value not equal")
+	}
+}
+
+func TestPrefixScan(t *testing.T) {
+	db, err := setupDB()
+	if err != nil {
+		t.Fatal(err)
+	}
+	prefix := "/testprefix/"
+	testValue := "th
