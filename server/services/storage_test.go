@@ -76,4 +76,19 @@ func TestPrefixScan(t *testing.T) {
 		t.Fatal(err)
 	}
 	prefix := "/testprefix/"
-	testValue := "th
+	testValue := "this is test"
+	s := NewStorage(db)
+	for x := 1; x <= 10; x++ {
+		val := testValue + "_" + strconv.Itoa(x)
+		key := prefix + strconv.Itoa(x)
+		s.Put(prefix, key, []byte(val))
+	}
+	res, err := s.List(prefix)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(res) != 10 {
+		t.Fatal("expected 10 results")
+	}
+
+}
