@@ -16,4 +16,17 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-func CallAPIWithBody(apiClient *resty.Client, method string, fullEndpoint string,
+func CallAPIWithBody(apiClient *resty.Client, method string, fullEndpoint string, body interface{}, edgeKey, edgeSecret string) ([]byte, error) {
+
+	payload, err := json.Marshal(body)
+	if err != nil {
+		g.Log.Error("failed to marshal body", err)
+		return nil, err
+	}
+
+	h := md5.New()
+	h.Write(payload)
+	contentMD5 := hex.EncodeToString(h.Sum(nil))
+	current_ts := strconv.FormatInt(time.Now().Unix()*1000, 10)
+	signPayload := current_ts + contentMD5
+	
