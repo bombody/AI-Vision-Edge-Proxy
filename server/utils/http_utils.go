@@ -37,4 +37,15 @@ func CallAPIWithBody(apiClient *resty.Client, method string, fullEndpoint string
 	resp, sndErr := req.Execute(method, fullEndpoint)
 
 	if sndErr != nil {
-		g.Log.Error("failed to send annotations to remote 
+		g.Log.Error("failed to send annotations to remote api", sndErr)
+		return nil, sndErr
+	}
+	if resp.StatusCode() >= 200 && resp.StatusCode() <= 300 {
+		return resp.Body(), nil
+	}
+	if resp.StatusCode() == 403 || resp.StatusCode() == 401 {
+		g.Log.Error("invalid response code from chrysalis API: ", resp.StatusCode(), string(resp.Body()))
+		return nil, models.ErrForbidden
+	}
+	if resp.StatusCode() == 404 {
+		g.Log.Warn("chrysalis
