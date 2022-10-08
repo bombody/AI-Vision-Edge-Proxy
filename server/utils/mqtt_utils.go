@@ -32,4 +32,14 @@ func CreateJWT(projectID string, privateKeyBytes []byte, expiration time.Duratio
 			g.Log.Error("invalid private key", pErr)
 			return "", pErr
 		}
-		re
+		return token.SignedString(privKey)
+	case "ES256":
+		privKey, _ := jwt.ParseECPrivateKeyFromPEM(privateKeyBytes)
+		return token.SignedString(privKey)
+	}
+
+	return "", errors.New("Cannot find JWT algorithm. Specify 'ES256' or 'RS256'")
+}
+
+// ParseJWTTokenExpirationTime (no validation parsing of the jwt token in string format)
+func ParseJWTTokenExpirationTime
