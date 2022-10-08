@@ -16,4 +16,20 @@ import (
 // CreateJWT creates RS265 JWT signed token
 func CreateJWT(projectID string, privateKeyBytes []byte, expiration time.Duration) (string, error) {
 	claims := jwt.StandardClaims{
-		Audience:  
+		Audience:  projectID,
+		IssuedAt:  time.Now().Unix(),
+		ExpiresAt: time.Now().Add(expiration).Unix(),
+	}
+
+	token := jwt.NewWithClaims(jwt.GetSigningMethod("RS256"), claims)
+
+	algorithm := "RS256"
+
+	switch algorithm {
+	case "RS256":
+		privKey, pErr := jwt.ParseRSAPrivateKeyFromPEM(privateKeyBytes)
+		if pErr != nil {
+			g.Log.Error("invalid private key", pErr)
+			return "", pErr
+		}
+		re
