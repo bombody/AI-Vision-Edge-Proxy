@@ -42,4 +42,15 @@ func CreateJWT(projectID string, privateKeyBytes []byte, expiration time.Duratio
 }
 
 // ParseJWTTokenExpirationTime (no validation parsing of the jwt token in string format)
-func ParseJWTTokenExpirationTime
+func ParseJWTTokenExpirationTime(jwtToken string) (time.Time, error) {
+	claims := jwt.MapClaims{}
+	token, _, err := new(jwt.Parser).ParseUnverified(jwtToken, jwt.MapClaims{})
+	if err != nil {
+		return time.Time{}, err
+	}
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if !ok {
+		return time.Time{}, errors.New("Can't convert token's claims to standard claims")
+	}
+	var tm time.Time
+	switch exp :
