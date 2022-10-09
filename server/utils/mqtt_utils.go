@@ -53,4 +53,18 @@ func ParseJWTTokenExpirationTime(jwtToken string) (time.Time, error) {
 		return time.Time{}, errors.New("Can't convert token's claims to standard claims")
 	}
 	var tm time.Time
-	switch exp :
+	switch exp := claims["exp"].(type) {
+	case float64:
+		tm = time.Unix(int64(exp), 0).UTC()
+	case json.Number:
+		v, _ := exp.Int64()
+		tm = time.Unix(v, 0).UTC()
+	}
+	return tm, nil
+}
+
+// publishingTelemtry to gateway with custom quality of service
+// 0 - at most one
+// 1 - at least once
+// 2 - exactly once
+func publishTelemetry(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) err
