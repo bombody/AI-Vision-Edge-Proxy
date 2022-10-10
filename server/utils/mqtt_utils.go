@@ -67,4 +67,14 @@ func ParseJWTTokenExpirationTime(jwtToken string) (time.Time, error) {
 // 0 - at most one
 // 1 - at least once
 // 2 - exactly once
-func publishTelemetry(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) err
+func publishTelemetry(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) error {
+	telemetry := fmt.Sprintf("/devices/%v/events", gatewayID)
+
+	mqttBytes, err := json.Marshal(mqttMsg)
+	if err != nil {
+		g.Log.Error("failed to marshal mqtt message", err)
+		return err
+	}
+
+	if token := client.Publish(telemetry, 1, true, mqttBytes); token.WaitTimeout(time.Second*5) && token.Error() != nil {
+		g.Log.Info("failed to publish initial gateway payload", toke
