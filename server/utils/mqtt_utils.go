@@ -77,4 +77,15 @@ func publishTelemetry(gatewayID string, client qtt.Client, mqttMsg *models.MQTTM
 	}
 
 	if token := client.Publish(telemetry, 1, true, mqttBytes); token.WaitTimeout(time.Second*5) && token.Error() != nil {
-		g.Log.Info("failed to publish initial gateway payload", toke
+		g.Log.Info("failed to publish initial gateway payload", token.Error())
+		return token.Error()
+	}
+	return nil
+}
+
+// Publishing operation telemetry (applicaton and camera related operation such as install, remove, ...)
+func PublishOperationTelemetry(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) error {
+	return publishTelemetry(gatewayID, client, mqttMsg)
+}
+
+// Publish monitoring uses qos 0 (no biggy
