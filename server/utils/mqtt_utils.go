@@ -88,4 +88,10 @@ func PublishOperationTelemetry(gatewayID string, client qtt.Client, mqttMsg *mod
 	return publishTelemetry(gatewayID, client, mqttMsg)
 }
 
-// Publish monitoring uses qos 0 (no biggy
+// Publish monitoring uses qos 0 (no biggy if we miss an event or two)
+func PublishMonitoringTelemetry(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) error {
+	return publishTelemetry(gatewayID, client, mqttMsg)
+}
+
+// Attaching a device requires qos = 2 (at most once, since it's noted in the chrysalis cloud datastore)
+func AttachDeviceToGateway(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessag
