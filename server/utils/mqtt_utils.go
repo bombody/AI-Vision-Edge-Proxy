@@ -103,4 +103,11 @@ func DetachGatewayDevice(gatewayID string, client qtt.Client, mqttMsg *models.MQ
 	return publishTelemetry(gatewayID, client, mqttMsg)
 }
 
-// mqttLocalPublish publishing to redis pub/sub to be then forwarded to Chrysalis Cloud over MQTT proto
+// mqttLocalPublish publishing to redis pub/sub to be then forwarded to Chrysalis Cloud over MQTT protocol
+func PublishToRedis(rdb *redis.Client, deviceID string, operation models.MQTTProcessOperation, processType string, customMessage []byte) error {
+	// publish to chrysalis cloud the change
+	pubSubMsg := &models.MQTTMessage{
+		DeviceID:         deviceID,
+		Created:          time.Now().UTC().Unix() * 1000,
+		ProcessOperation: operation,
+		Proce
