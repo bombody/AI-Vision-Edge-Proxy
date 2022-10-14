@@ -94,4 +94,13 @@ func PublishMonitoringTelemetry(gatewayID string, client qtt.Client, mqttMsg *mo
 }
 
 // Attaching a device requires qos = 2 (at most once, since it's noted in the chrysalis cloud datastore)
-func AttachDeviceToGateway(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessag
+func AttachDeviceToGateway(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) error {
+	return publishTelemetry(gatewayID, client, mqttMsg)
+}
+
+// Dettaching a device requires qos = 2
+func DetachGatewayDevice(gatewayID string, client qtt.Client, mqttMsg *models.MQTTMessage) error {
+	return publishTelemetry(gatewayID, client, mqttMsg)
+}
+
+// mqttLocalPublish publishing to redis pub/sub to be then forwarded to Chrysalis Cloud over MQTT proto
