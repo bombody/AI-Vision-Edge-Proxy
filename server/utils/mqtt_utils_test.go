@@ -16,4 +16,12 @@ func TestJwtCreate(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	expiration, err := ParseJWTToken
+	expiration, err := ParseJWTTokenExpirationTime(token)
+	if err != nil {
+		t.Fatal(err)
+	}
+	current := time.Now().UTC()
+	if expiration.Before(current) {
+		t.Fatal("JWT error, expiration should be after current time")
+	}
+}
