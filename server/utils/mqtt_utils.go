@@ -120,4 +120,9 @@ func PublishToRedis(rdb *redis.Client, deviceID string, operation models.MQTTPro
 	} else {
 		rCmd := rdb.Publish(models.RedisLocalMQTTChannel, string(pubSubMsgBytes))
 		if rCmd.Err() != nil {
-			g.Log.Error("failed to publi
+			g.Log.Error("failed to publish change to redis internally", rCmd.Err())
+			return rCmd.Err()
+		}
+	}
+	return nil
+}
