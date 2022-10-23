@@ -59,4 +59,17 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximum
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-edgeproxy-portal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-edgeproxy-portal:
