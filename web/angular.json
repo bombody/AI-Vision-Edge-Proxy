@@ -72,4 +72,17 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "web-edgeproxy-portal:
+              "browserTarget": "web-edgeproxy-portal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-edgeproxy-portal:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+     
