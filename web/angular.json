@@ -121,4 +121,15 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web-edgeproxy-porta
+              "devServerTarget": "web-edgeproxy-portal:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "web-edgeproxy-portal",
+  "cli": {
+    "analytics": false
+  }
+}
