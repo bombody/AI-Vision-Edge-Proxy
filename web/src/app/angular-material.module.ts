@@ -25,4 +25,20 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatP
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
+@NgModule({
+    imports: [
+       CommonModule,
+       MatButtonModule,
+       MatToolbarModule,
+       MatIconModule,
+       MatSidenavModule,
+       MatBadgeModule,
+       MatListModule,
+       MatGridListModule,
+       MatFormFieldModule,
+       MatInputModule,
+       MatSelect
