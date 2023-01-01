@@ -57,4 +57,22 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
        MatProgressBarModule,
        MatProgressSpinnerModule,
        MatExpansionModule,
-       MatCheckboxMod
+       MatCheckboxModule
+    ],
+    exports: [
+       MatButtonModule,
+       MatToolbarModule,
+       MatIconModule,
+       MatSidenavModule,
+       MatBadgeModule,
+       MatListModule,
+       MatGridListModule,
+       MatInputModule,
+       MatFormFieldModule,
+       MatSelectModule,
+       MatRadioModule,
+       MatDatepickerModule,
+       MatChipsModule,
+       MatTooltipModule,
+       MatTableModule,
+       MatPagi
