@@ -3,4 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProcessesComponent } from './components/processes/processes.component';
 import { ProcessDetailsComponent } from './components/process-details/process-details.component';
-import { ProcessAddComponent } from './components/process-add/process-add.c
+import { ProcessAddComponent } from './components/process-add/process-add.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SetupComponent } from './components/setup/setup.component';
+import { AppAddComponent } from './components/app-add/app-add.component';
+import { AppDetailsComponent } from './components/app-details/app-details.component';
+
+
+const routes: Routes = [
+  {path: '', component: 
