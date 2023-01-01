@@ -75,4 +75,20 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
        MatChipsModule,
        MatTooltipModule,
        MatTableModule,
-       MatPagi
+       MatPaginatorModule,
+       MatCardModule,
+       MatTreeModule,
+       MatMenuModule,
+       MatTabsModule,
+       MatProgressBarModule,
+       MatStepperModule,
+       MatProgressSpinnerModule,
+       MatExpansionModule,
+       MatCheckboxModule
+    ],
+    providers: [
+       MatDatepickerModule,
+    ]
+ })
+ 
+ export class AngularMaterialModule { }
