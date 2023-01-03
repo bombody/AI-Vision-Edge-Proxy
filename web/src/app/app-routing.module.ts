@@ -18,4 +18,16 @@ const routes: Routes = [
       { path: "processes", component: ProcessesComponent},
       { path: "process/:name", component: ProcessDetailsComponent},
       { path: "addrtsp", component: ProcessAddComponent},
-      // { path: "applicat
+      // { path: "applications", component: AppprocessComponent},
+      { path: "applications/:name", component: AppDetailsComponent},
+      { path: "addapp", component: AppAddComponent},
+      { path: "settings", component: SettingsComponent}
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule
