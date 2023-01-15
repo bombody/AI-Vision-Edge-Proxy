@@ -32,4 +32,21 @@ import { AppDetailsComponent } from './components/app-details/app-details.compon
     ProcessesComponent,
     ProcessDetailsComponent,
     ProcessAddComponent,
-    ConfirmDialogComp
+    ConfirmDialogComponent,
+    SettingsComponent,
+    SetupComponent,
+    NotifyDialogComponent,
+    WaitDialogComponent,
+    AppAddComponent,
+    AppDetailsComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AngularMaterialModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    SimpleNot
