@@ -20,4 +20,16 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { SetupComponent } from './components/setup/setup.component';
 import { NotifyDialogComponent } from './components/shared/notify-dialog/notify-dialog.component';
 import { WaitDialogComponent } from './components/shared/wait-dialog/wait-dialog.component';
-import { SimpleNotificationsModule } 
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { AppAddComponent } from './components/app-add/app-add.component';
+import { AppDetailsComponent } from './components/app-details/app-details.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoaderComponent,
+    DashboardComponent,
+    ProcessesComponent,
+    ProcessDetailsComponent,
+    ProcessAddComponent,
+    ConfirmDialogComp
