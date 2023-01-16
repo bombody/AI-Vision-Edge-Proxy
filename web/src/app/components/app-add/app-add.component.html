@@ -1,0 +1,56 @@
+
+<mat-toolbar class="menu-bar mat-elevation-z1">
+    <button mat-mini-fab color="primary" routerLink="/local/processes" [queryParams]="{tab: '1'}">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      &nbsp;&nbsp;&nbsp;
+      <h1>Add Application</h1>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-content>
+        <mat-error>
+            {{errorMessage}}
+        </mat-error>
+
+        <form [formGroup]="appForm" (ngSubmit)="onSubmit()">
+            <p>
+                <mat-form-field appearance="fill" fxFlex="50%">
+                    <mat-label>Name the Application</mat-label>
+                    <input matInput formControlName="name" pattern="^/?[a-zA-Z0-9][a-zA-Z0-9_.-]+$">
+                    <mat-error *ngIf="f.name.errors">
+                        Only alpha characters and underscore allowed. Minimum 3 characters.
+                    </mat-error>
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field appearance="fill" fxFlex="30%">
+                    <mat-label>Runtime</mat-label>
+                    <mat-select formControlName="runtime">
+                        <mat-option value="">Default</mat-option>
+                        <mat-option value="nvidia">Nvidia</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="fill" fxFlex="33%">
+                    <mat-label>DockerHub Username</mat-label>
+                    <input matInput formControlName="docker_user" placeholder="chryscloud">
+                    <mat-error *ngIf="f.name.errors">
+                        Dockerhub user required
+                    </mat-error>
+                </mat-form-field>&nbsp;
+                <mat-form-field appearance="fill" fxFlex="33%">
+                    <mat-label>DockerHub Repository</mat-label>
+                    <input matInput formControlName="docker_repository" placeholder="">
+                    <mat-error *ngIf="f.name.errors">
+                        Repository required
+                    </mat-error>
+                </mat-form-field>&nbsp;
+                <mat-form-field appearance="fill" fxFlex="33%">
+                    <mat-label>DockerHub Version</mat-label>
+                    <input matInput formControlName="docker_version">
+                    <mat-error *ngIf="f.name.errors">
+                        Version required
+                    </mat-error>
+                </mat-form-field>
+            </p>

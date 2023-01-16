@@ -49,4 +49,17 @@ import { AppDetailsComponent } from './components/app-details/app-details.compon
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    SimpleNot
+    SimpleNotificationsModule.forRoot(),
+  ],
+  entryComponents: [
+    ConfirmDialogComponent
+  ],
+  providers: [
+    CookieService,
+    LoaderService,
+    {provide: HTTP_INTERCEPTORS, useClass: ChrysHttpInterceptor, multi: true}
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule { }
