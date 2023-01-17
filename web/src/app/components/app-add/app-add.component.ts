@@ -16,4 +16,18 @@ export class AppAddComponent implements OnInit {
 
   appForm:FormGroup;
   // dockerTags:DockerTag[] = [
-  //   {value: "", viewValu
+  //   {value: "", viewValue:"default"}
+  // ]
+  runtimeSelected:string = '';
+  submitted:Boolean = false;
+  errorMessage:string;
+  loadingMessage:string;
+
+  constructor(private _formBuilder:FormBuilder, 
+    private edgeService:EdgeService, 
+    private router:Router,
+    private notifService:NotificationsService,
+    public dialog:MatDialog) { 
+
+    this.appForm = this._formBuilder.group({
+     
