@@ -30,4 +30,16 @@ export class AppAddComponent implements OnInit {
     public dialog:MatDialog) { 
 
     this.appForm = this._formBuilder.group({
-     
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      docker_user: [null],
+      docker_repository: [null, Validators.required],
+      docker_version: [null, Validators.required],
+      env_vars: this._formBuilder.array([]),
+      mount: this._formBuilder.array([]),
+      port_mappings: this._formBuilder.array([]),
+      runtime: [null],
+    });
+  }
+
+  mounts(): FormArray {
+    return
