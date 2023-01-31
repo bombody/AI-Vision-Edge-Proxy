@@ -76,4 +76,27 @@ export class AppAddComponent implements OnInit {
   }
    
   removePortMap(i:number) {
-    this.portMaps().re
+    this.portMaps().removeAt(i);
+  }
+
+
+  envVars() : FormArray {
+    return this.appForm.get("env_vars") as FormArray
+  }
+
+  newEnvVar(): FormGroup {
+    return this._formBuilder.group({
+      name: [null, Validators.required],
+      value: [null, Validators.required],
+    })
+  }
+
+  addEnvVar() {
+    this.envVars().push(this.newEnvVar());
+  }
+   
+  removeEnvVar(i:number) {
+    this.envVars().removeAt(i);
+  }
+
+  get f() { retur
