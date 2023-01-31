@@ -42,4 +42,22 @@ export class AppAddComponent implements OnInit {
   }
 
   mounts(): FormArray {
-    return
+    return this.appForm.get("mount") as FormArray;
+  }
+
+  newMount(): FormGroup {
+    return this._formBuilder.group({
+      name: [null, Validators.required],
+      value: [null, Validators.required],
+    })
+  }
+
+  addMount() {
+    this.mounts().push(this.newMount());
+  }
+
+  removeMount(i:number) {
+    this.mounts().removeAt(i);
+  }
+
+  portMaps(): FormAr
