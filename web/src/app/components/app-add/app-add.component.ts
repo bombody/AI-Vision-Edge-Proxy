@@ -60,4 +60,20 @@ export class AppAddComponent implements OnInit {
     this.mounts().removeAt(i);
   }
 
-  portMaps(): FormAr
+  portMaps(): FormArray {
+    return this.appForm.get("port_mappings") as FormArray
+  }
+
+  newPortMap(): FormGroup {
+    return this._formBuilder.group({
+      exposed: [null, Validators.required],
+      map_to: [null, Validators.required],
+    })
+  }
+
+  addPortMap() {
+    this.portMaps().push(this.newPortMap());
+  }
+   
+  removePortMap(i:number) {
+    this.portMaps().re
