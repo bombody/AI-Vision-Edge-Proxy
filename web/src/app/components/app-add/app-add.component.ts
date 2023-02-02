@@ -126,4 +126,16 @@ export class AppAddComponent implements OnInit {
       dialogReg.close();
       console.error(pullErr);
       this.loadingMessage = pullErr
-   
+      
+      this.notifService.error("Please execute this command in your terminal: docker pull " + tag +  ":" + version );
+    });
+
+  }
+
+  startApp(app:AppProcess) {
+    const dialogReg = this.dialog.open(WaitDialogComponent, {
+      maxWidth: "400px",
+      disableClose: true,
+      data: {
+        title: "Install",
+        message: "S
