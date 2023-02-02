@@ -99,4 +99,19 @@ export class AppAddComponent implements OnInit {
     this.envVars().removeAt(i);
   }
 
-  get f() { retur
+  get f() { return this.appForm.controls; }
+
+  ngOnInit(): void {
+  }
+
+  downloadApp(app:AppProcess, tag:string,version:string, title:string, message:string) {
+    const dialogReg = this.dialog.open(WaitDialogComponent, {
+      maxWidth: "400px",
+      disableClose: true,
+      data: {
+        title: title,
+        message: message
+      }
+    });
+
+    console.log("inspect app: ", 
