@@ -114,4 +114,16 @@ export class AppAddComponent implements OnInit {
       }
     });
 
-    console.log("inspect app: ", 
+    console.log("inspect app: ", app);
+
+    this.edgeService.pullDockerImage(tag, version).subscribe(pullData => {
+      this.loadingMessage = pullData.response;
+      // popup  window with Next button
+      console.log("pulled successfully: ", pullData);
+      this.startApp(app);
+      dialogReg.close();
+    }, pullErr => {
+      dialogReg.close();
+      console.error(pullErr);
+      this.loadingMessage = pullErr
+   
