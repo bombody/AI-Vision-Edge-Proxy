@@ -138,4 +138,22 @@ export class AppAddComponent implements OnInit {
       disableClose: true,
       data: {
         title: "Install",
-        message: "S
+        message: "Starting the app"
+      }
+    });
+
+    this.edgeService.installApp(app).subscribe(resp => {
+      
+      dialogReg.close();
+      this.router.navigate(['/local/processes'],  { queryParams: {tab: 1}});
+
+    }, error => {
+      console.log(error);
+      dialogReg.close();
+      this.loadingMessage = error.message;
+      this.notifService.error("Start failed");
+    })
+  }
+
+  onSubmit() {
+    th
