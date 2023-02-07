@@ -156,4 +156,19 @@ export class AppAddComponent implements OnInit {
   }
 
   onSubmit() {
-    th
+    this.submitted = true;
+    if (!this.appForm.valid) {
+      return
+    }
+
+    let app:AppProcess = this.appForm.value;
+
+    let imageTag = app.docker_repository
+    let imageVersion = app.docker_version
+    if (app.docker_user) {
+      imageTag = app.docker_user + "/" + imageTag
+    }
+
+    // // convert to ints from form strings
+    if (app.port_mappings) {
+      let p
