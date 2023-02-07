@@ -171,4 +171,15 @@ export class AppAddComponent implements OnInit {
 
     // // convert to ints from form strings
     if (app.port_mappings) {
-      let p
+      let portMappings:PortMap[] = [];
+      app.port_mappings.forEach(pm => {
+        let portMap:PortMap = {
+          exposed: Number(pm.exposed),
+          map_to: Number(pm.map_to),
+        }
+        portMappings.push(portMap);
+      });
+      app.port_mappings = portMappings;
+    }
+    
+    this.downloadApp(app,imageTag, imageVersion, "Downloading app", "Do not close this browser window. This may take a while. Please wait...
