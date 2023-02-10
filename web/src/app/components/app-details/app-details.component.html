@@ -6,4 +6,13 @@
       <div fxFlex></div>
       <h1>{{process.name}}</h1>
       <div fxFlex></div>
-      <button mat-stroked-button class
+      <button mat-stroked-button class="icon favorite-icon" color="primary" aria-label="Add new camera" (click)="delete(process)">
+        <mat-icon>delete</mat-icon>
+        <span fxHide fxShow.xl fxShow.lg fxShow.md>Delete</span>
+      </button>
+</mat-toolbar>
+
+<mat-card class="mat-elevation-z0" style="min-width: 300px;">
+    <mat-card-header id="sec">
+        <div fxFlexLayout="column">
+            <p>
