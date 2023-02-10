@@ -182,4 +182,8 @@ export class AppAddComponent implements OnInit {
       app.port_mappings = portMappings;
     }
     
-    this.downloadApp(app,imageTag, imageVersion, "Downloading app", "Do not close this browser window. This may take a while. Please wait...
+    this.downloadApp(app,imageTag, imageVersion, "Downloading app", "Do not close this browser window. This may take a while. Please wait...")
+
+  }
+
+}
