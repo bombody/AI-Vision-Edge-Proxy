@@ -21,4 +21,12 @@
         </div>
     </mat-card-header>
     <mat-card-content>
-        <div  fxLayout="column
+        <div  fxLayout="column" fxLayoutAlign="center center">
+          <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <mat-list>
+              <div mat-subheader>RTSP</div>
+              <mat-list-item>
+                <mat-icon mat-list-icon>schedule</mat-icon>
+                <div mat-line>Created</div>
+                <div mat-line>{{process?.created | date:'short'}}</div>
+              </mat-list-item>
