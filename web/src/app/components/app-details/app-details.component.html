@@ -15,4 +15,10 @@
 <mat-card class="mat-elevation-z0" style="min-width: 300px;">
     <mat-card-header id="sec">
         <div fxFlexLayout="column">
-            <p>
+            <p><span class="material-icons icon">video_settings</span>
+            <mat-card-title class="mat-h1">{{process.name}}</mat-card-title>
+            <mat-card-subtitle [ngClass]="{'chrys-error' : process.status === 'restarting'}">Status: {{process?.status}}</mat-card-subtitle>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div  fxLayout="column
