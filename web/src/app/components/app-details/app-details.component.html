@@ -45,4 +45,12 @@
                 </mat-list-item>
                 <mat-list-item>
                   <mat-icon mat-list-icon>exit_to_app</mat-icon>
-                  <div mat-line>E
+                  <div mat-line>Exit Code</div>
+                  <div mat-line>{{process?.state?.ExitCode}}</div>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>block</mat-icon>
+                  <div mat-line>Dead</div>
+                  <div mat-line>{{process?.state?.Dead}}</div>
+                </mat-list-item>
+             
