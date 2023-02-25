@@ -27,3 +27,25 @@ mat-form-field {
     min-width: 300px;
     max-width: 600px;
     width: 100%;
+    font-size: 16px;
+}
+
+
+#sec {
+  font-family: 'Raleway', sans-serif;
+  padding: 50px 0;
+  background: #fff;
+  text-align: center;
+  word-wrap:break-word;
+
+  .icon {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-weight: 200;
+    font-size: 30px;
+    color: $primary-color;
+  }
+
+}
