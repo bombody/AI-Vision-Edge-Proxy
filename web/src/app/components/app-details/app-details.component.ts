@@ -67,3 +67,41 @@ export class AppDetailsComponent implements OnInit, AfterViewInit {
         }
         if (proc.logs.stderr) {
           let stderr = atob(proc.logs.stderr)
+          console.log(stderr);
+          this.term.writeln("\x1B[1;3;31m=====ERROR LOGS=====\x1B[0m");
+          this.term.writeln(stderr);
+        }
+      }
+      console.log(proc);
+      this.process = proc;
+    }, error => {
+      console.error(error);
+    })
+  }
+
+  delete(process:AppProcess) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: {
+          title: "Are you sure?",
+          message: "You are about to delete the app."}
+      });
+  
+      // listen to response
+      dialogRef.afterClosed().subscribe(dialogResult => {
+        // if user pressed yes dialogResult will be true, 
+        // if he pressed no - it will be false
+        if (dialogResult) {
+          console.log("delete: ", dialogResult);
+          this.edgeService.removeApp(process.name).subscribe(res => {
+            console.log("delete success: ", res);
+            this.router.navigate(['/local/processes'],  { queryParams: {tab: 1}});
+          }, error => {
+            console.error(error);
+          });
+        }
+      });
+  }
+
+
+}
