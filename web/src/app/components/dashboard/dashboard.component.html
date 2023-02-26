@@ -10,4 +10,13 @@
             <mat-icon class="icon" aria-hidden="false" >account_circle</mat-icon>
         </button>
         <mat-menu #accountmenu="matMenu">
-            <button mat-m
+            <button mat-menu-item (click)="logout()">      
+                <span >Logout</span>
+            </button>
+        </mat-menu> -->
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.m
