@@ -19,4 +19,15 @@
     <mat-sidenav-container class="sidenav-container"
                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                   [fixedInViewport]="mobileQuery.m
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <div class="main-content">
+            <router-outlet></router-outlet>
+        </div>
+        
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
