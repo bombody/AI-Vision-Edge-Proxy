@@ -33,4 +33,23 @@
   .icon {
     padding: 0 14px;
   }
-  .menu-
+  .menu-icon {
+      padding: 5px;
+      margin-right: 5px;
+      margin-top: 5px;
+  }
+  
+  /****************
+Navigation Items
+*****************/
+$sidebar-font-color: #000000;
+$navigation-item-color-active: #63B7E6;
+$navigation-item-color-hover: #120b2d;
+$navigation-item-color: #000000;
+
+.mat-nav-list {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 12px;
+
+    .ma
