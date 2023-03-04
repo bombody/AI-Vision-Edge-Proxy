@@ -52,4 +52,27 @@ $navigation-item-color: #000000;
     margin-right: 8px;
     margin-top: 12px;
 
-    .ma
+    .mat-list-item-content {
+        padding: 0 8px;
+    }
+}
+
+.mat-list-base {
+    padding: 0 8px;
+}
+
+
+.mat-nav-list a {
+    color: $navigation-item-color;;
+    height: 44px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 8px;
+
+    &:hover {
+        background: $navigation-item-color-hover;
+        color: white;
+    }
+    &:active {
+        height
