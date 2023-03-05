@@ -75,4 +75,15 @@ $navigation-item-color: #000000;
         color: white;
     }
     &:active {
-        height
+        height: 44px;
+        background: $navigation-item-color-active;
+    }
+}
+
+.mat-nav-list .active {
+    height: 44px;
+    background: $navigation-item-color-active;
+    &:hover {
+        background: $navigation-item-color-active;
+    }
+}
