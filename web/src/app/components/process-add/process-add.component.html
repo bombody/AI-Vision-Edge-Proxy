@@ -2,4 +2,17 @@
     <button mat-mini-fab color="primary" routerLink="/local/processes">
         <mat-icon>arrow_back</mat-icon>
       </button>
-      &nbsp;&
+      &nbsp;&nbsp;&nbsp;
+      <h1>Connect RTSP Camera</h1>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-content>
+        <mat-error>
+            {{errorMessage}}
+        </mat-error>
+
+        <form [formGroup]="rtspForm" (ngSubmit)="onSubmit()">
+            <p>
+                <mat-form-field appearance="fill" fxFlex="100%">
+                    <mat-label>Name the R
