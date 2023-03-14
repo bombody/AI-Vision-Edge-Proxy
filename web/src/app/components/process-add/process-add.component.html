@@ -15,4 +15,12 @@
         <form [formGroup]="rtspForm" (ngSubmit)="onSubmit()">
             <p>
                 <mat-form-field appearance="fill" fxFlex="100%">
-                    <mat-label>Name the R
+                    <mat-label>Name the RTSP Camera</mat-label>
+                    <input matInput formControlName="name" pattern="[a-z_]*">
+                    <mat-error *ngIf="f.name.errors">
+                        Only alpha characters and underscore allowed. Minimum 4 characters.
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field ap
