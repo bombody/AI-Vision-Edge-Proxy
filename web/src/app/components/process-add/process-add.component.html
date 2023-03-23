@@ -39,4 +39,14 @@
                     <mat-label>Docker Image</mat-label>
                     <mat-select [value]="tagSelected">
                       <mat-option *ngFor="let tag of dockerTags" [value]="tag.value">
-  
+                        {{tag.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </p>
+            <p>
+                <button mat-flat-button color="primary" type="submit">Add</button>
+            </p>
+        </form>
+    </mat-card-content>
+</mat-card>
