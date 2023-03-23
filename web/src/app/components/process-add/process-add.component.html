@@ -30,4 +30,13 @@
             </p>
             <p>
                 <mat-form-field appearance="fill" fxFlex="100%">
-                    <mat-label>Chrysalis RTMP Endpoint</m
+                    <mat-label>Chrysalis RTMP Endpoint</mat-label>
+                    <input matInput formControlName="rtmp_endpoint">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Docker Image</mat-label>
+                    <mat-select [value]="tagSelected">
+                      <mat-option *ngFor="let tag of dockerTags" [value]="tag.value">
+  
