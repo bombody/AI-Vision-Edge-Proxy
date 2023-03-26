@@ -13,4 +13,17 @@ interface DockerTag {
 @Component({
   selector: 'app-process-add',
   templateUrl: './process-add.component.html',
-  styleUrls: [
+  styleUrls: ['./process-add.component.scss']
+})
+export class ProcessAddComponent implements OnInit {
+
+  rtspForm:FormGroup;
+  dockerTags:DockerTag[] = [
+    {value: "", viewValue:"default"}
+  ]
+  tagSelected:string = '';
+  submitted:Boolean = false;
+  errorMessage:string;
+
+  constructor(private _formBuilder:FormBuilder, private edgeService:EdgeService, private router:Router, private notifService:NotificationsService) {
+    this.rt
