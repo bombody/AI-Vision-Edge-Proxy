@@ -26,4 +26,16 @@ export class ProcessAddComponent implements OnInit {
   errorMessage:string;
 
   constructor(private _formBuilder:FormBuilder, private edgeService:EdgeService, private router:Router, private notifService:NotificationsService) {
-    this.rt
+    this.rtspForm = this._formBuilder.group({
+      name: [null, [Validators.required, Validators.minLength(4)]],
+      rtsp_endpoint: [null, [Validators.required]],
+      rtmp_endpoint: [null],
+    });
+   }
+
+  ngOnInit(): void {
+
+    let data = history.state.data;
+    if (data) {
+      if (data.rtsp_endpoint) {
+        this.rtspForm.get('rtsp_endpoint').setValue(data.rtsp_endpoi
