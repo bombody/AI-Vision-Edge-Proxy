@@ -11,4 +11,15 @@ describe('ProcessAddComponent', () => {
       declarations: [ ProcessAddComponent ]
     })
     .compileComponents();
- 
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ProcessAddComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
