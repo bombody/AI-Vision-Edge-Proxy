@@ -38,4 +38,21 @@ export class ProcessAddComponent implements OnInit {
     let data = history.state.data;
     if (data) {
       if (data.rtsp_endpoint) {
-        this.rtspForm.get('rtsp_endpoint').setValue(data.rtsp_endpoi
+        this.rtspForm.get('rtsp_endpoint').setValue(data.rtsp_endpoint);
+      }
+    }
+  }
+
+  get f() { return this.rtspForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+    if (!this.rtspForm.valid) {
+      return
+    }
+
+    let process:StreamProcess = this.rtspForm.value;
+
+    this.edgeService.startProcess(process).subscribe(res => {
+      console.log("start process result: ", res);
+      this.router.navigate(['/l
