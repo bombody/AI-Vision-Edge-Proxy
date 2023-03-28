@@ -55,4 +55,15 @@ export class ProcessAddComponent implements OnInit {
 
     this.edgeService.startProcess(process).subscribe(res => {
       console.log("start process result: ", res);
-      this.router.navigate(['/l
+      this.router.navigate(['/local/processes']);
+    }, error => {
+      console.error(error);
+      this.notifService.error("Error", error.message, {
+        clickToClose: true,
+        clickIconToClose: true
+      })
+    })
+
+  }
+
+}
