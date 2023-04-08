@@ -1,2 +1,12 @@
 <mat-toolbar class="menu-bar mat-elevation-z1">
-    <button m
+    <button mat-mini-fab color="primary" (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div fxFlex></div>
+    <h1>Edge Settings</h1>
+    <div fxFlex></div>
+</mat-toolbar>
+
+<div fxFlexLayout="row wrap" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+        <div fxFlex="1 2 calc(15em + 20px)">
+            <mat-expansion-panel [expa
