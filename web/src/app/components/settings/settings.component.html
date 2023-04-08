@@ -14,4 +14,11 @@
                     <mat-panel-title>
                         Connect with Cloud 
                         <span style="color: green; margin-left: 10px;" *ngIf="settings.gateway_id">OK</span>
-                        <span style="color: gray; margin-left: 10px;" *ngIf="!settings.gateway_id">
+                        <span style="color: gray; margin-left: 10px;" *ngIf="!settings.gateway_id">Click to Setup</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                
+                <span *ngIf="settings.gateway_id">Edge/Gateway is configured with ID <b>{{settings.gateway_id}}</b></span>
+                <span *ngIf="!settings.gateway_id">Edge 
