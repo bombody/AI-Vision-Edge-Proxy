@@ -9,4 +9,9 @@
 
 <div fxFlexLayout="row wrap" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
         <div fxFlex="1 2 calc(15em + 20px)">
-            <mat-expansion-panel [expa
+            <mat-expansion-panel [expanded]="!settings.gateway_id">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Connect with Cloud 
+                        <span style="color: green; margin-left: 10px;" *ngIf="settings.gateway_id">OK</span>
+                        <span style="color: gray; margin-left: 10px;" *ngIf="!settings.gateway_id">
