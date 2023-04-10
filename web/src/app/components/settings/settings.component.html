@@ -37,4 +37,9 @@
                     </p>
                     <p>
                         <mat-form-field appearance="fill" fxFlex="100%">
-                            <mat-label>Edge API Secret</mat-labe
+                            <mat-label>Edge API Secret</mat-label>
+                            <input matInput [type]="showEdgeKey ? 'text' : 'password'" formControlName="edge_secret" value="{{settings.edge_secret}}">
+                            <button mat-button matSuffix mat-icon-button (click)="showEdgeKey = !showEdgeKey">
+                                <mat-icon>visibility</mat-icon>
+                              </button>
+                        </mat-fo
