@@ -1,0 +1,7 @@
+<div *ngIf="loading" class="setup-overlay">
+  <div class="setup-settings-msg">{{loadingMessage}}</div>
+</div>
+
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+
+    <mat-toolb
