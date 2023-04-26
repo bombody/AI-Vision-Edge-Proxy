@@ -9,4 +9,14 @@ import { DialogData } from '../dialog-data';
 })
 export class NotifyDialogComponent implements OnInit {
 
-  constructor(public dialogRe
+  constructor(public dialogRef: MatDialogRef<NotifyDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  ngOnInit(): void {
+  }
+
+  onConfirm(): void {
+    this.dialogRef.close(true);
+  }
+
+}
