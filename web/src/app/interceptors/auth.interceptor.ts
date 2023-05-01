@@ -10,4 +10,12 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let ourcookie = this.cookie.get("chrys-token");
         
-    
+        if (ourcookie) {
+            return true;
+        }
+
+        this.router.navigate(['/user/login']);
+        return false;
+    }
+
+}
