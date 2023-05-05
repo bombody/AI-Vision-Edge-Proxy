@@ -25,4 +25,6 @@ export interface VarPair {
 }
 
 export interface PortMap {
-    expose
+    exposed:number,
+    map_to:number,
+}
