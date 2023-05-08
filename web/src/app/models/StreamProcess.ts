@@ -31,4 +31,10 @@ export interface State {
 
 export interface RTMPStreamStatus {
     streaming?:Boolean
-    storin
+    storing?:Boolean
+}
+
+export interface Logs {
+    stdout?:string
+    stderr?:string
+}
