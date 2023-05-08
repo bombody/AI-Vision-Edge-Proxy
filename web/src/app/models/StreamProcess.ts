@@ -12,4 +12,23 @@ export interface StreamProcess {
     rtmp_stream_status?:RTMPStreamStatus
     upgrade_available?:boolean
     newer_version?:string
-    upgrad
+    upgrading_now?:boolean
+}
+
+export interface State {
+    Status?:string
+    Running?:Boolean
+    Paused?:Boolean
+    Restarting?:Boolean
+    OOMKilled?:Boolean
+    Dead?:Boolean
+    Pid?:Number
+    ExitCode?:Number
+    Error?:string
+    StartedAt?:string
+    FinishedAt?:string
+}
+
+export interface RTMPStreamStatus {
+    streaming?:Boolean
+    storin
