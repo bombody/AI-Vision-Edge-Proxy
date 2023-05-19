@@ -89,3 +89,83 @@ $chrysalis-warn-color: (
       50: $black-87-opacity,
       100: $black-87-opacity,
       200: $black-87-opacity,
+      300: $black-87-opacity,
+      400: $black-87-opacity,
+      500: white,
+      600: white,
+      700: white,
+      800: $white-87-opacity,
+      900: $white-87-opacity,
+      A100: $black-87-opacity,
+      A200: white,
+      A400: white,
+      A700: white,
+    )
+  );
+
+
+$my-custom-primary: mat-palette($chrysalis-primary-color);
+$my-custom-accent: mat-palette($chrysalis-accent-color);
+$my-custom-warn: mat-palette($chrysalis-warn-color);
+
+$my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+
+// Convert to this => mat-dark-theme()
+// $my-custom-theme: mat-dark-theme($my-custom-primary, $my-custom-accent);
+
+@include angular-material-theme($my-custom-theme);
+
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family:     'Open Sans, sans-serif, Roboto,monospace',
+  $title:           mat-typography-level(20px, 32px, 500),
+  $headline:        mat-typography-level(32px, 48px, 700),
+  $body-1:          mat-typography-level(14px, 24px, 500),
+  $display-4:       mat-typography-level(112px, 112px, normal), // h4
+  $display-3:       mat-typography-level(48px, 0, 400), // h3
+  $display-2:       mat-typography-level(60px, -0.5, 400), // h2
+  $display-1:       mat-typography-level(96px, -1.5, 400), // h1
+  $body-2:          mat-typography-level(14px, 24px, 500),
+  $caption:         mat-typography-level(12px, 20px, 400),
+  $button:          mat-typography-level(14px, 14px, normal),
+  $input:           mat-typography-level(14px, 1, normal)
+);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+
+mat-card {
+    margin: 10px;
+}
+
+// Custom style for my anchor elements
+a {
+    // color: mat-color($my-custom-primary);
+    color: #4732FF;
+}
+
+.logo {
+    display: block;
+    max-width:300px;
+    max-height:240px;
+    width: auto;
+    height: auto;
+}
+
+.color-primary-background {
+    background: mat-color($chrysalis-primary-color);
+}
+
+@media (max-width: 600px) {
+    mat-toolbar {
+        flex-direction: row-reverse !important;
+    }
+}
