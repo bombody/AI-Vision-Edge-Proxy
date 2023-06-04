@@ -80,4 +80,19 @@
     /* TODO: Composition position got messed up somewhere */
     background: #000;
     color: #FFF;
- 
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.xterm .composition-view.active {
+    display: block;
+}
+
+.xterm .xterm-viewport {
+    /* On OS X this is required in order for the scroll bar to appear fully opaque */
+    background-color: #000;
+    overflow-y: scroll;
+    cursor: default;
+    position: absolute;
