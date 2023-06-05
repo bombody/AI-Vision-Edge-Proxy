@@ -122,3 +122,26 @@
     position: absolute;
     top: 0;
     left: -9999em;
+    line-height: normal;
+}
+
+.xterm {
+    cursor: text;
+}
+
+.xterm.enable-mouse-events {
+    /* When mouse events are enabled (eg. tmux), revert to the standard pointer cursor */
+    cursor: default;
+}
+
+.xterm.xterm-cursor-pointer {
+    cursor: pointer;
+}
+
+.xterm.column-select.focus {
+    /* Column selection mode */
+    cursor: crosshair;
+}
+
+.xterm .xterm-accessibility,
+.xterm .xterm-message
