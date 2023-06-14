@@ -197,4 +197,20 @@
  * Originally forked from (with the author's permission):
  *   Fabrice Bellard's javascript vt100 for jslinux:
  *   http://bellard.org/jslinux/
- *   C
+ *   Copyright (c) 2011 Fabrice Bellard
+ *   The original design remains. The terminal itself
+ *   has been extended to include xterm CSI codes, among
+ *   other features.
+ */
+
+/*
+ *  Default style for xterm.js
+ */
+
+ .terminal {
+    background-color: #000;
+    color: #fff;
+    font-family: courier-new, courier, monospace;
+    font-feature-settings: "liga" 0;
+    position: relative;
+    user-sele
