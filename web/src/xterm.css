@@ -213,4 +213,22 @@
     font-family: courier-new, courier, monospace;
     font-feature-settings: "liga" 0;
     position: relative;
-    user-sele
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.terminal.focus,
+.terminal:focus {
+    outline: none;
+}
+
+.terminal .xterm-helpers {
+    position: absolute;
+    top: 0;
+}
+
+.terminal .xterm-helper-textarea {
+    /*
+     * HACK: to fix IE's blinking cursor
+     * Move textarea out of the screen to the far left, so that the cursor is not visib
