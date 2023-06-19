@@ -267,4 +267,15 @@
 }
 
 .terminal:not(.focus) .terminal-cursor {
-    ou
+    outline: 1px solid #fff;
+    outline-offset: -1px;
+    background-color: transparent;
+}
+
+.terminal:not(.xterm-cursor-style-underline):not(.xterm-cursor-style-bar).focus.xterm-cursor-blink-on .terminal-cursor {
+    background-color: transparent;
+    color: inherit;
+}
+
+.terminal.xterm-cursor-style-bar .terminal-cursor,
+.terminal.xterm-cursor-style-underline .terminal-cur
