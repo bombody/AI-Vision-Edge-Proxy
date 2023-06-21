@@ -304,4 +304,18 @@
 .terminal.xterm-cursor-style-underline.focus.xterm-cursor-blink.xterm-cursor-blink-on .terminal-cursor::before {
     background-color: transparent;
 }
-.terminal.xterm-cursor-
+.terminal.xterm-cursor-style-bar.focus.xterm-cursor-blink .terminal-cursor::before,
+.terminal.xterm-cursor-style-underline.focus.xterm-cursor-blink .terminal-cursor::before {
+    background-color: #fff;
+}
+
+.terminal .composition-view {
+    background: #000;
+    color: #FFF;
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.terminal .composition-v
