@@ -278,4 +278,20 @@
 }
 
 .terminal.xterm-cursor-style-bar .terminal-cursor,
-.terminal.xterm-cursor-style-underline .terminal-cur
+.terminal.xterm-cursor-style-underline .terminal-cursor {
+    position: relative;
+}
+.terminal.xterm-cursor-style-bar .terminal-cursor::before,
+.terminal.xterm-cursor-style-underline .terminal-cursor::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: #fff;
+}
+.terminal.xterm-cursor-style-bar .terminal-cursor::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+}
+.terminal.xterm-cursor-sty
