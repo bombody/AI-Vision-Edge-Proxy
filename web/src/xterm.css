@@ -294,4 +294,14 @@
     left: 0;
     width: 1px;
 }
-.terminal.xterm-cursor-sty
+.terminal.xterm-cursor-style-underline .terminal-cursor::before {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+.terminal.xterm-cursor-style-bar.focus.xterm-cursor-blink.xterm-cursor-blink-on .terminal-cursor::before,
+.terminal.xterm-cursor-style-underline.focus.xterm-cursor-blink.xterm-cursor-blink-on .terminal-cursor::before {
+    background-color: transparent;
+}
+.terminal.xterm-cursor-
