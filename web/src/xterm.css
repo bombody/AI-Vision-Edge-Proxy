@@ -318,4 +318,20 @@
     z-index: 1;
 }
 
-.terminal .composition-v
+.terminal .composition-view.active {
+    display: block;
+}
+
+.terminal .xterm-viewport {
+    /* On OS X this is required in order for the scroll bar to appear fully opaque */
+    background-color: #000;
+    overflow-y: scroll;
+}
+
+.terminal .xterm-wide-char,
+.terminal .xterm-normal-char {
+    display: inline-block;
+}
+
+.terminal .xterm-rows {
+    position: absolute
