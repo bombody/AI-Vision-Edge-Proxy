@@ -369,4 +369,26 @@
     pointer-events: none;
 }
 
-.terminal
+.terminal .xterm-selection div {
+    position: absolute;
+    background-color: #fff;
+}
+
+/*
+ *  Determine default colors for xterm.js
+ */
+.terminal .xterm-bold {
+    font-weight: bold;
+}
+
+.terminal .xterm-underline {
+    text-decoration: underline;
+}
+
+.terminal .xterm-blink {
+    text-decoration: blink;
+}
+
+.terminal .xterm-hidden {
+    visibility: hidden;
+}
