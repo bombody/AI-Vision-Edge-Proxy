@@ -392,3 +392,30 @@
 .terminal .xterm-hidden {
     visibility: hidden;
 }
+
+.terminal .xterm-color-0 {
+    color: #2e3436;
+}
+
+.terminal .xterm-bg-color-0 {
+    background-color: #2e3436;
+}
+
+.terminal .xterm-color-1 {
+    color: #cc0000;
+}
+
+.terminal .xterm-bg-color-1 {
+    background-color: #cc0000;
+}
+
+.terminal .xterm-color-2 {
+    color: #4e9a06;
+}
+
+.terminal .xterm-bg-color-2 {
+    background-color: #4e9a06;
+}
+
+.terminal .xterm-color-3 {
+    col
