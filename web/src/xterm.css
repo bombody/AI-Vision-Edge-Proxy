@@ -521,3 +521,26 @@
     background-color: #eeeeec;
 }
 
+.terminal .xterm-color-16 {
+    color: #000000;
+}
+
+.terminal .xterm-bg-color-16 {
+    background-color: #000000;
+}
+
+.terminal .xterm-color-17 {
+    color: #00005f;
+}
+
+.terminal .xterm-bg-color-17 {
+    background-color: #00005f;
+}
+
+.terminal .xterm-color-18 {
+    color: #000087;
+}
+
+.terminal .xterm-bg-color-18 {
+    background-color: #000087;
+}
