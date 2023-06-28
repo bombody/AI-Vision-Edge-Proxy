@@ -446,3 +446,28 @@
 }
 
 .terminal .xterm-bg-color-6 {
+    background-color: #06989a;
+}
+
+.terminal .xterm-color-7 {
+    color: #d3d7cf;
+}
+
+.terminal .xterm-bg-color-7 {
+    background-color: #d3d7cf;
+}
+
+.terminal .xterm-color-8 {
+    color: #555753;
+}
+
+.terminal .xterm-bg-color-8 {
+    background-color: #555753;
+}
+
+.terminal .xterm-color-9 {
+    color: #ef2929;
+}
+
+.terminal .xterm-bg-color-9 {
+    backgr
