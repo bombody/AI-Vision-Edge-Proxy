@@ -544,3 +544,30 @@
 .terminal .xterm-bg-color-18 {
     background-color: #000087;
 }
+
+.terminal .xterm-color-19 {
+    color: #0000af;
+}
+
+.terminal .xterm-bg-color-19 {
+    background-color: #0000af;
+}
+
+.terminal .xterm-color-20 {
+    color: #0000d7;
+}
+
+.terminal .xterm-bg-color-20 {
+    background-color: #0000d7;
+}
+
+.terminal .xterm-color-21 {
+    color: #0000ff;
+}
+
+.terminal .xterm-bg-color-21 {
+    background-color: #0000ff;
+}
+
+.terminal .xterm-color-22 {
+    color: #005
