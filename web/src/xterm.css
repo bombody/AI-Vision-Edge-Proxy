@@ -746,4 +746,31 @@
 }
 
 .terminal .xterm-color-44 {
-    color: #00d7
+    color: #00d7d7;
+}
+
+.terminal .xterm-bg-color-44 {
+    background-color: #00d7d7;
+}
+
+.terminal .xterm-color-45 {
+    color: #00d7ff;
+}
+
+.terminal .xterm-bg-color-45 {
+    background-color: #00d7ff;
+}
+
+.terminal .xterm-color-46 {
+    color: #00ff00;
+}
+
+.terminal .xterm-bg-color-46 {
+    background-color: #00ff00;
+}
+
+.terminal .xterm-color-47 {
+    color: #00ff5f;
+}
+
+.terminal .xterm
