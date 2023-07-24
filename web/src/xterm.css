@@ -849,4 +849,29 @@
     background-color: #5f00d7;
 }
 
-.terminal .
+.terminal .xterm-color-57 {
+    color: #5f00ff;
+}
+
+.terminal .xterm-bg-color-57 {
+    background-color: #5f00ff;
+}
+
+.terminal .xterm-color-58 {
+    color: #5f5f00;
+}
+
+.terminal .xterm-bg-color-58 {
+    background-color: #5f5f00;
+}
+
+.terminal .xterm-color-59 {
+    color: #5f5f5f;
+}
+
+.terminal .xterm-bg-color-59 {
+    background-color: #5f5f5f;
+}
+
+.terminal .xterm-color-60 {
+    color:
