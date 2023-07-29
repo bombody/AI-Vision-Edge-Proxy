@@ -925,4 +925,28 @@
     color: #5f8787;
 }
 
-.terminal .xterm-bg
+.terminal .xterm-bg-color-66 {
+    background-color: #5f8787;
+}
+
+.terminal .xterm-color-67 {
+    color: #5f87af;
+}
+
+.terminal .xterm-bg-color-67 {
+    background-color: #5f87af;
+}
+
+.terminal .xterm-color-68 {
+    color: #5f87d7;
+}
+
+.terminal .xterm-bg-color-68 {
+    background-color: #5f87d7;
+}
+
+.terminal .xterm-color-69 {
+    color: #5f87ff;
+}
+
+.terminal 
