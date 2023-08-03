@@ -1025,4 +1025,32 @@
     background-color: #5fd787;
 }
 
-.termi
+.terminal .xterm-color-79 {
+    color: #5fd7af;
+}
+
+.terminal .xterm-bg-color-79 {
+    background-color: #5fd7af;
+}
+
+.terminal .xterm-color-80 {
+    color: #5fd7d7;
+}
+
+.terminal .xterm-bg-color-80 {
+    background-color: #5fd7d7;
+}
+
+.terminal .xterm-color-81 {
+    color: #5fd7ff;
+}
+
+.terminal .xterm-bg-color-81 {
+    background-color: #5fd7ff;
+}
+
+.terminal .xterm-color-82 {
+    color: #5fff00;
+}
+
+.terminal 
