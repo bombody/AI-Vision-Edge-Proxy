@@ -1382,4 +1382,29 @@
 }
 
 .terminal .xterm-bg-color-123 {
-    backgrou
+    background-color: #87ffff;
+}
+
+.terminal .xterm-color-124 {
+    color: #af0000;
+}
+
+.terminal .xterm-bg-color-124 {
+    background-color: #af0000;
+}
+
+.terminal .xterm-color-125 {
+    color: #af005f;
+}
+
+.terminal .xterm-bg-color-125 {
+    background-color: #af005f;
+}
+
+.terminal .xterm-color-126 {
+    color: #af0087;
+}
+
+.terminal .xterm-bg-color-126 {
+    background-color: #af0087;
+}
