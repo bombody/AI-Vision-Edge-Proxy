@@ -1801,4 +1801,28 @@
     background-color: #d787af;
 }
 
-.termi
+.terminal .xterm-color-176 {
+    color: #d787d7;
+}
+
+.terminal .xterm-bg-color-176 {
+    background-color: #d787d7;
+}
+
+.terminal .xterm-color-177 {
+    color: #d787ff;
+}
+
+.terminal .xterm-bg-color-177 {
+    background-color: #d787ff;
+}
+
+.terminal .xterm-color-178 {
+    color: #d7af00;
+}
+
+.terminal .xterm-bg-color-178 {
+    background-color: #d7af00;
+}
+
+.terminal .xt
