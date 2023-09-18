@@ -2022,3 +2022,28 @@
 }
 
 .terminal .xterm-bg-color-203 {
+    background-color: #ff5f5f;
+}
+
+.terminal .xterm-color-204 {
+    color: #ff5f87;
+}
+
+.terminal .xterm-bg-color-204 {
+    background-color: #ff5f87;
+}
+
+.terminal .xterm-color-205 {
+    color: #ff5faf;
+}
+
+.terminal .xterm-bg-color-205 {
+    background-color: #ff5faf;
+}
+
+.terminal .xterm-color-206 {
+    color: #ff5fd7;
+}
+
+.terminal .xterm-bg-color-206 {
+    background-c
