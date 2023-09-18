@@ -1998,4 +1998,27 @@
 }
 
 .terminal .xterm-bg-color-200 {
-    b
+    background-color: #ff00d7;
+}
+
+.terminal .xterm-color-201 {
+    color: #ff00ff;
+}
+
+.terminal .xterm-bg-color-201 {
+    background-color: #ff00ff;
+}
+
+.terminal .xterm-color-202 {
+    color: #ff5f00;
+}
+
+.terminal .xterm-bg-color-202 {
+    background-color: #ff5f00;
+}
+
+.terminal .xterm-color-203 {
+    color: #ff5f5f;
+}
+
+.terminal .xterm-bg-color-203 {
