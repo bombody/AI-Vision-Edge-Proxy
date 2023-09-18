@@ -2046,4 +2046,28 @@
 }
 
 .terminal .xterm-bg-color-206 {
-    background-c
+    background-color: #ff5fd7;
+}
+
+.terminal .xterm-color-207 {
+    color: #ff5fff;
+}
+
+.terminal .xterm-bg-color-207 {
+    background-color: #ff5fff;
+}
+
+.terminal .xterm-color-208 {
+    color: #ff8700;
+}
+
+.terminal .xterm-bg-color-208 {
+    background-color: #ff8700;
+}
+
+.terminal .xterm-color-209 {
+    color: #ff875f;
+}
+
+.terminal .xterm-bg-color-209 {
+    background-color: #f
