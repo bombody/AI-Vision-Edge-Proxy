@@ -2245,4 +2245,26 @@
     color: #ffffff;
 }
 
-.terminal
+.terminal .xterm-bg-color-231 {
+    background-color: #ffffff;
+}
+
+.terminal .xterm-color-232 {
+    color: #080808;
+}
+
+.terminal .xterm-bg-color-232 {
+    background-color: #080808;
+}
+
+.terminal .xterm-color-233 {
+    color: #121212;
+}
+
+.terminal .xterm-bg-color-233 {
+    background-color: #121212;
+}
+
+.terminal .xterm-color-234 {
+    color: #1c1c1c;
+}
