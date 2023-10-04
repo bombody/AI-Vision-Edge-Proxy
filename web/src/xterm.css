@@ -2294,4 +2294,28 @@
 }
 
 .terminal .xterm-bg-color-237 {
-    bac
+    background-color: #3a3a3a;
+}
+
+.terminal .xterm-color-238 {
+    color: #444444;
+}
+
+.terminal .xterm-bg-color-238 {
+    background-color: #444444;
+}
+
+.terminal .xterm-color-239 {
+    color: #4e4e4e;
+}
+
+.terminal .xterm-bg-color-239 {
+    background-color: #4e4e4e;
+}
+
+.terminal .xterm-color-240 {
+    color: #585858;
+}
+
+.terminal .xterm-bg-color-240 {
+    background-color:
