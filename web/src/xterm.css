@@ -2393,4 +2393,32 @@
     background-color: #b2b2b2;
 }
 
-.terminal .xterm-co
+.terminal .xterm-color-250 {
+    color: #bcbcbc;
+}
+
+.terminal .xterm-bg-color-250 {
+    background-color: #bcbcbc;
+}
+
+.terminal .xterm-color-251 {
+    color: #c6c6c6;
+}
+
+.terminal .xterm-bg-color-251 {
+    background-color: #c6c6c6;
+}
+
+.terminal .xterm-color-252 {
+    color: #d0d0d0;
+}
+
+.terminal .xterm-bg-color-252 {
+    background-color: #d0d0d0;
+}
+
+.terminal .xterm-color-253 {
+    color: #dadada;
+}
+
+.terminal .xterm-bg-color-253 {
