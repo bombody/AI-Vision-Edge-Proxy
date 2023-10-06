@@ -2422,3 +2422,21 @@
 }
 
 .terminal .xterm-bg-color-253 {
+    background-color: #dadada;
+}
+
+.terminal .xterm-color-254 {
+    color: #e4e4e4;
+}
+
+.terminal .xterm-bg-color-254 {
+    background-color: #e4e4e4;
+}
+
+.terminal .xterm-color-255 {
+    color: #eeeeee;
+}
+
+.terminal .xterm-bg-color-255 {
+    background-color: #eeeeee;
+}
