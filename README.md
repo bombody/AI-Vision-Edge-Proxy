@@ -17,4 +17,16 @@ For example, a network of CCTV RTSP enabled cameras can be accessed through a si
 ## Building from Source
 
 * Clone the repository from GitHub
-* Follow the guidelines provide
+* Follow the guidelines provided in the repository for building and deploying the proxy
+
+## Contributing
+
+Feel free to submit pull requests to help make this project better
+
+## License
+
+This project is licensed under Apache 2.0 License, refer to the LICENSE file for details.
+
+## Acknowledgments
+
+Thanks to all contributors and users of AI-Vision-Edge-Proxy. Your suggestions and usage help this project evolve.
